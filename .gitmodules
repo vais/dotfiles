@@ -1,0 +1,48 @@
+[submodule "vimfiles/bundle/auto-pairs"]
+	path = vimfiles/bundle/auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "vimfiles/bundle/ctrlp.vim"]
+	path = vimfiles/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vimfiles/bundle/nerdtree"]
+	path = vimfiles/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vimfiles/bundle/tabular"]
+	path = vimfiles/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+[submodule "vimfiles/bundle/tcomment_vim"]
+	path = vimfiles/bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "vimfiles/bundle/vim-colors-solarized"]
+	path = vimfiles/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vimfiles/bundle/vim-easymotion"]
+	path = vimfiles/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule "vimfiles/bundle/vim-endwise"]
+	path = vimfiles/bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "vimfiles/bundle/vim-fugitive"]
+	path = vimfiles/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vimfiles/bundle/vim-pathogen"]
+	path = vimfiles/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vimfiles/bundle/vim-surround"]
+	path = vimfiles/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "vimfiles/bundle/vim-textobj-rubyblock"]
+	path = vimfiles/bundle/vim-textobj-rubyblock
+	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "vimfiles/bundle/vim-textobj-user"]
+	path = vimfiles/bundle/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "vimfiles/bundle/vim-unimpaired"]
+	path = vimfiles/bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "vimfiles/bundle/vim-rails"]
+	path = vimfiles/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "vimfiles/bundle/vim-bundler"]
+	path = vimfiles/bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
