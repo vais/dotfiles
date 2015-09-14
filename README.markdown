@@ -1,4 +1,4 @@
-## Installation
+## Installing
 
 ### Unix
 ```
@@ -6,6 +6,8 @@ cd ~
 git clone https://github.com/vais/dotfiles.git
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/vimfiles ~/.vim
+cd dotfiles
+git submodule update --init
 ```
 
 ### Windows
@@ -14,11 +16,14 @@ cd %HOMEPATH%
 git clone https://github.com/vais/dotfiles.git
 mklink .\_vimrc .\dotfiles\vimrc
 mklink .\vimfiles .\dotfiles\vimfiles
+cd dotfiles
+git submodule update --init
 ```
 
-### Finally
+## Updating
 ```
-cd dotfiles
+cd ~/dotfiles
+git pull
 git submodule update --init
 ```
 
