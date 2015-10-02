@@ -49,3 +49,12 @@
 [submodule "vimfiles/bundle/vim-repeat"]
 	path = vimfiles/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
+[submodule "vimfiles/bundle/vim-ruby"]
+	path = vimfiles/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vimfiles/bundle/vim-javascript"]
+	path = vimfiles/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vimfiles/bundle/emmet-vim"]
+	path = vimfiles/bundle/emmet-vim
+	url = git://github.com/mattn/emmet-vim.git
