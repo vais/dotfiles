@@ -58,3 +58,6 @@
 [submodule "vimfiles/bundle/emmet-vim"]
 	path = vimfiles/bundle/emmet-vim
 	url = git://github.com/mattn/emmet-vim.git
+[submodule "vimfiles/bundle/vim-ragtag"]
+	path = vimfiles/bundle/vim-ragtag
+	url = git://github.com/tpope/vim-ragtag.git
