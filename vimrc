@@ -46,6 +46,8 @@ if !isdirectory(&directory)
     call mkdir(&directory)
 endif
 
+set virtualedit=block             " Allow virtual editing in Visual block mode.
+
 set smarttab
 set expandtab
 set shiftround
@@ -54,10 +56,7 @@ set softtabstop=2
 set shiftwidth=2
 
 set laststatus=2
-" use this info to hack on the status line:
-" http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
-" http://got-ravings.blogspot.com/search/label/statuslines
-" set statusline=[%n]\ %<%.99f\ %h%w%1*%m%*%#error#%r%*%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
 " Keep the status line short, so you can see the file path
 " when there are several vertical splits:
 set statusline=[%n]\ %<%.99f\ %h%w%1*%m%*%#error#%r%*
@@ -66,17 +65,8 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 cnoremap %% <C-R>=expand('%:p:h')<cr>
 
-" Omnicompletion stuff
 set complete=.,w,b
 set completeopt=menuone
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-let g:acp_behaviorKeywordLength = 3
-let g:acp_behaviorRubyOmniMethodLength = -1
-let g:acp_behaviorRubyOmniSymbolLength = -1
-let g:acp_behaviorHTMLOmniLength = -1
-
-" added to enable completing ruby minitest assertions with CTRL-X CTRL-U
-set completefunc=syntaxcomplete#Complete
 
 " CtrlP stuff
 let g:ctrlp_working_path_mode = 0
@@ -92,11 +82,6 @@ if has('gui_running')
     colorscheme solarized
     let g:solarized_diffmode="high"
     set background=dark
-    " set cursorline
-    " if has('autocmd')
-    "     autocmd WinEnter * setlocal cursorline
-    "     autocmd WinLeave * setlocal nocursorline
-    " endif
     set guicursor+=a:blinkon0
     if has('win32') || has('win64')
         set guifont=Courier_New:h10:cANSI
@@ -242,17 +227,3 @@ endif
 
 inoremap <buffer> <silent> ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
 inoremap <buffer> <silent> ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
-
-" Annoyances:
-"
-" when there are horizontal splits and copen or lopen, doing ccl or lcl
-" resizes the splits to be equal size and messes up the manual layout.
-"
-" How to open files from quickfix list in a new tab, vert and horiz splits??
-"
-" In CtrlP if a file is already open buffer, choosing it from list of open
-" buffers while in another tab takes you back to the tab where it is already
-" open. How to avoid this and open in the current tab instead?
-"
-" File name autocomplete is relative to the cwd - how to make it relative to
-" the directory of the file in buffer?
