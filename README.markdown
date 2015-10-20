@@ -41,13 +41,13 @@ To update all installed plugins:
 ```
 cd ~/dotfiles
 git submodule foreach git pull origin master
-git commit -m "Update plugins"
+git commit -am "Update plugins"
 ```
 To update a single plugin:
 ```
 cd ~/dotfiles/vimfiles/bundle/vim-repeat
 git pull origin master
-git commit -m "Update Repeat.vim plugin"
+git commit -am "Update Repeat.vim plugin"
 ```
 
 ### Removing
