@@ -220,3 +220,4 @@ inoremap ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
 inoremap ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
 
 inoremap <C-Space> <C-p>
+inoremap <C-S-Space> <C-n>
