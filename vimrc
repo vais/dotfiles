@@ -160,7 +160,6 @@ function! VimSearch(text)
     let str = input('Search ' . getcwd() . '>', a:text)
     if !empty(str)
         call VimSearchWrite(str)
-        " call feedkeys(':copen10 | silent grep! --exclude-dir="node_modules/*" --exclude-dir="lib/*" -f "' . expand('~/.vimsearch') . '" -i -F -r *')
         call feedkeys(':copen10 | silent grep! -f "' . expand('~/.vimsearch') . '" -i -F -r *')
     else
         redraw!
@@ -187,9 +186,6 @@ set foldminlines=0
 set foldcolumn=0
 set foldmethod=indent
 
-let g:SimpleJsIndenter_BriefMode = 1
-let g:SimpleJsIndenter_CaseIndentLevel = -1
-
 let g:AutoPairsCenterLine = 0
 let g:AutoPairsFlyMode = 0
 let g:AutoPairShortcutToggle = ''
@@ -211,11 +207,6 @@ nmap <silent> <C-N><C-m> :NERDTreeMirror<CR>
 
 nmap <Leader>M :g/<C-Q><C-M>$/s///<CR>:set ff=dos<CR>
 
-cabbr cho silent! exe "!tf checkout /lock:checkout \"%\"" <Bar> edit!
-cabbr chin silent! exe "!tf checkin"
-cabbr tfu silent! exe "!tf undo \"%\"" <Bar> edit!
-cabbr tfdf silent! exe "!start /min tf diff \"%\""
-
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
@@ -225,5 +216,7 @@ if exists("&regexpengine")
   set regexpengine=1
 endif
 
-inoremap <buffer> <silent> ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
-inoremap <buffer> <silent> ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
+inoremap ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
+inoremap ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
+
+inoremap <C-Space> <C-p>
