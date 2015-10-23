@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -s ~/dotfiles/vimfiles ~/.vim
+
+cd ~/dotfiles
+git pull
+git submodule update --init
+cd -
