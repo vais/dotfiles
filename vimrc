@@ -26,7 +26,6 @@ set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
 set number                        " Show line numbers.
-set ruler                         " Show cursor position.
 
 set incsearch                     " Highlight first match as you type.
 set nohlsearch                    " Do not highlight matches.
@@ -103,7 +102,6 @@ if has('gui_running')
     hi User1 guibg=yellow guifg=black
 endif
 
-
 nnoremap ZZ zz
 " Because ZZ is too dangerous:
 " ZZ writes all changes and quits,
@@ -126,8 +124,6 @@ nnoremap <C-w>- <C-w><C-_>
 nnoremap <C-w>0 <C-w><C-_><C-w><C-bar>
 nnoremap <silent> <C-w>a :tabnew<CR>
 
-nnoremap <F8> :ccl<Bar>lcl<CR>
-
 vnoremap <C-X> "+x
 vnoremap <C-C> "+y
 vnoremap <C-V> "+p
@@ -146,7 +142,7 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-set grepprg=grep\ -I\ -n\ -H\ --mmap
+set grepprg=grep\ -I\ -n\ -H
 
 nnoremap <F3> :call VimSearch('')<CR>
 nnoremap <S-F3> :call VimSearch(expand("<cword>"))<CR>
