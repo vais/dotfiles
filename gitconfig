@@ -1,0 +1,9 @@
+[user]
+	email = vsalikhov@gmail.com
+	name = Vais Salikhov
+[alias]
+	s = status
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore_global

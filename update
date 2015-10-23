@@ -1,7 +1,10 @@
 #!/bin/bash
 
-ln -sf ~/dotfiles/vimrc ~/.vimrc
-ln -sfn ~/dotfiles/vimfiles ~/.vim
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
+
+ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -sn ~/dotfiles/vimfiles ~/.vim
 
 cd ~/dotfiles
 git pull
