@@ -35,6 +35,7 @@ Vagrant.configure(2) do |config|
     rbenv rehash
 
     git clone https://github.com/vais/dotfiles.git ~/dotfiles
+    chmod +x ~/dotfiles/update
     ~/dotfiles/update
 
     echo 'cd /vagrant' >> ~/.bashrc
