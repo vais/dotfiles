@@ -4,7 +4,6 @@
 ```
 cd ~
 git clone https://github.com/vais/dotfiles.git
-chmod +x dotfiles/update
 dotfiles/update
 ```
 
