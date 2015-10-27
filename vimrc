@@ -121,7 +121,7 @@ nnoremap <silent> g5 :let @t=@@<CR>yyp:let @@=@t<CR>
 vnoremap <silent> g5 :<C-u>let @t=@@<CR>gvy`]p:<C-u>let @@=@t<CR>gv
 
 " Duplicate current line or visual selection and comment out the original:
-" (using nmap and vmap because this mapping depends on the `cpp` mapping)
+" (using nmap and vmap because this mapping depends on the `ccp` mapping)
 nmap <silent> g6 :let @t=@@<CR>yygccp:let @@=@t<CR>
 vmap <silent> g6 :<C-u>let @t=@@<CR>gvVVgvygvgc`]p:let @@=@t<CR>
 
