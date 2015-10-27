@@ -62,7 +62,7 @@ set shiftwidth=2                  " Number of spaces to use for each step of (au
 set laststatus=2                  " Always show the status line.
 set statusline=[%n]\ %<%.99f\ %h%w%1*%m%*%#error#%r%*
 
-set complete=.,w,b                " Auto-complete from current buffer, buffers in other windows, and loaded buffers in buffer list.
+set complete=.,w,b                " Auto-complete from all currently loaded buffers.
 set completeopt=menuone           " Show the popup menu even when there is only one match.
 
 set history=420                   " The number of commands and search patterns to keep in history.
@@ -114,7 +114,7 @@ endif
 nnoremap ZZ zz
 
 " Expand %% on the command line to current file's directory path:
-cnoremap %% <C-R>=expand('%:p:h')<cr>
+cnoremap %% <C-r>=expand('%:p:h')<CR>
 
 " Duplicate current line or visual selection:
 nnoremap <silent> g5 :let @t=@@<CR>yyp:let @@=@t<CR>
@@ -138,15 +138,15 @@ nnoremap <C-w>0 <C-w><C-_><C-w><C-bar>
 nnoremap <silent> <C-w>a :tabnew<CR>
 
 " Cut/Copy/Paste using the system clipboard:
-vnoremap <C-X> "+x
-vnoremap <C-C> "+y
-vnoremap <C-V> "+p
-nnoremap <C-V> "+p
-inoremap <C-V> <C-R>+
-cnoremap <C-V> <C-R>+
+vnoremap <C-x> "+x
+vnoremap <C-c> "+y
+vnoremap <C-v> "+p
+nnoremap <C-v> "+p
+inoremap <C-v> <C-r>+
+cnoremap <C-v> <C-r>+
 
 " Fix mixed line endings and set DOS mode for line endings:
-nnoremap <Leader>M :g/<C-Q><C-M>$/s///<CR>:set ff=dos<CR>
+nnoremap <Leader>m :g/<C-q><C-m>$/s///<CR>:set ff=dos<CR>
 
 " Diff modified buffer with the original file on disk:
 if !exists(":DiffOrig")
@@ -163,7 +163,7 @@ inoremap <C-S-Space> <C-n>
 
 " Set current word or selection to be the current search term:
 nnoremap <silent> gn :call SetSearchTermNormal()<CR>
-vnoremap <silent> gn :<C-U>call SetSearchTermVisual()<CR>
+vnoremap <silent> gn :<C-u>call SetSearchTermVisual()<CR>
 
 " Toggle highlighting of all occurrences of the current search term:
 nnoremap <silent> gh :set hls!<CR>
@@ -171,7 +171,7 @@ nnoremap <silent> gh :set hls!<CR>
 " Find in files:
 nnoremap <silent> <F3> :call FindInFiles('')<CR>
 nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal())<CR>
-vnoremap <silent> <F3> :<C-U>call FindInFiles(SetSearchTermVisual())<CR>
+vnoremap <silent> <F3> :<C-u>call FindInFiles(SetSearchTermVisual())<CR>
 
 function! SetSearchTermNormal()
   let str = expand("<cword>")
@@ -181,7 +181,7 @@ function! SetSearchTermNormal()
     echohl NONE
   else
     let @/ = '\V\<' . str . '\>\C'
-    exe "normal /" . @/ . "\<C-C>"
+    exe "normal /" . @/ . "\<C-c>"
   endif
   return str
 endfunction
@@ -193,7 +193,7 @@ function! SetSearchTermVisual()
   let str = @"
   call setreg('"', reg, regtype)
   let @/ = '\V' . substitute(escape(str, '\'), '\n', '\\n', 'g')
-  exe "normal /" . @/ . "\<C-C>"
+  exe "normal /" . @/ . "\<C-c>"
   return str
 endfunction
 
@@ -231,9 +231,9 @@ let g:loaded_netrwPlugin = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 0
-nnoremap <silent> <C-N>t :NERDTreeToggle<CR>
-nnoremap <silent> <C-N><C-t> :NERDTreeToggle<CR>
-nnoremap <silent> <C-N>f :NERDTreeFind<CR>
-nnoremap <silent> <C-N><C-f> :NERDTreeFind<CR>
-nnoremap <silent> <C-N>m :NERDTreeMirror<CR>
-nnoremap <silent> <C-N><C-m> :NERDTreeMirror<CR>
+nnoremap <silent> <C-n>t :NERDTreeToggle<CR>
+nnoremap <silent> <C-n><C-t> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n>f :NERDTreeFind<CR>
+nnoremap <silent> <C-n><C-f> :NERDTreeFind<CR>
+nnoremap <silent> <C-n>m :NERDTreeMirror<CR>
+nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
