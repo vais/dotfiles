@@ -4,6 +4,8 @@
 [alias]
 	s = status
   l = log --pretty=format:'%C(auto)%h %ad | %s%d' --graph --date=iso
+  b = branch
+  c = checkout
 [push]
 	default = simple
 [core]
