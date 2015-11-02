@@ -16,6 +16,8 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y vim
 
     sudo apt-get install -y nodejs
+    sudo ln -s /usr/bin/nodejs /usr/bin/node
+    sudo apt-get install -y npm
 
     sudo apt-get install -y sqlite
     sudo apt-get install -y libsqlite3-dev
