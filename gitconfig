@@ -3,6 +3,7 @@
 	name = Vais Salikhov
 [alias]
 	s = status
+  l = log --pretty=format:'%C(auto)%h %ad | %s%d' --graph --date=iso
 [push]
 	default = simple
 [core]
