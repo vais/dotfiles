@@ -3,7 +3,7 @@
 	name = Vais Salikhov
 [alias]
 	s = status
-  l = log --pretty=format:'%C(auto)%h %ad | %s%d' --graph --date=iso
+  l = log --pretty=format:'%C(auto)%h %ad | %s%d [%an]' --graph --date=iso
   b = branch
   c = checkout
 [push]
