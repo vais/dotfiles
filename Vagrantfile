@@ -7,6 +7,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
+  config.vm.network 'forwarded_port', guest: 8080, host: 8080
 
   config.vm.provision 'shell', inline: <<-SHELL, privileged: false
     sudo apt-get clean
