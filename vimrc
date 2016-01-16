@@ -237,3 +237,7 @@ nnoremap <silent> <C-n>f :NERDTreeFind<CR>
 nnoremap <silent> <C-n><C-f> :NERDTreeFind<CR>
 nnoremap <silent> <C-n>m :NERDTreeMirror<CR>
 nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
+
+" vim-fugitive plugin settings:
+nmap <silent> ]d :Gstatus<CR>:setlocal cursorline<CR><C-n>D
+nmap <silent> [d :Gstatus<CR>:setlocal cursorline<CR><C-p>D
