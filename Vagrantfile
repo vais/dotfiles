@@ -6,6 +6,8 @@ Vagrant.configure(2) do |config|
     vb.cpus = 2
   end
 
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
   config.vm.network 'forwarded_port', guest: 8080, host: 8080
 
@@ -39,7 +41,5 @@ Vagrant.configure(2) do |config|
 
     git clone https://github.com/vais/dotfiles.git ~/dotfiles
     ~/dotfiles/update
-
-    echo 'cd /vagrant' >> ~/.bashrc
   SHELL
 end
