@@ -61,3 +61,6 @@
 [submodule "vimfiles/bundle/vim-ragtag"]
 	path = vimfiles/bundle/vim-ragtag
 	url = git://github.com/tpope/vim-ragtag.git
+[submodule "vimfiles/bundle/vim-exchange"]
+	path = vimfiles/bundle/vim-exchange
+	url = git://github.com/tommcdo/vim-exchange.git
