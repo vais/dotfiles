@@ -64,3 +64,6 @@
 [submodule "vimfiles/bundle/vim-exchange"]
 	path = vimfiles/bundle/vim-exchange
 	url = git://github.com/tommcdo/vim-exchange.git
+[submodule "vimfiles/bundle/vim-textobj-lastpat"]
+	path = vimfiles/bundle/vim-textobj-lastpat
+	url = git://github.com/kana/vim-textobj-lastpat.git
