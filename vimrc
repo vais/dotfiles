@@ -203,7 +203,7 @@ function! FindInFiles(text)
     redraw!
   else
     call writefile([str], expand('~/.vimsearch'))
-    call feedkeys(':copen10 | silent grep! -f "' . expand('~/.vimsearch') . '" -i -F -r *')
+    call feedkeys(':copen10 | silent grep! -f "' . expand('~/.vimsearch') . '" * -r -F -i')
   endif
 endfunction
 
