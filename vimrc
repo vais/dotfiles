@@ -116,6 +116,9 @@ nnoremap ZZ zz
 " Expand %% on the command line to current file's directory path:
 cnoremap %% <C-r>=expand('%:p:h')<CR>
 
+" Copy current line info in cfile format to system clipboard:
+nnoremap <silent> <Leader>cf :let @+=expand('%').':'.line('.').':'.col('.').': '.substitute(getline('.'), '\v^\s*', '', '')<CR>
+
 " Duplicate current line or visual selection:
 nnoremap <silent> g5 :let @t=@@<CR>yyp:let @@=@t<CR>
 vnoremap <silent> g5 :<C-u>let @t=@@<CR>gvy`]p:<C-u>let @@=@t<CR>gv
