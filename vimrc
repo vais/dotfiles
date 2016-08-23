@@ -210,6 +210,19 @@ function! FindInFiles(text)
   endif
 endfunction
 
+" Save current contents of the QuickFix list to file:
+if !exists(":SaveQuickFixListToFile")
+  command -nargs=1 SaveQuickFixListToFile :call SaveQuickFixListToFile(<f-args>)
+endif
+
+function! SaveQuickFixListToFile(fname)
+  let list = getqflist()
+  for i in range(len(list))
+    let list[i] = bufname(list[i].bufnr).':'.list[i].lnum.':'.list[i].col.': '.substitute(list[i].text, '\v^\s*', '', '')
+  endfor
+  call writefile(list, a:fname)
+endfunction
+
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Leader>'
 
