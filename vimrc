@@ -160,10 +160,6 @@ endif
 inoremap ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
 inoremap ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
 
-" Ctrl-Space or Ctrl-Shift-Space to show auto-complete suggestions:
-inoremap <C-Space> <C-p>
-inoremap <C-S-Space> <C-n>
-
 " Set current word or selection to be the current search term:
 nnoremap <silent> gn :call SetSearchTermNormal()<CR>
 vnoremap <silent> gn :<C-u>call SetSearchTermVisual()<CR>
