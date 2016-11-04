@@ -229,7 +229,7 @@ let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
-let NERDTreeHighlightCursorline = 0
+let NERDTreeHighlightCursorline = 1
 nnoremap <silent> <C-n>t :NERDTreeToggle<CR>
 nnoremap <silent> <C-n><C-t> :NERDTreeToggle<CR>
 nnoremap <silent> <C-n>f :NERDTreeFind<CR>
