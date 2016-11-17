@@ -67,6 +67,3 @@
 [submodule "vimfiles/bundle/vim-textobj-lastpat"]
 	path = vimfiles/bundle/vim-textobj-lastpat
 	url = git://github.com/kana/vim-textobj-lastpat.git
-[submodule "vimfiles/bundle/vim-elixir"]
-	path = vimfiles/bundle/vim-elixir
-	url = git://github.com/elixir-lang/vim-elixir.git
