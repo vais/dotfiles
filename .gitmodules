@@ -70,3 +70,6 @@
 [submodule "vimfiles/bundle/vim-projectionist"]
 	path = vimfiles/bundle/vim-projectionist
 	url = git://github.com/tpope/vim-projectionist.git
+[submodule "vimfiles/bundle/vim-vue"]
+	path = vimfiles/bundle/vim-vue
+	url = git://github.com/posva/vim-vue.git
