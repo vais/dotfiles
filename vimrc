@@ -240,12 +240,3 @@ nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
 " vim-fugitive plugin settings:
 nmap <silent> ]d :Gstatus<CR>:setlocal cursorline<CR><C-n>D
 nmap <silent> [d :Gstatus<CR>:setlocal cursorline<CR><C-p>D
-
-" emmet-vim plugin settings:
-let g:emmet_install_only_plug = 1
-imap <C-Enter> <plug>(emmet-expand-abbr)
-let g:user_emmet_settings = {
-\    'html' : {
-\        'indent_blockelement': 1
-\    }
-\}
