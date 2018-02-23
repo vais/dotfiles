@@ -67,3 +67,6 @@
 [submodule "vimfiles/bundle/vim-projectionist"]
 	path = vimfiles/bundle/vim-projectionist
 	url = git://github.com/tpope/vim-projectionist.git
+[submodule "vimfiles/bundle/jdaddy.vim"]
+	path = vimfiles/bundle/jdaddy.vim
+	url = https://github.com/tpope/vim-jdaddy.git
