@@ -112,6 +112,14 @@ endif
 
 set tagcase=match                 " Make tags file search case-sensitive
 
+" Jump to definition if there's only one matching tag, otherwise list all matching tags:
+map  g]                       g<C-]>
+map  <C-]>                    g<C-]>
+nmap <C-LeftMouse> <LeftMouse>g<C-]>
+vmap <C-LeftMouse>            g<C-]>
+nmap g<LeftMouse>  <LeftMouse>g<C-]>
+vmap g<LeftMouse>             g<C-]>
+
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
 
