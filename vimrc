@@ -110,6 +110,8 @@ if has('gui_running')
   set guioptions-=L               " Never show left scrollbar.
 endif
 
+set tagcase=match                 " Make tags file search case-sensitive
+
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
 
