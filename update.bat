@@ -6,6 +6,8 @@ mklink "%HOMEPATH%\vimfiles" "%HOMEPATH%\dotfiles\vimfiles"
 
 mklink "%HOMEPATH%\.irbrc" "%HOMEPATH%\dotfiles\irbrc"
 
+mklink "%HOMEPATH%\.ctags" "%HOMEPATH%\dotfiles\ctags"
+
 pushd "%HOMEPATH%\dotfiles"
 git pull
 git submodule update --init
