@@ -110,6 +110,7 @@ if has('gui_running')
   set guioptions-=L               " Never show left scrollbar.
 endif
 
+set tags=./tags;                  " Look for tags files starting in directory of current file and up
 set tagcase=match                 " Make tags file search case-sensitive
 
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
