@@ -121,6 +121,12 @@ vmap <C-LeftMouse>            g<C-]>
 nmap g<LeftMouse>  <LeftMouse>g<C-]>
 vmap g<LeftMouse>             g<C-]>
 
+" Shortcuts for navigating to tags in new splits and tabs
+vmap gff og]
+vmap gfs ov<C-w>sgvog]
+vmap gfv ov<C-w>vgvog]
+vmap gft ov<C-w>s<C-w>Tgvog]
+
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
 
