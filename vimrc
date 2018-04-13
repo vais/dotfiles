@@ -120,6 +120,9 @@ nmap <C-LeftMouse> <LeftMouse>g<C-]>
 vmap <C-LeftMouse>            g<C-]>
 nmap g<LeftMouse>  <LeftMouse>g<C-]>
 vmap g<LeftMouse>             g<C-]>
+map  <C-w>]              <C-w>g<C-]>
+map  <C-w><C-]>          <C-w>g<C-]>
+map  <C-w>g]             <C-w>g<C-]>
 
 " Shortcuts for navigating to tags in new splits and tabs
 vmap gff og]
