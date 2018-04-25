@@ -72,7 +72,13 @@ set mouse=a                       " Enable the use of the mouse in all modes.
 set winminheight=1                " The minimal height of a window, when it's not the current window.
 set winminwidth=1                 " The minimal width of a window, when it's not the current window.
 
-set grepprg=grep\ -I\ -n\ -H      " Program to use for the :grep command.
+let &grepprg='grep -f "' . expand('~/.vimsearch') . '"' " --file=FILE (obtain PATTERN from FILE)
+set grepprg+=\ -I                 " --binary-files=without-match
+set grepprg+=\ -n                 " --line-number (print line number with output lines)
+set grepprg+=\ -H                 " --with-filename (print the file name for each match)
+set grepprg+=\ -r                 " --recursive
+set grepprg+=\ --exclude-dir=.git " --exclude-dir=PATTERN (directories that match PATTERN will be skipped)
+set grepprg+=\ --exclude=tags     " --exclude=FILE_PATTERN (skip files and directories matching FILE_PATTERN)
 
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 
@@ -222,7 +228,7 @@ function! FindInFiles(text)
     redraw!
   else
     call writefile([str], expand('~/.vimsearch'))
-    call feedkeys(':copen | silent grep! -f "' . expand('~/.vimsearch') . '" * -r -F -i')
+    call feedkeys(':copen | silent grep! -F -i')
   endif
 endfunction
 
