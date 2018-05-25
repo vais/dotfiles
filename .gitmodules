@@ -70,3 +70,6 @@
 [submodule "vimfiles/bundle/jdaddy.vim"]
 	path = vimfiles/bundle/jdaddy.vim
 	url = https://github.com/tpope/vim-jdaddy.git
+[submodule "vimfiles/bundle/vim-elixir"]
+	path = vimfiles/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
