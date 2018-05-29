@@ -40,9 +40,6 @@
 [submodule "vimfiles/bundle/vim-unimpaired"]
 	path = vimfiles/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
-[submodule "vimfiles/bundle/vim-rails"]
-	path = vimfiles/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
 [submodule "vimfiles/bundle/vim-bundler"]
 	path = vimfiles/bundle/vim-bundler
 	url = git://github.com/tpope/vim-bundler.git
