@@ -102,7 +102,7 @@ if has('gui_running')
   if has('win32') || has('win64') " Set the preferred font for each OS.
     set guifont=Courier_New:h10:cANSI
   elseif has('gui_macvim')
-    set guifont=Menlo:h12
+    set guifont=Courier_New:h14
   elseif has('unix')
     let &guifont='Monospace 10'
   endif
