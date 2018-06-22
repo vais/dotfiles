@@ -1,6 +1,6 @@
 [submodule "vimfiles/bundle/auto-pairs"]
 	path = vimfiles/bundle/auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
+	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "vimfiles/bundle/ctrlp.vim"]
 	path = vimfiles/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
@@ -9,28 +9,28 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vimfiles/bundle/tabular"]
 	path = vimfiles/bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "vimfiles/bundle/tcomment_vim"]
 	path = vimfiles/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "vimfiles/bundle/vim-colors-solarized"]
 	path = vimfiles/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vimfiles/bundle/vim-easymotion"]
 	path = vimfiles/bundle/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "vimfiles/bundle/vim-endwise"]
 	path = vimfiles/bundle/vim-endwise
-	url = git://github.com/tpope/vim-endwise.git
+	url = https://github.com/tpope/vim-endwise.git
 [submodule "vimfiles/bundle/vim-fugitive"]
 	path = vimfiles/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vimfiles/bundle/vim-pathogen"]
 	path = vimfiles/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vimfiles/bundle/vim-surround"]
 	path = vimfiles/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vimfiles/bundle/vim-textobj-rubyblock"]
 	path = vimfiles/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
@@ -39,25 +39,25 @@
 	url = https://github.com/kana/vim-textobj-user.git
 [submodule "vimfiles/bundle/vim-unimpaired"]
 	path = vimfiles/bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vimfiles/bundle/vim-repeat"]
 	path = vimfiles/bundle/vim-repeat
-	url = git://github.com/tpope/vim-repeat.git
+	url = https://github.com/tpope/vim-repeat.git
 [submodule "vimfiles/bundle/vim-ruby"]
 	path = vimfiles/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
+	url = https://github.com/vim-ruby/vim-ruby.git
 [submodule "vimfiles/bundle/vim-javascript"]
 	path = vimfiles/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vimfiles/bundle/vim-ragtag"]
 	path = vimfiles/bundle/vim-ragtag
-	url = git://github.com/tpope/vim-ragtag.git
+	url = https://github.com/tpope/vim-ragtag.git
 [submodule "vimfiles/bundle/vim-exchange"]
 	path = vimfiles/bundle/vim-exchange
-	url = git://github.com/tommcdo/vim-exchange.git
+	url = https://github.com/tommcdo/vim-exchange.git
 [submodule "vimfiles/bundle/vim-textobj-lastpat"]
 	path = vimfiles/bundle/vim-textobj-lastpat
-	url = git://github.com/kana/vim-textobj-lastpat.git
+	url = https://github.com/kana/vim-textobj-lastpat.git
 [submodule "vimfiles/bundle/jdaddy.vim"]
 	path = vimfiles/bundle/jdaddy.vim
 	url = https://github.com/tpope/vim-jdaddy.git
