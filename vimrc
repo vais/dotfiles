@@ -251,8 +251,6 @@ let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
 
 " nerdtree plugin settings:
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 1
@@ -266,3 +264,11 @@ nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
 " vim-fugitive plugin settings:
 nmap <silent> ]d :Gstatus<CR>:setlocal cursorline<CR><C-n>D
 nmap <silent> [d :Gstatus<CR>:setlocal cursorline<CR><C-p>D
+
+" Disable the built-in Netrw plugin
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
+" Disable the built-in Zip plugin
+let g:loaded_zipPlugin = 1
+let g:loaded_zip = 1
