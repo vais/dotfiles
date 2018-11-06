@@ -130,11 +130,30 @@ map  <C-w>]              <C-w>g<C-]>
 map  <C-w><C-]>          <C-w>g<C-]>
 map  <C-w>g]             <C-w>g<C-]>
 
-" Shortcuts for navigating to tags in new splits and tabs
-vmap gff og]
-vmap gfs ov<C-w>sgvog]
-vmap gfv ov<C-w>vgvog]
-vmap gft ov<C-w>s<C-w>Tgvog]
+" Helper map to pass the count (e.g., 2gf) to the underlying command
+" (used for GOTO-FILE and GOTO-DEFINITION mappings below)
+nnoremap <SID>: :<C-U><C-R>=v:count ? v:count : ''<CR>
+
+" GOTO-FILE mappings
+" Use Vim's built-in CTRL-R_CTRL-F when no plugin has claimed <Plug><cfile>
+if empty(maparg('<Plug><cfile>', 'c'))
+  cnoremap <Plug><cfile> <C-R><C-F>
+endif
+nmap <silent> <C-W>f     <SID>:vert sfind  <Plug><cfile><CR>
+
+" GOTO-DEFINITION mappings
+" Use Vim's built-in CTRL-R_CTRL-W when no plugin has claimed <Plug><cword>
+if empty(maparg('<Plug><cword>', 'c'))
+  cnoremap <Plug><cword> <C-R><C-W>
+endif
+nmap <silent> gd         <SID>:tjump       <Plug><cword><CR>
+nmap <silent> <C-W><C-D> <SID>:stjump      <Plug><cword><CR>
+nmap <silent> <C-W>gd    <SID>:tab tjump   <Plug><cword><CR>
+nmap <silent> <C-W>d     <SID>:vert stjump <Plug><cword><CR>
+vmap <silent> gd         :<C-u>tjump       <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
+vmap <silent> <C-W><C-D> :<C-u>stjump      <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
+vmap <silent> <C-W>gd    :<C-u>tab tjump   <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
+vmap <silent> <C-W>d     :<C-u>vert stjump <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
 
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
