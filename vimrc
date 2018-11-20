@@ -291,3 +291,6 @@ let g:loaded_netrwPlugin = 1
 " Disable the built-in Zip plugin
 let g:loaded_zipPlugin = 1
 let g:loaded_zip = 1
+
+" vim-ruby plugin settings:
+let g:ruby_indent_block_style = 'do'
