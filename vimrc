@@ -162,7 +162,7 @@ nnoremap ZZ zz
 cnoremap %% <C-r>=expand('%:p:h')<CR>
 
 " Copy current line info in cfile format to system clipboard:
-nnoremap <silent> <Leader>cf :let @+=expand('%').':'.line('.').':'.col('.').': '.substitute(getline('.'), '\v^\s*', '', '')<CR>
+nnoremap <silent> <Leader>l :let @+=expand('%:p').':'.line('.').':'.col('.').': '.substitute(getline('.'), '\v^\s*', '', '')<CR>
 
 " Duplicate current line or visual selection:
 nnoremap <silent> g5 :let @t=@@<CR>yyp:let @@=@t<CR>
