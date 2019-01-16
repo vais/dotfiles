@@ -273,6 +273,7 @@ let g:AutoPairsShortcutBackInsert = ''
 let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 1
+let NERDTreeShowHidden = 1
 nnoremap <silent> <C-n>t :NERDTreeToggle<CR>
 nnoremap <silent> <C-n><C-t> :NERDTreeToggle<CR>
 nnoremap <silent> <C-n>f :NERDTreeFind<CR>
