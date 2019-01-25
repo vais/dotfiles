@@ -155,6 +155,9 @@ vmap <silent> <C-W><C-D> :<C-u>stjump      <C-R>=getline("'<")[getpos("'<")[2]-1
 vmap <silent> <C-W>gd    :<C-u>tab tjump   <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
 vmap <silent> <C-W>d     :<C-u>vert stjump <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
 
+" A more ergonomic mapping for returning to a previous position in the jump list
+nmap gr <C-O>
+
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
 
