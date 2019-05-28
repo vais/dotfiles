@@ -80,7 +80,8 @@ set grepprg+=\ -r                 " --recursive
 set grepprg+=\ --exclude-dir=.git " --exclude-dir=PATTERN (directories that match PATTERN will be skipped)
 set grepprg+=\ --exclude=tags     " --exclude=FILE_PATTERN (skip files and directories matching FILE_PATTERN)
 
-set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
+set sessionoptions-=blank         " Forget empty windows (e.g. NERDTree, quickfix, etc.)
+set sessionoptions+=resize        " Remember the size of the whole Vim window
 
 set splitbelow                    " Splitting a window will put the new window below the current one.
 set splitright                    " Splitting a window will put the new window right of the current one.
