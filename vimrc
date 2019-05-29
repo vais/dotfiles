@@ -322,3 +322,7 @@ let g:ruby_indent_block_style = 'do'
 " Hide Terminal buffers so that ls+ command
 " only show modified buffers we care about:
 autocmd TerminalOpen * setlocal nobuflisted
+
+" Replace :bm with :ls+ because there's no
+" way to make :bm ignore Terminal buffers:
+cabbrev bm <c-r>=(getcmdtype() == ':' && getcmdpos() == 1 ? 'ls+' : 'bm')<CR>
