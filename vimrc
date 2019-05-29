@@ -188,6 +188,7 @@ nnoremap <C-w>0 <C-w><C-_><C-w><C-bar>
 
 " Shortcut to create a new tab:
 nnoremap <silent> <C-w>a :tabnew<CR>
+tnoremap <silent> <C-w>a <C-w>:tabnew<CR>
 
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x
@@ -196,6 +197,7 @@ vnoremap <C-v> "+p
 nnoremap <C-v> "+p
 inoremap <C-v> <C-r>+
 cnoremap <C-v> <C-r>+
+tnoremap <C-v> <C-w>"+
 
 " Fix mixed line endings and set DOS mode for line endings:
 nnoremap <Leader>m :g/<C-q><C-m>$/s///<CR>:set ff=dos<CR>
@@ -224,6 +226,12 @@ imap <silent> <F5> <Esc><F5>
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
+
+" Make <Esc> switch from Terminal to Terminal-Normal mode:
+tnoremap <Esc> <C-W>N
+tnoremap <F1>  <C-W>N
+" To still be able to send Esc to the terminal job itself:
+tnoremap <C-W><Esc> <Esc>
 
 " Find in files:
 nnoremap <silent> <F3> :call FindInFiles('')<CR>
@@ -308,3 +316,7 @@ let g:loaded_zip = 1
 
 " vim-ruby plugin settings:
 let g:ruby_indent_block_style = 'do'
+
+" Hide Terminal buffers so that ls+ command
+" only show modified buffers we care about:
+autocmd TerminalOpen * setlocal nobuflisted
