@@ -100,14 +100,6 @@ if has('gui_running')
 
   set guicursor+=a:blinkon0       " Switch off cursor blinking for all modes.
 
-  if has('win32') || has('win64') " Set the preferred font for each OS.
-    set guifont=Courier_New:h10:cANSI
-  elseif has('gui_macvim')
-    set guifont=Courier_New:h14
-  elseif has('unix')
-    let &guifont='Monospace 10'
-  endif
-
   set guioptions-=m               " Remove menu bar.
   set guioptions-=T               " Remove toolbar.
   set guioptions-=e               " Do not use gui tabs.
@@ -115,6 +107,16 @@ if has('gui_running')
   set guioptions+=b               " Always show bottom scrollbar.
   set guioptions-=l               " Never show left scrollbar.
   set guioptions-=L               " Never show left scrollbar.
+
+  if has('win32') || has('win64') " Set GUI preferences unique to each OS:
+    set guifont=Courier_New:h10:cANSI
+  elseif has('gui_macvim')
+    set guifont=Courier_New:h17
+    set guioptions-=r             " Turn off right and bottom
+    set guioptions-=b             " scrollbars on gui macvim
+  elseif has('unix')
+    let &guifont='Monospace 10'
+  endif
 endif
 
 set tags=./tags;                  " Look for tags files starting in directory of current file and up
