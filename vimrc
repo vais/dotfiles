@@ -220,6 +220,11 @@ nnoremap <silent> gh :set hls!<CR>
 nmap <silent> <F5> :update<Bar>exe ":silent lmake!"<Bar>lwindow5<CR>
 imap <silent> <F5> <Esc><F5>
 
+" Remap F1 to Esc
+nnoremap <F1> <Esc>
+inoremap <F1> <Esc>
+vnoremap <F1> <Esc>
+
 " Find in files:
 nnoremap <silent> <F3> :call FindInFiles('')<CR>
 nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal())<CR>
