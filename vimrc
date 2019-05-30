@@ -122,6 +122,8 @@ endif
 set tags=./tags;                  " Look for tags files starting in directory of current file and up
 set tagcase=match                 " Make tags file search case-sensitive
 
+set termwinsize=2*1024            " Prevent clipped/garbled output when Terminal window is resized
+
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
 map  g]                       g<C-]>
 map  <C-]>                    g<C-]>
