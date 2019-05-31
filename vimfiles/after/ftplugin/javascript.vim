@@ -1,1 +1,1 @@
-setlocal makeprg=standard\ \"%\"
+setlocal makeprg=eslint\ --format\ unix\ \"%\"

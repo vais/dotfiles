@@ -10,6 +10,8 @@ ln -s ~/dotfiles/irbrc ~/.irbrc
 
 ln -s ~/dotfiles/ctags ~/.ctags
 
+ln -s ~/dotfiles/eslintrc ~/.eslintrc
+
 cd ~/dotfiles
 git pull
 git submodule update --init
