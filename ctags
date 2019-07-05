@@ -1,5 +1,1 @@
---regex-ruby=/^\s*([A-Z]\w+)\s*=/\1/C,constants/
-
---regex-javascript=/^\s*Ext.define\s*\(\s*(["'])([^\1]+)\1/\2/c,classes/
---regex-javascript=/^\s*alias\s*:\s*(["'])\w+\.([^\1]+)\1/\2/c,classes/
---regex-javascript=/^\s*(\w+)\s*:\s*function\b/\1/m,methods/
+--regex-ruby=/^[[:space:]]*([A-Z][a-zA-Z0-9_]+)[[:space:]]*=/\1/C,constants/
