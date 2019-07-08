@@ -215,6 +215,9 @@ endif
 inoremap ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
 inoremap ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
 
+" Map Ctrl-Enter to start a new line from any position on current line:
+inoremap <C-Enter> <C-g>u<Esc>o
+
 " Set current word or selection to be the current search term:
 nnoremap <silent> gn :call SetSearchTermNormal()<CR>
 vnoremap <silent> gn :<C-u>call SetSearchTermVisual()<CR>
