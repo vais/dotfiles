@@ -61,3 +61,6 @@
 [submodule "vimfiles/bundle/jdaddy.vim"]
 	path = vimfiles/bundle/jdaddy.vim
 	url = https://github.com/tpope/vim-jdaddy.git
+[submodule "vimfiles/bundle/emmet-vim"]
+	path = vimfiles/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git

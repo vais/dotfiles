@@ -313,6 +313,13 @@ nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
 nmap <silent> ]d :Gstatus<CR>:setlocal cursorline<CR><C-n>D
 nmap <silent> [d :Gstatus<CR>:setlocal cursorline<CR><C-p>D
 
+" emmet-vim plugin settings:
+let g:emmet_install_only_plug = 1
+imap <C-\><C-\> <plug>(emmet-expand-abbr)
+vmap <C-\><C-\> <plug>(emmet-expand-abbr)
+imap <C-\><C-]> <plug>(emmet-move-next)
+imap <C-\><C-[> <plug>(emmet-move-prev)
+
 " Disable the built-in Netrw plugin
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
