@@ -330,6 +330,9 @@ let g:loaded_zip = 1
 " vim-ruby plugin settings:
 let g:ruby_indent_block_style = 'do'
 
+" vim-mix-format plugin settings:
+let g:mix_format_on_save = 1
+
 " Hide Terminal buffers so that ls+ command
 " only show modified buffers we care about:
 autocmd TerminalOpen * setlocal nobuflisted
