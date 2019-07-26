@@ -228,8 +228,8 @@ vnoremap <silent> gn :<C-u>call SetSearchTermVisual()<CR>
 " Toggle highlighting of all occurrences of the current search term:
 nnoremap <silent> gh :set hls!<CR>
 
-" Map F5 to save and 'make' any file type:
-nmap <silent> <F5> :update<Bar>exe ":silent lmake!"<Bar>lwindow5<CR>
+" Map F5 to save file if modified:
+nmap <silent> <F5> :update<CR>
 imap <silent> <F5> <Esc><F5>
 
 " Remap F1 to Esc
