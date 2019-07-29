@@ -287,6 +287,7 @@ endfunction
 let g:EasyMotion_leader_key = '<Leader>'
 
 " ctrlp.vim plugin settings:
+let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_clear_cache_on_exit = 0
 nnoremap <silent> <Space> :let g:ctrlp_max_height = 100<Bar>
