@@ -1,9 +1,6 @@
 [submodule "vimfiles/bundle/auto-pairs"]
 	path = vimfiles/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "vimfiles/bundle/ctrlp.vim"]
-	path = vimfiles/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vimfiles/bundle/nerdtree"]
 	path = vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -70,3 +67,6 @@
 [submodule "vimfiles/bundle/vim-mix-format"]
 	path = vimfiles/bundle/vim-mix-format
 	url = https://github.com/mhinz/vim-mix-format.git
+[submodule "vimfiles/bundle/ctrlp.vim"]
+	path = vimfiles/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
