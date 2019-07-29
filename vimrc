@@ -77,8 +77,9 @@ set grepprg+=\ -I                 " --binary-files=without-match
 set grepprg+=\ -n                 " --line-number (print line number with output lines)
 set grepprg+=\ -H                 " --with-filename (print the file name for each match)
 set grepprg+=\ -r                 " --recursive
-set grepprg+=\ --exclude-dir=.git " --exclude-dir=PATTERN (directories that match PATTERN will be skipped)
 set grepprg+=\ --exclude=tags     " --exclude=FILE_PATTERN (skip files and directories matching FILE_PATTERN)
+set grepprg+=\ --exclude-dir=.git " --exclude-dir=PATTERN (directories that match PATTERN will be skipped)
+set grepprg+=\ --exclude-dir=node_modules
 
 set sessionoptions-=blank         " Forget empty windows (e.g. NERDTree, quickfix, etc.)
 set sessionoptions+=resize        " Remember the size of the whole Vim window
