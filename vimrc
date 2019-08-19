@@ -207,6 +207,9 @@ tnoremap <C-v> <C-w>"+
 " Fix mixed line endings and set DOS mode for line endings:
 nnoremap <Leader>m :g/<C-q><C-m>$/s///<CR>:set ff=dos<CR>
 
+" Map Leader-. to source the project .vimrc
+nnoremap <silent> <Leader>. :call project_vimrc#SourceProjectVimrc()<CR>
+
 " Diff modified buffer with the original file on disk:
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
