@@ -7,6 +7,7 @@ filetype plugin indent on         " Turn on file type detection.
 runtime macros/matchit.vim        " Load the matchit plugin.
 
 set nocompatible                  " Must come first because it changes other options.
+set encoding=utf-8                " Use UTF-8 encoding by default
 set shortmess+=I                  " No startup splashscreen please.
 set modelines=0                   " Do not check *any* modlines for `set` commands.
 
