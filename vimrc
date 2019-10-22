@@ -114,7 +114,7 @@ if has('gui_running')
   if has('win32') || has('win64') " Set GUI preferences unique to each OS:
     set guifont=Courier_New:h10:cANSI
   elseif has('gui_macvim')
-    set guifont=Courier_New:h17
+    set guifont=Monaco:h14
     set guioptions-=r             " Turn off right and bottom
     set guioptions-=b             " scrollbars on gui macvim
   elseif has('unix')
