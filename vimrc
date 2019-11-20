@@ -248,6 +248,9 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
+" Map jj to Esc
+inoremap jj <Esc>
+
 " Make <Esc> switch from Terminal to Terminal-Normal mode:
 tnoremap <Esc> <C-W>N
 tnoremap <F1>  <C-W>N
