@@ -116,6 +116,7 @@ if has('gui_running')
   elseif has('gui_macvim')
     set guifont=Monaco:h14
     set guioptions-=b             " Turn off bottom scrollbars on gui macvim
+    set guioptions+=e             " Use gui tabs on gui macvim
   elseif has('unix')
     let &guifont='Monospace 10'
   endif
