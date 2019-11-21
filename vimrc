@@ -149,11 +149,8 @@ map  <C-w>g]             <C-w>g<C-]>
 nnoremap <SID>: :<C-U><C-R>=v:count ? v:count : ''<CR>
 
 " GOTO-FILE mappings
-" Use Vim's built-in CTRL-R_CTRL-F when no plugin has claimed <Plug><cfile>
-if empty(maparg('<Plug><cfile>', 'c'))
-  cnoremap <Plug><cfile> <C-R><C-F>
-endif
-nmap <silent> <C-W>f     <SID>:vert sfind  <Plug><cfile><CR>
+" Map CTRL-W-F to go to file in a vertical split:
+nmap <C-W>f :vertical wincmd f<CR>
 
 " GOTO-DEFINITION mappings
 " Use Vim's built-in CTRL-R_CTRL-W when no plugin has claimed <Plug><cword>
