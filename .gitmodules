@@ -73,3 +73,9 @@
 [submodule "vimfiles/bundle/vim-textobj-elixir"]
 	path = vimfiles/bundle/vim-textobj-elixir
 	url = https://github.com/andyl/vim-textobj-elixir.git
+[submodule "vimfiles/bundle/ale"]
+	path = vimfiles/bundle/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "vimfiles/bundle/typescript-vim"]
+	path = vimfiles/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git

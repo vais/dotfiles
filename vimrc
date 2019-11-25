@@ -65,7 +65,7 @@ set laststatus=2                  " Always show the status line.
 set statusline=[%n]\ %<%.99f\ %h%w%1*%m%*%#error#%r%*
 
 set complete=.,w,b                " Auto-complete from all currently loaded buffers.
-set completeopt=menuone           " Show the popup menu even when there is only one match.
+set completeopt=menuone,noselect,noinsert
 
 set history=420                   " The number of commands and search patterns to keep in history.
 
@@ -144,29 +144,10 @@ map  <C-w>]              <C-w>g<C-]>
 map  <C-w><C-]>          <C-w>g<C-]>
 map  <C-w>g]             <C-w>g<C-]>
 
-" Helper map to pass the count (e.g., 2gf) to the underlying command
-" (used for GOTO-FILE and GOTO-DEFINITION mappings below)
-nnoremap <SID>: :<C-U><C-R>=v:count ? v:count : ''<CR>
-
-" GOTO-FILE mappings
 " Map CTRL-W-F to go to file in a vertical split:
 nmap <C-W>f :vertical wincmd f<CR>
 
-" GOTO-DEFINITION mappings
-" Use Vim's built-in CTRL-R_CTRL-W when no plugin has claimed <Plug><cword>
-if empty(maparg('<Plug><cword>', 'c'))
-  cnoremap <Plug><cword> <C-R><C-W>
-endif
-nmap <silent> gd         <SID>:tjump       <Plug><cword><CR>
-nmap <silent> <C-W><C-D> <SID>:stjump      <Plug><cword><CR>
-nmap <silent> <C-W>gd    <SID>:tab tjump   <Plug><cword><CR>
-nmap <silent> <C-W>d     <SID>:vert stjump <Plug><cword><CR>
-vmap <silent> gd         :<C-u>tjump       <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
-vmap <silent> <C-W><C-D> :<C-u>stjump      <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
-vmap <silent> <C-W>gd    :<C-u>tab tjump   <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
-vmap <silent> <C-W>d     :<C-u>vert stjump <C-R>=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR><CR>
-
-" A more ergonomic mapping for returning to a previous position in the jump list
+" A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-O>
 
 " Neuter ZZ because it's too dangerous:
@@ -345,3 +326,35 @@ let g:ruby_indent_block_style = 'do'
 
 " vim-mix-format plugin settings:
 let g:mix_format_on_save = 1
+
+" ALE plugin settings:
+highlight clear SignColumn
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_linters = {
+\   'javascript': ['eslint', 'tsserver'],
+\   'ruby': ['ruby'],
+\}
+
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_text_changed = 'never'
+
+let g:ale_open_list = 1
+let g:ale_list_window_size = 5
+let g:ale_keep_list_window_open = 0
+
+nmap gd         <Plug>(ale_go_to_definition)
+nmap <C-W>d     <Plug>(ale_go_to_definition_in_vsplit)
+nmap <C-W><C-d> <Plug>(ale_go_to_definition_in_split)
+nmap <C-W>gd    <Plug>(ale_go_to_definition_in_tab)
+
+imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
