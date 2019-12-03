@@ -102,6 +102,9 @@ if has('gui_running')
   colorscheme solarized
   let g:solarized_diffmode='high' " Legible diffs for the solarized color scheme.
 
+  " Style folded text using the same rules solarized uses to style comments:
+  hi! Folded gui=NONE,italic term=NONE,italic guifg=#586e75 guibg=NONE
+
   set guicursor+=a:blinkon0       " Switch off cursor blinking for all modes.
 
   set guioptions-=m               " Remove menu bar.
