@@ -79,3 +79,6 @@
 [submodule "vimfiles/bundle/typescript-vim"]
 	path = vimfiles/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vimfiles/bundle/vim-html-template-literals"]
+	path = vimfiles/bundle/vim-html-template-literals
+	url = https://github.com/jonsmithers/vim-html-template-literals.git
