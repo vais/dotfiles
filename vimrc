@@ -236,6 +236,9 @@ tnoremap <F1>  <C-W>N
 " To still be able to send Esc to the terminal job itself:
 tnoremap <C-W><Esc> <Esc>
 
+" Make z` toggle folding for buffer:
+nnoremap <expr> z` &foldlevel == 0 ? "zRzz" : "zMzz"
+
 " Find in files:
 nnoremap <silent> <F3> :call FindInFiles('')<CR>
 nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal())<CR>
