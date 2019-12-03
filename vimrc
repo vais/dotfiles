@@ -94,6 +94,7 @@ set foldlevelstart=99             " Sets 'foldlevel' when starting to edit anoth
 set foldminlines=0                " Close folds of even just a single screen line.
 set foldcolumn=0                  " Do not show a column at the side of the window to indicate open and closed folds.
 set foldmethod=indent             " Lines with equal indent form a fold.
+set foldtext=                     " Show only the most basic text to represent a fold.
 
 if has('gui_running')
   set background=dark
