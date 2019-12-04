@@ -243,6 +243,10 @@ tnoremap <C-W><Esc> <Esc>
 " Make z` toggle folding for buffer:
 nnoremap <expr> z` &foldlevel == 0 ? "zRzz" : "zMzz"
 
+" Make Ctrl-Up/-Down increase/decrease folding for buffer:
+nmap <expr> <C-Up> &foldlevel == 99 ? "zMzRzz" : "zmzz"
+nmap <expr> <C-Down> &foldlevel == 99 ? "zMzz" : "zrzz"
+
 " Find in files:
 nnoremap <silent> <F3> :call FindInFiles('')<CR>
 nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal())<CR>
