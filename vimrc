@@ -361,6 +361,8 @@ let g:ale_open_list = 1
 let g:ale_list_window_size = 5
 let g:ale_keep_list_window_open = 0
 
+let g:ale_set_highlights = 0
+
 nmap gd         <Plug>(ale_go_to_definition)
 nmap <C-W>d     <Plug>(ale_go_to_definition_in_vsplit)
 nmap <C-W><C-d> <Plug>(ale_go_to_definition_in_split)
