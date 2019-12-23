@@ -350,6 +350,8 @@ let g:ale_linters = {
 \   'ruby': ['ruby'],
 \}
 
+let g:ale_javascript_eslint_options="--rule 'no-debugger: off'"
+
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
