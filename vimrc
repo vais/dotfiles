@@ -91,7 +91,7 @@ set splitright                    " Splitting a window will put the new window r
 
 set foldlevel=99                  " Auto-close folds at levels deeper than this number.
 set foldlevelstart=99             " Sets 'foldlevel' when starting to edit another buffer in a window.
-set foldminlines=0                " Close folds of even just a single screen line.
+set foldminlines=1                " A fold can only be closed if it takes up two or more screen lines (this is the default).
 set foldcolumn=0                  " Do not show a column at the side of the window to indicate open and closed folds.
 set foldmethod=indent             " Lines with equal indent form a fold.
 set foldtext=                     " Show only the most basic text to represent a fold.
