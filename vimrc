@@ -178,9 +178,20 @@ vnoremap <silent> <Tab> VVgv>gv
 vnoremap <silent> <S-Tab> VVgv<gv
 
 " Window zooming:
-nnoremap <C-w>\ <C-w><C-bar>
-nnoremap <C-w>- <C-w><C-_>
-nnoremap <C-w>0 <C-w><C-_><C-w><C-bar>
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <C-w><Enter> :ZoomToggle<CR>
+tnoremap <silent> <C-w><Enter> <C-w>:ZoomToggle<CR>
 
 " Shortcut to create a new tab:
 nnoremap <silent> <C-w>a :tabnew<CR>
