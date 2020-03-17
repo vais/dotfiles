@@ -71,6 +71,7 @@ set history=420                   " The number of commands and search patterns t
 
 set mouse=a                       " Enable the use of the mouse in all modes.
 
+set noequalalways                 " Don't make all windows same size after splitting or closing a window.
 set winminheight=1                " The minimal height of a window, when it's not the current window.
 set winminwidth=1                 " The minimal width of a window, when it's not the current window.
 
