@@ -287,13 +287,13 @@ function! FindInFiles(text)
 endfunction
 
 " vim-easymotion plugin settings:
-let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_leader_key = '<Space>'
 
 " ctrlp.vim plugin settings:
 let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_clear_cache_on_exit = 0
-nnoremap <silent> <Space> :let g:ctrlp_max_height = 100<Bar>
+nnoremap <silent> <Leader><Space> :let g:ctrlp_max_height = 100<Bar>
   \CtrlPBuffer<Bar>
   \let g:ctrlp_max_height = 10<CR>
 
