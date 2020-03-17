@@ -39,6 +39,12 @@ set linebreak                     " Wrap at characters in 'breakat' rather than 
 set visualbell t_vb=              " No beeping and no flashing.
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
+
+  augroup CursorLine
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+  augroup END
 endif
 
 set nobackup                      " Don't make a backup before overwriting a file.
@@ -324,8 +330,8 @@ let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
 nnoremap <silent> <C-n>t :NERDTreeToggle<CR>
 nnoremap <silent> <C-n><C-t> :NERDTreeToggle<CR>
-nnoremap <silent> <C-n>f :NERDTreeFind<CR>
-nnoremap <silent> <C-n><C-f> :NERDTreeFind<CR>
+nnoremap <silent> <C-n>f :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
+nnoremap <silent> <C-n><C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
 nnoremap <silent> <C-n>m :NERDTreeMirror<CR>
 nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
 
