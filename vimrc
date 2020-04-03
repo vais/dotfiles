@@ -338,7 +338,7 @@ let g:EasyMotion_leader_key = '<Space>'
 let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_clear_cache_on_exit = 0
-nnoremap <silent> <Leader><Space> :let g:ctrlp_max_height = 100<Bar>
+nnoremap <silent> <Space><Space> :let g:ctrlp_max_height = 100<Bar>
   \CtrlPBuffer<Bar>
   \let g:ctrlp_max_height = 10<CR>
 
