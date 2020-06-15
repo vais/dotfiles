@@ -125,6 +125,8 @@ if has('gui_running')
   if has('win32') || has('win64') " Set GUI preferences unique to each OS:
     set guifont=Courier_New:h10:cANSI
   elseif has('gui_macvim')
+    " Make :terminal source .bash_profile on macOS
+    set shell=/bin/bash\ --rcfile\ ~/.bash_profile
     set guifont=Monaco:h14
     set guioptions-=b             " Turn off bottom scrollbars on gui macvim
     set guioptions+=e             " Use gui tabs on gui macvim
