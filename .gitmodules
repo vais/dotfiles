@@ -82,3 +82,6 @@
 [submodule "vimfiles/bundle/vim-html-template-literals"]
 	path = vimfiles/bundle/vim-html-template-literals
 	url = https://github.com/jonsmithers/vim-html-template-literals.git
+[submodule "vimfiles/bundle/targets.vim"]
+	path = vimfiles/bundle/targets.vim
+	url = https://github.com/wellle/targets.vim.git
