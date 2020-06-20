@@ -384,10 +384,10 @@ let g:ale_keep_list_window_open = 0
 let g:ale_set_highlights = 0
 let g:ale_set_signs = 0
 
-nmap gd         <Plug>(ale_go_to_definition)
-nmap <C-W>d     <Plug>(ale_go_to_definition_in_vsplit)
-nmap <C-W><C-d> <Plug>(ale_go_to_definition_in_split)
-nmap <C-W>gd    <Plug>(ale_go_to_definition_in_tab)
+nmap gd         :ALEGoToDefinition<CR>
+nmap <C-W>d     :ALEGoToDefinition -vsplit<CR>
+nmap <C-W><C-d> :ALEGoToDefinition -split<CR>
+nmap <C-W>gd    :ALEGoToDefinition -tab<CR>
 
 imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
