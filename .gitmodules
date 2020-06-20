@@ -28,9 +28,6 @@
 [submodule "vimfiles/bundle/vim-surround"]
 	path = vimfiles/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vimfiles/bundle/vim-textobj-rubyblock"]
-	path = vimfiles/bundle/vim-textobj-rubyblock
-	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
 [submodule "vimfiles/bundle/vim-textobj-user"]
 	path = vimfiles/bundle/vim-textobj-user
 	url = https://github.com/kana/vim-textobj-user.git
@@ -61,18 +58,9 @@
 [submodule "vimfiles/bundle/emmet-vim"]
 	path = vimfiles/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "vimfiles/bundle/vim-elixir"]
-	path = vimfiles/bundle/vim-elixir
-	url = https://github.com/elixir-editors/vim-elixir.git
-[submodule "vimfiles/bundle/vim-mix-format"]
-	path = vimfiles/bundle/vim-mix-format
-	url = https://github.com/mhinz/vim-mix-format.git
 [submodule "vimfiles/bundle/ctrlp.vim"]
 	path = vimfiles/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "vimfiles/bundle/vim-textobj-elixir"]
-	path = vimfiles/bundle/vim-textobj-elixir
-	url = https://github.com/andyl/vim-textobj-elixir.git
 [submodule "vimfiles/bundle/ale"]
 	path = vimfiles/bundle/ale
 	url = https://github.com/dense-analysis/ale.git

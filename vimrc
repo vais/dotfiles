@@ -169,37 +169,9 @@ nnoremap ZZ zz
 " Expand %% on the command line to current file's directory path:
 cnoremap %% <C-r>=expand('%:p:h')<CR>
 
-" Copy current line info in cfile format to system clipboard:
-nnoremap <silent> <Leader>l :let @+=expand('%:p').':'.line('.').':'.col('.').': '.substitute(getline('.'), '\v^\s*', '', '')<CR>
-
-" Duplicate current line or visual selection:
-nnoremap <silent> g5 :let @t=@@<CR>yyp:let @@=@t<CR>
-vnoremap <silent> g5 :<C-u>let @t=@@<CR>gvy`]p:<C-u>let @@=@t<CR>gv
-
-" Duplicate current line or visual selection and comment out the original:
-" (using nmap and vmap because this mapping depends on the `ccp` mapping)
-nmap <silent> g6 :let @t=@@<CR>yygccp:let @@=@t<CR>
-vmap <silent> g6 :<C-u>let @t=@@<CR>gvVVgvygvgc`]p:let @@=@t<CR>
-
 " Indent current selection using Tab, de-indent using Shift-Tab:
 vnoremap <silent> <Tab> VVgv>gv
 vnoremap <silent> <S-Tab> VVgv<gv
-
-" Window zooming:
-function! s:ZoomToggle() abort
-    if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
-        let t:zoomed = 0
-    else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
-        let t:zoomed = 1
-    endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <C-w><Enter> :ZoomToggle<CR>
-tnoremap <silent> <C-w><Enter> <C-w>:ZoomToggle<CR>
 
 " Shortcut to create a new tab:
 nnoremap <silent> <C-w>a :tabnew<CR>
@@ -220,20 +192,9 @@ nnoremap <Leader>m :g/<C-q><C-m>$/s///<CR>:set ff=dos<CR>
 " Map Leader-. to source the project .vimrc
 nnoremap <silent> <Leader>. :call project_vimrc#SourceProjectVimrc()<CR>
 
-" Diff modified buffer with the original file on disk:
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-endif
-
 " Double-tap to put a semi-colon or comma at the end of line:
 inoremap ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
 inoremap ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
-
-" Map Shift-Enter to start a new line from any position on current line:
-inoremap <S-Enter> <C-g>u<Esc>o
-
-" Map Ctrl-Enter to break current line and start a new line in-between:
-inoremap <C-Enter> <CR><Esc>O<C-g>u
 
 " Set current word or selection to be the current search term:
 nnoremap <silent> gn :call SetSearchTermNormal()<CR>
@@ -343,6 +304,10 @@ imap <C-\><C-\> <plug>(emmet-expand-abbr)
 vmap <C-\><C-\> <plug>(emmet-expand-abbr)
 imap <C-\><C-]> <plug>(emmet-move-next)
 imap <C-\><C-[> <plug>(emmet-move-prev)
+
+" When emmet-expand-abbr expands to something like <div>|</div>, it helps
+" to map Ctrl-Enter to break current line and start a new line in-between:
+imap <C-Enter> <CR><Esc>O<C-g>u
 
 " Disable the built-in Netrw plugin
 let g:loaded_netrw = 1
