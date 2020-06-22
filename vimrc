@@ -291,12 +291,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
-nnoremap <silent> <C-n>t :NERDTreeToggle<CR>
-nnoremap <silent> <C-n><C-t> :NERDTreeToggle<CR>
-nnoremap <silent> <C-n>f :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
-nnoremap <silent> <C-n><C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
-nnoremap <silent> <C-n>m :NERDTreeMirror<CR>
-nnoremap <silent> <C-n><C-m> :NERDTreeMirror<CR>
+nnoremap <silent> <C-t> :NERDTreeToggle<CR>
+nnoremap <silent> <C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
 
 " emmet-vim plugin settings:
 let g:emmet_install_only_plug = 1
