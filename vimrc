@@ -37,15 +37,6 @@ set nowrap                        " Turn off line wrapping.
 set linebreak                     " Wrap at characters in 'breakat' rather than at the last character that fits on the screen.
 
 set visualbell t_vb=              " No beeping and no flashing.
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-
-  augroup CursorLine
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
-  augroup END
-endif
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
@@ -103,42 +94,10 @@ set foldcolumn=0                  " Do not show a column at the side of the wind
 set foldmethod=indent             " Lines with equal indent form a fold.
 set foldtext=                     " Show only the most basic text to represent a fold.
 
-if has('gui_running')
-  set background=dark
-
-  colorscheme solarized
-  let g:solarized_diffmode='high' " Legible diffs for the solarized color scheme.
-
-  " Style folded text using the same rules solarized uses to style comments:
-  hi! Folded gui=NONE,italic term=NONE,italic guifg=#586e75 guibg=NONE
-
-  set guicursor+=a:blinkon0       " Switch off cursor blinking for all modes.
-
-  set guioptions-=m               " Remove menu bar.
-  set guioptions-=T               " Remove toolbar.
-  set guioptions-=e               " Do not use gui tabs.
-  set guioptions+=r               " Always show right scrollbar.
-  set guioptions+=b               " Always show bottom scrollbar.
-  set guioptions-=l               " Never show left scrollbar.
-  set guioptions-=L               " Never show left scrollbar.
-
-  if has('win32') || has('win64') " Set GUI preferences unique to each OS:
-    set guifont=Courier_New:h10:cANSI
-  elseif has('gui_macvim')
-    " Make :terminal source .bash_profile on macOS
-    set shell=/bin/bash\ --rcfile\ ~/.bash_profile
-    set guifont=Monaco:h14
-    set guioptions-=b             " Turn off bottom scrollbars on gui macvim
-    set guioptions+=e             " Use gui tabs on gui macvim
-  elseif has('unix')
-    let &guifont='Monospace 10'
-  endif
-else
-  if has('mac')                   " Fix cursor shapes for Terminal on macOS:
-    let &t_SI.="\e[5 q"           " SI = INSERT mode
-    let &t_SR.="\e[4 q"           " SR = REPLACE mode
-    let &t_EI.="\e[1 q"           " EI = NORMAL mode (ELSE)
-  endif
+if has('mac')                     " Fix cursor shapes for Terminal on macOS:
+  let &t_SI.="\e[5 q"             " SI = INSERT mode
+  let &t_SR.="\e[4 q"             " SR = REPLACE mode
+  let &t_EI.="\e[1 q"             " EI = NORMAL mode (ELSE)
 endif
 
 set tags=./tags;                  " Look for tags files starting in directory of current file and up
@@ -185,6 +144,16 @@ nnoremap <C-v> "+p
 inoremap <C-v> <C-r>+
 cnoremap <C-v> <C-r>+
 tnoremap <C-v> <C-w>"+
+
+if has('mac')
+  vnoremap <D-x> "+x
+  vnoremap <D-c> "+y
+  vnoremap <D-v> "+p
+  nnoremap <D-v> "+p
+  inoremap <D-v> <C-r>+
+  cnoremap <D-v> <C-r>+
+  tnoremap <D-v> <C-w>"+
+endif
 
 " Fix mixed line endings and set DOS mode for line endings:
 nnoremap <Leader>m :g/<C-q><C-m>$/s///<CR>:set ff=dos<CR>

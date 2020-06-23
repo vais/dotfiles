@@ -7,6 +7,7 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
 
 ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -s ~/dotfiles/gvimrc ~/.gvimrc
 ln -sn ~/dotfiles/vimfiles ~/.vim
 
 ln -s ~/dotfiles/irbrc ~/.irbrc
