@@ -322,3 +322,10 @@ nmap <C-W>gd    :ALEGoToDefinition -tab<CR>
 imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
+
+" targets.vim settings:
+autocmd User targets#mappings#user call targets#mappings#extend({
+    \ 'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
+    \ 'b': {'pair': [{'o':'(', 'c':')'}]},
+    \ 'q': {},
+    \ })
