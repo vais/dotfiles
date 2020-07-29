@@ -11,5 +11,3 @@ mklink "%HOMEPATH%\vimfiles" "%HOMEPATH%\dotfiles\vimfiles"
 mklink "%HOMEPATH%\.irbrc" "%HOMEPATH%\dotfiles\irbrc"
 
 mklink "%HOMEPATH%\.ctags" "%HOMEPATH%\dotfiles\ctags"
-
-mklink "%HOMEPATH%\.eslintrc" "%HOMEPATH%\dotfiles\eslintrc"
