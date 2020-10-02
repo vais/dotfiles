@@ -198,9 +198,10 @@ nmap <expr> <C-Up> &foldlevel == 99 ? "zMzRzz" : "zmzz"
 nmap <expr> <C-Down> &foldlevel == 99 ? "zMzz" : "zrzz"
 
 " Find in files:
-nnoremap <silent> <F3> :call FindInFiles('')<CR>
-nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal())<CR>
-vnoremap <silent> <F3> :<C-u>call FindInFiles(SetSearchTermVisual())<CR>
+nnoremap <silent> <F3>   :call FindInFiles('')<CR>
+nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal(), 1)<CR>
+vnoremap <silent> <F3>   :<C-u>call FindInFiles(SetSearchTermVisual())<CR>
+vnoremap <silent> <S-F3> :<C-u>call FindInFiles(SetSearchTermVisual(), 1)<CR>
 
 function! SetSearchTermNormal()
   let str = expand("<cword>")
@@ -226,13 +227,24 @@ function! SetSearchTermVisual()
   return str
 endfunction
 
-function! FindInFiles(text)
-  let str = input('Search ' . getcwd() . '>', a:text)
+function! FindInFiles(text, ...)
+  let txt = a:text
+  let cmd = ':copen | silent grep!'
+  if get(a:, 1, 0)
+    if strlen(txt) == 0
+      return
+    endif
+    let txt = '\b' . txt . '\b'
+    let cmd = cmd . ' -E'
+  else
+    let cmd = cmd . ' -F -i'
+  endif
+  let str = input('Search ' . getcwd() . '>', txt)
   if empty(str)
     redraw!
   else
     call writefile([str], expand('~/.vimsearch'))
-    call feedkeys(':copen | silent grep! -F -i')
+    call feedkeys(cmd)
   endif
 endfunction
 
