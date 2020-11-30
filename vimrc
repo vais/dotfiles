@@ -250,6 +250,12 @@ endfunction
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
+nmap <Space><Space>j <Plug>(easymotion-overwin-line)
+nmap <Space><Space>k <Plug>(easymotion-overwin-line)
+nmap <Space><Space>w <Plug>(easymotion-overwin-w)
+nmap <Space><Space>b <Plug>(easymotion-overwin-w)
+nmap <Space><Space>f <Plug>(easymotion-overwin-f)
+nmap <Space><Space>s <Plug>(easymotion-overwin-f)
 
 " ctrlp.vim plugin settings:
 let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
