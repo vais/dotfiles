@@ -261,9 +261,8 @@ nmap <Space><Space>s <Plug>(easymotion-overwin-f)
 let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_clear_cache_on_exit = 0
-nnoremap <silent> <C-b> :let g:ctrlp_max_height = 100<Bar>
-  \CtrlPBuffer<Bar>
-  \let g:ctrlp_max_height = 10<CR>
+let g:ctrlp_max_height = 999
+nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
 let g:AutoPairsCenterLine = 0
