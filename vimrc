@@ -264,6 +264,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_height = 999
 let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
+let g:ctrlp_match_current_file = 1
 nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
