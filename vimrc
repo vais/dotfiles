@@ -262,6 +262,8 @@ let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_height = 999
+let g:ctrlp_bufname_mod = ':.'
+let g:ctrlp_bufpath_mod = ''
 nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
