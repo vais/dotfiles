@@ -299,28 +299,33 @@ let g:loaded_zip = 1
 let g:ruby_indent_block_style = 'do'
 
 " ALE plugin settings:
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
 
+let g:ale_lint_on_save = 1
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'javascript': ['eslint', 'tsserver'],
 \   'ruby': ['ruby'],
 \}
-
 let g:ale_javascript_eslint_options="--rule 'no-debugger: off'"
-
-let g:ale_fix_on_save = 1
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_text_changed = 'never'
 
 let g:ale_open_list = 1
 let g:ale_list_window_size = 5
 let g:ale_keep_list_window_open = 0
 
+let g:ale_cursor_detail = 0
+let g:ale_echo_cursor = 0
+let g:ale_hover_cursor = 0
+
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_text_changed = 0
+
+let g:ale_set_balloons = 0
 let g:ale_set_highlights = 0
 let g:ale_set_signs = 0
 
