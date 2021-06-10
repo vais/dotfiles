@@ -6,6 +6,8 @@
   l = log --pretty=format:'%C(auto)%h %ad | %s%d [%an]' --graph --date=iso
   b = branch
   c = checkout
+[pull]
+	rebase = false
 [push]
 	default = simple
 [core]
