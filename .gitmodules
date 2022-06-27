@@ -79,3 +79,6 @@
 [submodule "vimfiles/bundle/vim-indent-object"]
 	path = vimfiles/bundle/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "vimfiles/bundle/vim-jsx-pretty"]
+	path = vimfiles/bundle/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
