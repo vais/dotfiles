@@ -47,10 +47,6 @@ endif
 
 set virtualedit=block             " Allow virtual editing in Visual Block mode.
 
-if exists('&regexpengine')        " Fall back to the old regexp engine to make Ruby syntax highlighting fast again.
-  set regexpengine=1
-endif
-
 set smarttab                      " <Tab> in front of a line inserts blanks according to 'shiftwidth'.
 set expandtab                     " Use the appropriate number of spaces to insert a <Tab>.
 set shiftround                    " Round indent to multiple of 'shiftwidth'.
