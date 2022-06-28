@@ -298,12 +298,16 @@ let g:ruby_indent_block_style = 'do'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'typescript': ['prettier'],
+\   'typescriptreact': ['prettier'],
 \}
 
 let g:ale_lint_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'javascript': ['eslint', 'tsserver'],
+\   'typescript': ['tsserver'],
+\   'typescriptreact': ['tsserver'],
 \   'ruby': ['ruby'],
 \}
 let g:ale_javascript_eslint_options="--rule 'no-debugger: off'"
