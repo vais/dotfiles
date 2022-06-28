@@ -33,9 +33,6 @@ elseif has('mac')
   set guioptions-=b             " Turn off bottom scrollbars on gui macvim
   set guioptions+=e             " Use gui tabs on gui macvim
 
-  " Make :terminal source .bash_profile on macOS:
-  set shell=/bin/bash\ --rcfile\ ~/.bash_profile
-
   " Unmap default menu mappings:
   macmenu &Edit.Cut   key=<nop>
   macmenu &Edit.Copy  key=<nop>
