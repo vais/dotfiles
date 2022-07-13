@@ -300,6 +300,8 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['prettier'],
 \   'typescriptreact': ['prettier'],
+\   'html': ['prettier'],
+\   'css': ['prettier'],
 \}
 
 let g:ale_lint_on_save = 1
