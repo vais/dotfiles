@@ -22,9 +22,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-fugitive"]
 	path = vimfiles/pack/plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vimfiles/pack/plugins/start/vim-pathogen"]
-	path = vimfiles/pack/plugins/start/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vimfiles/pack/plugins/start/vim-surround"]
 	path = vimfiles/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
