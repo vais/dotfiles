@@ -12,6 +12,7 @@ set guicursor+=a:blinkon0       " Switch off cursor blinking for all modes.
 set guioptions-=m               " Remove menu bar.
 set guioptions-=T               " Remove toolbar.
 set guioptions-=e               " Do not use gui tabs.
+set guioptions+=c               " Do not use gui dialogs.
 set guioptions+=r               " Always show right scrollbar.
 set guioptions+=b               " Always show bottom scrollbar.
 set guioptions-=l               " Never show left scrollbar.
