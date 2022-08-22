@@ -79,3 +79,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-jsx-pretty"]
 	path = vimfiles/pack/plugins/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "vimfiles/pack/plugins/start/vim-elixir"]
+	path = vimfiles/pack/plugins/start/vim-elixir
+	url = https://github.com/elixir-editors/vim-elixir.git
