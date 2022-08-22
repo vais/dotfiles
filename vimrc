@@ -299,6 +299,7 @@ let g:ale_fixers = {
 \   'typescriptreact': ['prettier'],
 \   'html': ['prettier'],
 \   'css': ['prettier'],
+\   'elixir': ['mix_format'],
 \}
 
 let g:ale_lint_on_save = 1
@@ -308,8 +309,11 @@ let g:ale_linters = {
 \   'typescript': ['tsserver'],
 \   'typescriptreact': ['tsserver'],
 \   'ruby': ['ruby'],
+\   'elixir': ['elixir-ls'],
 \}
 let g:ale_javascript_eslint_options="--rule 'no-debugger: off'"
+let g:ale_elixir_elixir_ls_release = expand('~/elixir-ls/rel')
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_open_list = 1
 let g:ale_list_window_size = 5
