@@ -364,6 +364,10 @@ let g:jellybeans_overrides = {
 \  'VertSplit': {
 \    'guifg': '403c41',
 \  },
+\  'Visual': {
+\    'guifg': 'ffffff',
+\    'guibg': '606060',
+\  },
 \}
 
 colorscheme jellybeans
