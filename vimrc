@@ -347,3 +347,23 @@ autocmd User targets#mappings#user call targets#mappings#extend({
     \ 'b': {'pair': [{'o':'(', 'c':')'}]},
     \ 'q': {},
     \ })
+
+" jellybeans.vim settings
+let g:jellybeans_overrides = {
+\  'Folded': {
+\    'guibg': '',
+\    'ctermbg': '',
+\  },
+\  'Search': {
+\    'guifg': '303030',
+\    'guibg': 'f0f000',
+\    'ctermfg': 'Black',
+\    'ctermbg': 'Yellow',
+\    'attr': '',
+\  },
+\  'VertSplit': {
+\    'guifg': '403c41',
+\  },
+\}
+
+colorscheme jellybeans
