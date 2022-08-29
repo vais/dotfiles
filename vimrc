@@ -356,7 +356,7 @@ let g:jellybeans_overrides = {
 \  },
 \  'Search': {
 \    'guifg': '303030',
-\    'guibg': 'f0f000',
+\    'guibg': 'feb429',
 \    'ctermfg': 'Black',
 \    'ctermbg': 'Yellow',
 \    'attr': '',
