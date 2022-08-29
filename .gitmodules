@@ -10,9 +10,6 @@
 [submodule "vimfiles/pack/plugins/start/tcomment_vim"]
 	path = vimfiles/pack/plugins/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vimfiles/pack/plugins/start/vim-colors-solarized"]
-	path = vimfiles/pack/plugins/start/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vimfiles/pack/plugins/start/vim-easymotion"]
 	path = vimfiles/pack/plugins/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion.git
