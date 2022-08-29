@@ -82,3 +82,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-elixir"]
 	path = vimfiles/pack/plugins/start/vim-elixir
 	url = https://github.com/elixir-editors/vim-elixir.git
+[submodule "vimfiles/pack/plugins/start/jellybeans.vim"]
+	path = vimfiles/pack/plugins/start/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim.git
