@@ -344,26 +344,4 @@ autocmd User targets#mappings#user call targets#mappings#extend({
     \ 'q': {},
     \ })
 
-" jellybeans.vim settings
-let g:jellybeans_overrides = {
-\  'Folded': {
-\    'guibg': '',
-\    'ctermbg': '',
-\  },
-\  'Search': {
-\    'guifg': '303030',
-\    'guibg': 'feb429',
-\    'ctermfg': 'Black',
-\    'ctermbg': 'Yellow',
-\    'attr': '',
-\  },
-\  'VertSplit': {
-\    'guifg': '403c41',
-\  },
-\  'Visual': {
-\    'guifg': 'ffffff',
-\    'guibg': '606060',
-\  },
-\}
-
 colorscheme jellybeans
