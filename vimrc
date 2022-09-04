@@ -148,9 +148,6 @@ if has('mac')
   tnoremap <D-v> <C-w>"+
 endif
 
-" Fix mixed line endings and set DOS mode for line endings:
-nnoremap <Leader>m :g/<C-q><C-m>$/s///<CR>:set ff=dos<CR>
-
 " Map Leader-. to source the project .vimrc
 nnoremap <silent> <Leader>. :call project_vimrc#SourceProjectVimrc()<CR>
 
