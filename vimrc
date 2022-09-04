@@ -234,6 +234,9 @@ function! FindInFiles(text, ...)
   endif
 endfunction
 
+" vim-fugitive plugin settings:
+nmap <silent> gs :tab Git<Bar>silent! tabmove -1<CR>
+
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
 nmap <Space><Space>j <Plug>(easymotion-overwin-line)
