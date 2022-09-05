@@ -455,7 +455,7 @@ call s:X("TabLineSel","000000","f0f0f0","italic,bold",s:termBlack,"White")
 call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
 call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
 
-call s:X("Visual","","404040","","",s:termBlack)
+call s:X("Visual","ffffff","606060","","",s:termBlack)
 call s:X("Cursor",s:background_color,"b0d0f0","","","")
 
 call s:X("LineNr","605958",s:background_color,"NONE",s:termBlack,"")
@@ -465,10 +465,10 @@ call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
 
 call s:X("StatusLine","000000","dddddd","italic","","White")
 call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
-call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
+call s:X("VertSplit","403c41","403c41","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 
-call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
+call s:X("Folded","a0a8b0","","italic",s:termBlack,"")
 call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
 call s:X("SignColumn","777777","333333","","",s:termBlack)
 call s:X("ColorColumn","","000000","","",s:termBlack)
@@ -496,7 +496,7 @@ call s:X("NonText","606060",s:background_color,"",s:termBlack,"")
 
 call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 
-call s:X("Search","f0a0c0","302028","underline","Magenta","")
+call s:X("Search","303030","feb429","","Black","Yellow")
 
 call s:X("Directory","dad085","","","Yellow","")
 call s:X("ErrorMsg","","902020","","","DarkRed")
@@ -656,7 +656,7 @@ call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
 " Manual overrides for 256-color terminals. Dark colors auto-map badly.
 if !s:low_color
   hi StatusLineNC ctermbg=235
-  hi Folded ctermbg=236
+  hi VertSplit ctermfg=235 ctermbg=235
   hi DiffText ctermfg=81
   hi DbgBreakPt ctermbg=53
   hi IndentGuidesOdd ctermbg=235
