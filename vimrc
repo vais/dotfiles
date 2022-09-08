@@ -141,9 +141,6 @@ if has('mac')
   tnoremap <D-v> <C-w>"+
 endif
 
-" Map Leader-. to source the project .vimrc
-nnoremap <silent> <Leader>. :call project_vimrc#SourceProjectVimrc()<CR>
-
 " Double-tap to put a semi-colon or comma at the end of line:
 inoremap ;; <C-g>u<Esc>:call setline('.', getline('.') . ';')<CR>gi<C-g>u
 inoremap ,, <C-g>u<Esc>:call setline('.', getline('.') . ',')<CR>gi<C-g>u
