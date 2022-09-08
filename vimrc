@@ -222,7 +222,9 @@ function! FindInFiles(text, ...)
 endfunction
 
 " vim-fugitive plugin settings:
+nmap <silent> gs :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <C-g> :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> <Leader>g :tab Git<Bar>silent! tabmove -1<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
@@ -255,8 +257,10 @@ let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
-nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-nnoremap <silent> <C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
+nmap <silent> <C-t> :NERDTreeToggle<CR>
+nmap <silent> <C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
+nmap <silent> <Leader>t <C-t>
+nmap <silent> <Leader>f <C-f>
 
 " emmet-vim plugin settings:
 let g:emmet_install_only_plug = 1
