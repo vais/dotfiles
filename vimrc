@@ -65,14 +65,10 @@ set noequalalways                 " Don't make all windows same size after split
 set winminheight=1                " The minimal height of a window, when it's not the current window.
 set winminwidth=1                 " The minimal width of a window, when it's not the current window.
 
-let &grepprg='grep -f "' . expand('~/.vimsearch') . '"' " --file=FILE (obtain PATTERN from FILE)
-set grepprg+=\ -I                 " --binary-files=without-match
-set grepprg+=\ -n                 " --line-number (print line number with output lines)
-set grepprg+=\ -H                 " --with-filename (print the file name for each match)
-set grepprg+=\ -r                 " --recursive
-set grepprg+=\ --exclude=tags     " --exclude=FILE_PATTERN (skip files and directories matching FILE_PATTERN)
-set grepprg+=\ --exclude-dir=.git " --exclude-dir=PATTERN (directories that match PATTERN will be skipped)
-set grepprg+=\ --exclude-dir=node_modules
+let &grepprg='git grep -f "' . expand('~/.vimsearch') . '"' " Read patterns from <file>, one per line.
+set grepprg+=\ -I                 " Don't match the pattern in binary files.
+set grepprg+=\ -n                 " Prefix the line number to matching lines.
+set grepprg+=\ --recurse-submodules
 
 set sessionoptions-=blank         " Forget empty windows (e.g. NERDTree, quickfix, etc.)
 set sessionoptions+=resize        " Remember the size of the whole Vim window
