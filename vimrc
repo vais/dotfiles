@@ -108,6 +108,9 @@ map  <C-w>g]             <C-w>g<C-]>
 " Map CTRL-W-F to go to file in a vertical split:
 nmap <C-W>f :vertical wincmd f<CR>
 
+" A more ergonomic mapping for returning to a previous position in the jump list:
+nmap gr <C-O>
+
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
 
