@@ -1,3 +1,5 @@
+nmap <buffer> <2-LeftMouse> =
+nmap <buffer> <Enter> =
 nmap <buffer> <C-g> gq
 nmap <buffer> <Leader>g gq
 nmap <buffer> - gg<
