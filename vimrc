@@ -94,6 +94,12 @@ set tagcase=match                 " Make tags file search case-sensitive
 
 set termwinsize=2*1024            " Prevent clipped/garbled output when Terminal window is resized
 
+augroup CursorLine                " Make it so that only active window has cursorline
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
 map  g]                       g<C-]>
 map  <C-]>                    g<C-]>

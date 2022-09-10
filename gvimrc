@@ -9,12 +9,6 @@ set guioptions+=b               " Always show bottom scrollbar.
 set guioptions-=l               " Never show left scrollbar.
 set guioptions-=L               " Never show left scrollbar.
 
-augroup CursorLine
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
-
 if has('win32') || has('win64') " Set GUI preferences unique to each OS:
 
   set guifont=Courier_New:h10:cANSI
