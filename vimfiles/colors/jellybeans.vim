@@ -419,8 +419,8 @@ endfun
 call s:X("Normal","e8e8d3",s:background_color,"","White","")
 set background=dark
 
-call s:X("CursorLine","","1c1c1c","","",s:termBlack)
-call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
+call s:X("CursorLine","","202020","","",s:termBlack)
+call s:X("CursorColumn","","202020","","",s:termBlack)
 
 " Some of Terminal.app's default themes have a cursor color
 " too close to Jellybeans' preferred MatchParen background
