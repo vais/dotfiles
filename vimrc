@@ -235,6 +235,9 @@ nmap <silent> gs :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <C-g> :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>g :tab Git<Bar>silent! tabmove -1<CR>
 
+nmap <silent> <C-b> :Git blame<CR>
+nmap <silent> <Leader>b :Git blame<CR>
+
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
 nmap <Space><Space>j <Plug>(easymotion-overwin-line)
