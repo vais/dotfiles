@@ -253,6 +253,7 @@ let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
 nnoremap <silent> <C-b> :CtrlPBuffer<CR>
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
 let g:AutoPairsCenterLine = 0
