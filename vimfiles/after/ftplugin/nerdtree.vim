@@ -1,2 +1,2 @@
 nmap <buffer> <silent> <C-f> :NERDTreeToggle<CR>
-nmap <buffer> <silent> <Leader>f <C-f>
+nmap <buffer> <silent> <Leader>f :NERDTreeToggle<CR>
