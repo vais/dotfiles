@@ -263,6 +263,7 @@ let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
 
 " nerdtree plugin settings:
+let g:NERDTreeMinimalMenu=1
 let NERDTreeMinimalUI = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 1
