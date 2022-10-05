@@ -82,3 +82,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-lister"]
 	path = vimfiles/pack/plugins/start/vim-lister
 	url = https://github.com/tommcdo/vim-lister.git
+[submodule "vimfiles/pack/plugins/start/vim-wheel"]
+	path = vimfiles/pack/plugins/start/vim-wheel
+	url = https://github.com/preservim/vim-wheel.git

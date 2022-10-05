@@ -345,11 +345,17 @@ imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
 
-" targets.vim settings:
+" targets.vim plugin settings:
 autocmd User targets#mappings#user call targets#mappings#extend({
     \ 'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
     \ 'b': {'pair': [{'o':'(', 'c':')'}]},
     \ 'q': {},
     \ })
+
+" vim-wheel plugin settings
+let g:wheel#map#mouse = 0
+let g:wheel#scroll_on_wrap = 0
+let g:wheel#map#left = '<c-h>'
+let g:wheel#map#right = '<c-l>'
 
 colorscheme jellybeans
