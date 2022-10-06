@@ -85,3 +85,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-wheel"]
 	path = vimfiles/pack/plugins/start/vim-wheel
 	url = https://github.com/preservim/vim-wheel.git
+[submodule "vimfiles/pack/plugins/start/vim-resize-mode"]
+	path = vimfiles/pack/plugins/start/vim-resize-mode
+	url = https://github.com/sedm0784/vim-resize-mode.git
