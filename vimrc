@@ -233,6 +233,7 @@ endfunction
 " vim-fugitive plugin settings:
 nmap <silent> <C-g> :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>g :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> gb :Git blame<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
