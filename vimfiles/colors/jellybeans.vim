@@ -470,7 +470,7 @@ call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 
 call s:X("Folded","a0a8b0","","italic",s:termBlack,"")
 call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
-call s:X("SignColumn","777777","333333","","",s:termBlack)
+call s:X("SignColumn","777777",s:background_color,"","",s:termBlack)
 call s:X("ColorColumn","","000000","","",s:termBlack)
 
 call s:X("Title","70b950","","bold","Green","")
@@ -523,6 +523,12 @@ call s:X("DiffAdd","D2EBBE","437019","","White","DarkGreen")
 call s:X("DiffDelete","40000A","700009","","DarkRed","DarkRed")
 call s:X("DiffChange","","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
+
+" GitGutter
+
+call s:X("GitGutterAdd","009900","","","","")
+call s:X("GitGutterChange","bbbb00","","","","")
+call s:X("GitGutterDelete","ff2222","","","","")
 
 " PHP
 

@@ -231,9 +231,8 @@ function! FindInFiles(text, ...)
 endfunction
 
 " vim-fugitive plugin settings:
-nmap <silent> <C-g> :tab Git<Bar>silent! tabmove -1<CR>
-nmap <silent> <Leader>g :tab Git<Bar>silent! tabmove -1<CR>
-nmap <silent> gb :Git blame<CR>
+nmap <silent> <Leader>gs :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> <Leader>gb :Git blame<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
@@ -252,8 +251,7 @@ let g:ctrlp_max_height = 999
 let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
-nnoremap <silent> <C-b> :CtrlPBuffer<CR>
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+nmap <silent> gb :CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
 let g:AutoPairsCenterLine = 0
@@ -358,5 +356,11 @@ let g:wheel#map#mouse = 0
 let g:wheel#scroll_on_wrap = 0
 let g:wheel#map#left = '<c-h>'
 let g:wheel#map#right = '<c-l>'
+
+" vim-gitgutter plugin settings
+set updatetime=500
+nmap <silent> <Leader>ht :GitGutterToggle<CR>
+nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
+nmap <silent> <Leader>hz :GitGutterFold<CR>
 
 colorscheme jellybeans
