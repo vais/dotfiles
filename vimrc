@@ -231,8 +231,9 @@ function! FindInFiles(text, ...)
 endfunction
 
 " vim-fugitive plugin settings:
-nmap <silent> <Leader>gs :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gb :Git blame<CR>
+nmap <silent> <Leader>gt :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> <Leader>gv :vertical Git<Bar>NERDTreeClose<Bar>wincmd H<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
@@ -358,9 +359,16 @@ let g:wheel#map#left = '<c-h>'
 let g:wheel#map#right = '<c-l>'
 
 " vim-gitgutter plugin settings
-set updatetime=500
-nmap <silent> <Leader>ht :GitGutterToggle<CR>
-nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
-nmap <silent> <Leader>hz :GitGutterFold<CR>
+autocmd BufWritePost,BufReadPost * GitGutter
+let g:gitgutter_map_keys = 0
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap <silent> <Leader>gg :GitGutter<CR>
+nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
+nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
+nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
+nmap <silent> <Leader>gs :GitGutterStageHunk<CR>
+nmap <silent> <Leader>gu :GitGutterUndoHunk<Bar>GitGutter<CR>
+nmap <silent> <Leader>gz :GitGutterFold<CR>
 
 colorscheme jellybeans
