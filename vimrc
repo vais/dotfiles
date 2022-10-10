@@ -179,6 +179,9 @@ tnoremap <F1>  <C-W>N
 " To still be able to send Esc to the terminal job itself:
 tnoremap <C-W><Esc> <Esc>
 
+cnoremap <expr> <C-p> wildmenumode() ? '<C-p>' : '<Up>'
+cnoremap <expr> <C-n> wildmenumode() ? '<C-n>' : '<Down>'
+
 " Find in files:
 nnoremap <silent> <F3>   :call FindInFiles('')<CR>
 nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal(), 1)<CR>
