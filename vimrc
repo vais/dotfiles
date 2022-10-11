@@ -241,6 +241,19 @@ nmap <silent> <Leader>gb :Git blame<CR>
 nmap <silent> <Leader>gt :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gv :vertical Git<Bar>NERDTreeClose<Bar>wincmd H<CR>
 
+" vim-gitgutter plugin settings
+autocmd BufWritePost,BufReadPost * GitGutter
+let g:gitgutter_map_keys = 0
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap <silent> <Leader>gg :GitGutter<CR>
+nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
+nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
+nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
+nmap <silent> <Leader>gs :GitGutterStageHunk<CR>
+nmap <silent> <Leader>gu :GitGutterUndoHunk<Bar>GitGutter<CR>
+nmap <silent> <Leader>gz :GitGutterFold<CR>
+
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
 nmap <Space><Space>j <Plug>(easymotion-overwin-line)
@@ -363,18 +376,5 @@ let g:wheel#map#mouse = 0
 let g:wheel#scroll_on_wrap = 0
 let g:wheel#map#left = '<c-h>'
 let g:wheel#map#right = '<c-l>'
-
-" vim-gitgutter plugin settings
-autocmd BufWritePost,BufReadPost * GitGutter
-let g:gitgutter_map_keys = 0
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap <silent> <Leader>gg :GitGutter<CR>
-nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
-nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
-nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
-nmap <silent> <Leader>gs :GitGutterStageHunk<CR>
-nmap <silent> <Leader>gu :GitGutterUndoHunk<Bar>GitGutter<CR>
-nmap <silent> <Leader>gz :GitGutterFold<CR>
 
 colorscheme jellybeans
