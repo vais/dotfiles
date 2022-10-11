@@ -1,1 +1,1 @@
-autocmd! gitgutter BufEnter,CursorHold,CursorHoldI
+autocmd! gitgutter BufEnter,CursorHold,CursorHoldI,FocusGained,FocusLost
