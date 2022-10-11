@@ -128,8 +128,8 @@ vnoremap <silent> <Tab> VVgv>gv
 vnoremap <silent> <S-Tab> VVgv<gv
 
 " Shortcut to create a new tab:
-nnoremap <silent> <C-w>a :tabnew<CR>
-tnoremap <silent> <C-w>a <C-w>:tabnew<CR>
+nmap <silent> <Leader>a :-tabnew<CR>
+nmap <silent> <Leader>b :wincmd S<Bar>wincmd T<Bar>silent! tabmove -1<CR>
 
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x
