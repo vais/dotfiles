@@ -76,7 +76,6 @@ set sessionoptions+=resize        " Remember the size of the whole Vim window
 set splitbelow                    " Splitting a window will put the new window below the current one.
 set splitright                    " Splitting a window will put the new window right of the current one.
 
-set foldlevel=99                  " Auto-close folds at levels deeper than this number.
 set foldlevelstart=99             " Sets 'foldlevel' when starting to edit another buffer in a window.
 set foldminlines=1                " A fold can only be closed if it takes up two or more screen lines (this is the default).
 set foldcolumn=0                  " Do not show a column at the side of the window to indicate open and closed folds.
@@ -238,6 +237,7 @@ endfunction
 
 " vim-fugitive plugin settings:
 nmap <silent> <Leader>gb :Git blame<CR>
+nmap <silent> <Leader>gg :Git<CR>
 nmap <silent> <Leader>gt :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gv :vertical Git<Bar>NERDTreeClose<Bar>wincmd H<CR>
 
@@ -246,7 +246,6 @@ set updatetime=100
 let g:gitgutter_map_keys = 0
 nmap [c <Plug>(GitGutterPrevHunk)
 nmap ]c <Plug>(GitGutterNextHunk)
-nmap <silent> <Leader>gg :GitGutterToggle<CR>
 nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
 nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
 nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
