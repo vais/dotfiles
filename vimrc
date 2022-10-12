@@ -242,11 +242,11 @@ nmap <silent> <Leader>gt :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gv :vertical Git<Bar>NERDTreeClose<Bar>wincmd H<CR>
 
 " vim-gitgutter plugin settings
-autocmd BufWritePost,BufReadPost * GitGutter
+set updatetime=100
 let g:gitgutter_map_keys = 0
 nmap [c <Plug>(GitGutterPrevHunk)
 nmap ]c <Plug>(GitGutterNextHunk)
-nmap <silent> <Leader>gg :GitGutter<CR>
+nmap <silent> <Leader>gg :GitGutterToggle<CR>
 nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
 nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
 nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
