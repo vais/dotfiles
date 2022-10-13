@@ -128,7 +128,7 @@ vnoremap <silent> <S-Tab> VVgv<gv
 
 " Shortcut to create a new tab:
 nmap <silent> <Leader>a :-tabnew<CR>
-nmap <silent> <Leader>b :wincmd S<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+nmap <silent> <Leader>z :wincmd S<Bar>wincmd T<Bar>silent! tabmove -1<CR>
 
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x
@@ -236,7 +236,6 @@ function! FindInFiles(text, ...)
 endfunction
 
 " vim-fugitive plugin settings:
-nmap <silent> <Leader>gb :Git blame<CR>
 nmap <silent> <Leader>gg :Git<CR>
 nmap <silent> <Leader>gt :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gv :vertical Git<Bar>NERDTreeClose<Bar>wincmd H<CR>
@@ -246,12 +245,11 @@ set updatetime=100
 let g:gitgutter_map_keys = 0
 nmap [c <Plug>(GitGutterPrevHunk)
 nmap ]c <Plug>(GitGutterNextHunk)
-nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
+nmap <silent> <Leader>gf :GitGutterFold<CR>
 nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
 nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
 nmap <silent> <Leader>gs :GitGutterStageHunk<CR>
 nmap <silent> <Leader>gu :GitGutterUndoHunk<Bar>GitGutter<CR>
-nmap <silent> <Leader>gz :GitGutterFold<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
