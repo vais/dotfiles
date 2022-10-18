@@ -239,6 +239,7 @@ endfunction
 nmap <silent> <Leader>gg :Git<CR>
 nmap <silent> <Leader>gt :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gv :vertical Git<Bar>NERDTreeClose<Bar>wincmd H<CR>
+nmap <silent> <Leader>gb :Git blame<CR>
 
 " vim-gitgutter plugin settings
 set updatetime=100
