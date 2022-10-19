@@ -270,7 +270,7 @@ let g:ctrlp_max_height = 999
 let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
-nmap <silent> gb :CtrlPBuffer<CR>
+nmap <silent> <Leader>b :CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
 let g:AutoPairsCenterLine = 0
