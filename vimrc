@@ -127,7 +127,7 @@ vnoremap <silent> <Tab> VVgv>gv
 vnoremap <silent> <S-Tab> VVgv<gv
 
 " Shortcut to create a new tab:
-nmap <silent> <Leader>a :-tabnew<CR>
+nmap <silent> <Leader>a :tabnew<CR>
 nmap <silent> <Leader>z :wincmd S<Bar>wincmd T<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>Z :tabclose<CR>
 
