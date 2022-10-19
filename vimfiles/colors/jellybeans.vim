@@ -447,9 +447,9 @@ endif
 call s:X("MatchParen",s:matchParenGuiFg,s:matchParenGuiBg,"bold",
 \                     s:matchParenTermFg,s:matchParenTermBg)
 
-call s:X("TabLine","9098a0","","","",s:termBlack)
-call s:X("TabLineFill","9098a0","","","",s:termBlack)
-call s:X("TabLineSel","000000","70b950","","",s:termBlack)
+call s:X("TabLine","ffffff","403c41","","","")
+call s:X("TabLineFill","ffffff","403c41","","","")
+call s:X("TabLineSel","000000","dddddd","","","")
 
 " Auto-completion
 call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
@@ -667,6 +667,8 @@ if !s:low_color
   hi DbgBreakPt ctermbg=53
   hi IndentGuidesOdd ctermbg=235
   hi IndentGuidesEven ctermbg=234
+  hi TabLine ctermbg=235
+  hi TabLineFill ctermbg=235
 endif
 
 if !empty("s:overrides")
