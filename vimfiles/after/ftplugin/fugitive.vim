@@ -1,9 +1,6 @@
 nunmap <buffer> a
+nunmap <buffer> -
 
-nmap <buffer> - gg<
-
-nmap <buffer> <2-LeftMouse> =
-nmap <buffer> o =
-
-nmap <buffer> J ]m>
-nmap <buffer> K [m>
+nmap <buffer> <C-Space> =
+nmap <buffer> <C-n> ]m>
+nmap <buffer> <C-p> [m>
