@@ -163,11 +163,6 @@ nnoremap <silent> gh :set hls!<CR>
 nmap <silent> <F5> :write<CR>
 imap <silent> <F5> <Esc><F5>
 
-" Remap F1 to Esc
-nnoremap <F1> <Esc>
-inoremap <F1> <Esc>
-vnoremap <F1> <Esc>
-
 " Map jj to Esc
 inoremap jj <Esc>
 
@@ -176,7 +171,6 @@ nmap <silent> <Leader>s :syntax sync fromstart<CR>
 
 " Make <Esc> switch from Terminal to Terminal-Normal mode:
 tnoremap <Esc> <C-W>N
-tnoremap <F1>  <C-W>N
 " To still be able to send Esc to the terminal job itself:
 tnoremap <C-W><Esc> <Esc>
 
