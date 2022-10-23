@@ -91,8 +91,6 @@ endif
 set tags=./tags;                  " Look for tags files starting in directory of current file and up
 set tagcase=match                 " Make tags file search case-sensitive
 
-set termwinsize=2*1024            " Prevent clipped/garbled output when Terminal window is resized
-
 augroup CursorLine                " Make it so that only active window has cursorline
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
