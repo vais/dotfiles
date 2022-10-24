@@ -109,10 +109,10 @@ map  <C-w><C-]>          <C-w>g<C-]>
 map  <C-w>g]             <C-w>g<C-]>
 
 " Map CTRL-W-F to go to file in a vertical split:
-nmap <C-W>f :vertical wincmd f<CR>
+nmap <C-w>f :vertical wincmd f<CR>
 
 " A more ergonomic mapping for returning to a previous position in the jump list:
-nmap gr <C-O>
+nmap gr <C-o>
 
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
@@ -170,9 +170,9 @@ inoremap jj <Esc>
 nmap <silent> <Leader>s :syntax sync fromstart<CR>
 
 " Make <Esc> switch from Terminal to Terminal-Normal mode:
-tnoremap <Esc> <C-W>N
+tnoremap <Esc> <C-w>N
 " To still be able to send Esc to the terminal job itself:
-tnoremap <C-W><Esc> <Esc>
+tnoremap <C-w><Esc> <Esc>
 
 cnoremap <expr> <C-p> wildmenumode() ? '<C-p>' : '<Up>'
 cnoremap <expr> <C-n> wildmenumode() ? '<C-n>' : '<Down>'
@@ -347,9 +347,9 @@ let g:ale_set_highlights = 0
 let g:ale_set_signs = 0
 
 nmap gd         :ALEGoToDefinition<CR>
-nmap <C-W>d     :ALEGoToDefinition -vsplit<CR>
-nmap <C-W><C-d> :ALEGoToDefinition -split<CR>
-nmap <C-W>gd    :ALEGoToDefinition -tab<CR>
+nmap <C-w>d     :ALEGoToDefinition -vsplit<CR>
+nmap <C-w><C-d> :ALEGoToDefinition -split<CR>
+nmap <C-w>gd    :ALEGoToDefinition -tab<CR>
 
 imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
@@ -365,7 +365,7 @@ autocmd User targets#mappings#user call targets#mappings#extend({
 " vim-wheel plugin settings
 let g:wheel#map#mouse = 0
 let g:wheel#scroll_on_wrap = 0
-let g:wheel#map#left = '<c-h>'
-let g:wheel#map#right = '<c-l>'
+let g:wheel#map#left = '<C-h>'
+let g:wheel#map#right = '<C-l>'
 
 colorscheme jellybeans
