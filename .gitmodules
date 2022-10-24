@@ -94,3 +94,6 @@
 [submodule "vimfiles/pack/plugins/start/gv.vim"]
 	path = vimfiles/pack/plugins/start/gv.vim
 	url = https://github.com/junegunn/gv.vim.git
+[submodule "vimfiles/pack/plugins/start/goyo.vim"]
+	path = vimfiles/pack/plugins/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
