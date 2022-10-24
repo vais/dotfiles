@@ -3,15 +3,16 @@
 	name = Vais Salikhov
 [alias]
 	s = status
-  l = log --pretty=format:'%C(auto)%h %ad | %s%d [%an]' --graph --date=iso
-  b = branch
-  c = checkout
+	l = log --pretty=format:'%C(auto)%h %ad | %s%d [%an]' --graph --date=iso
+	b = branch
+	c = checkout
+	pushup = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
 [pull]
 	rebase = false
 [push]
 	default = simple
 [core]
 	excludesfile = ~/.gitignore_global
-  editor = vim -u NONE
+	editor = vim -u NONE
 [grep]
 	fallbackToNoIndex = true
