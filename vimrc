@@ -52,7 +52,7 @@ set softtabstop=2                 " Number of spaces that a <Tab> counts for whi
 set shiftwidth=2                  " Number of spaces to use for each step of (auto)indent.
 
 set laststatus=2                  " Always show the status line.
-set statusline=[%n]\ %<%.99f\ %h%w%1*%m%*%#error#%r%*
+set statusline=[%n]\ %<%.999f\ %h%w%1*%m%*%#error#%r%*
 
 set complete=.,w,b                " Auto-complete from all currently loaded buffers.
 set completeopt=menuone,noselect,noinsert
