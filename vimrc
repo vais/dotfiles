@@ -236,14 +236,9 @@ nmap <silent> <Leader>gb :Git blame<CR>
 
 " vim-gitgutter plugin settings
 set updatetime=100
-let g:gitgutter_map_keys = 0
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap <silent> <Leader>gf :GitGutterFold<CR>
-nmap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
-nmap <silent> <Leader>gq :GitGutterQuickFix<Bar>copen<CR>
-nmap <silent> <Leader>gs :GitGutterStageHunk<CR>
-nmap <silent> <Leader>gu :GitGutterUndoHunk<Bar>GitGutter<CR>
+nmap <silent> <Leader>hf :GitGutterFold<CR>
+nmap <silent> <Leader>hh :GitGutterToggle<CR>
+nmap <silent> <Leader>hq :GitGutterQuickFix<Bar>copen<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
