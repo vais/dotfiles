@@ -126,8 +126,8 @@ vnoremap <silent> <S-Tab> VVgv<gv
 
 " Shortcut to create a new tab:
 nmap <silent> <C-w>a :tabnew<CR>
-nmap <silent> <C-w>m :wincmd S<Bar>wincmd T<Bar>silent! tabmove -1<CR>
-tmap <silent> <C-w>m <C-w>:wincmd S<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+nmap <silent> <C-w>m :wincmd V<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+tmap <silent> <C-w>m <C-w>:wincmd V<Bar>wincmd T<Bar>silent! tabmove -1<CR>
 
 " Close NERDTree before expanding windows horizontally lest it be crippled:
 nmap <silent> <C-w>\| :NERDTreeClose<Bar>wincmd \|<CR>
