@@ -164,7 +164,8 @@ nmap <silent> <F5> :write<CR>
 imap <silent> <F5> <Esc><F5>
 
 " Map jj to Esc
-inoremap jj <Esc>
+imap jj <Esc>
+tmap jj <Esc>
 
 " Map <Leader>s to fix broken syntax highlighting :(
 nmap <silent> <Leader>s :syntax sync fromstart<CR>
