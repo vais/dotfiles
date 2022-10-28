@@ -272,7 +272,6 @@ let g:AutoPairsShortcutBackInsert = ''
 " nerdtree plugin settings:
 let g:NERDTreeMinimalMenu=1
 let NERDTreeMinimalUI = 1
-let NERDTreeHijackNetrw = 0
 let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
 nmap <silent> <C-t> :NERDTreeToggle<CR>
@@ -292,7 +291,6 @@ imap <C-\><C-[> <plug>(emmet-move-prev)
 imap <C-Enter> <CR><Esc>O<C-g>u
 
 " Disable the built-in Netrw plugin
-let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
 " Disable the built-in Zip plugin
