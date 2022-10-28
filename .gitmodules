@@ -103,3 +103,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-fubitive"]
 	path = vimfiles/pack/plugins/start/vim-fubitive
 	url = https://github.com/tommcdo/vim-fubitive.git
+[submodule "vimfiles/pack/plugins/start/vim-rhubarb"]
+	path = vimfiles/pack/plugins/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
