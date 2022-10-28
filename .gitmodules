@@ -100,3 +100,6 @@
 [submodule "vimfiles/pack/plugins/start/limelight.vim"]
 	path = vimfiles/pack/plugins/start/limelight.vim
 	url = https://github.com/junegunn/limelight.vim.git
+[submodule "vimfiles/pack/plugins/start/vim-fubitive"]
+	path = vimfiles/pack/plugins/start/vim-fubitive
+	url = https://github.com/tommcdo/vim-fubitive.git
