@@ -234,6 +234,7 @@ endfunction
 
 " vim-fugitive plugin settings:
 nmap <silent> <Leader>g :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> gb :Git blame<CR>
 
 " vim-gitgutter plugin settings
 set updatetime=100
