@@ -106,3 +106,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-rhubarb"]
 	path = vimfiles/pack/plugins/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+[submodule "vimfiles/pack/plugins/start/vim-fugitive-blame-ext"]
+	path = vimfiles/pack/plugins/start/vim-fugitive-blame-ext
+	url = https://github.com/tommcdo/vim-fugitive-blame-ext.git
