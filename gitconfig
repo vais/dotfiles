@@ -7,6 +7,7 @@
 	b = branch
 	c = checkout
 	pushup = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+  gone = "!f() { git for-each-ref refs/heads --format '%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)' | xargs -r git branch -D; }; f"
 [pull]
 	rebase = false
 [push]
