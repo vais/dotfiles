@@ -170,6 +170,10 @@ imap <silent> <F5> <Esc><F5>
 imap jj <Esc>
 tmap jj <Esc>
 
+" Experiment with <Leader>w as wincmd
+nmap <Leader>w <C-w>
+vmap <Leader>w <C-w>
+
 " Map <Leader>s to fix broken syntax highlighting :(
 nmap <silent> <Leader>s :syntax sync fromstart<CR>
 
