@@ -371,14 +371,12 @@ let g:wheel#map#right = '<C-l>'
 function! s:goyo_enter()
   set wrap
   set nocursorline
-  set scrolloff=999
   Limelight
 endfunction
 
 function! s:goyo_leave()
   set nowrap
   set cursorline
-  set scrolloff=0
   Limelight!
 endfunction
 
