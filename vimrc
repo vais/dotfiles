@@ -243,6 +243,7 @@ nmap <silent> gb :Git blame<CR>
 " vim-gitgutter plugin settings
 set updatetime=100
 nmap <silent> <Leader>hz :GitGutterFold<CR>
+nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
 nmap <silent> <Leader>hh :GitGutterToggle<CR>
 nmap <silent> <Leader>hq :GitGutterQuickFix<Bar>copen<CR>
 
