@@ -369,20 +369,4 @@ let g:wheel#scroll_on_wrap = 0
 let g:wheel#map#left = '<C-h>'
 let g:wheel#map#right = '<C-l>'
 
-" goyo.vim plugin settings
-function! s:goyo_enter()
-  set wrap
-  set nocursorline
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  set nowrap
-  set cursorline
-  Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
 colorscheme jellybeans
