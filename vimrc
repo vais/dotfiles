@@ -237,8 +237,9 @@ function! FindInFiles(text, ...)
 endfunction
 
 " vim-fugitive plugin settings:
-nmap <silent> <Leader>g :tab Git<Bar>silent! tabmove -1<CR>
-nmap <silent> gb :Git blame<CR>
+nmap <silent> <Leader>gg :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> <Leader>gb :Git blame<CR>
+nmap <silent> <Leader>gv :GV -99<CR>
 
 " vim-gitgutter plugin settings
 set updatetime=100
