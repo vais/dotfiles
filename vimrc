@@ -267,6 +267,7 @@ let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
 nnoremap <silent> <C-@> :CtrlPBuffer<CR>
 nmap <C-Space> <C-@>
+let g:ctrlp_prompt_mappings = {'PrtExit()': ['<C-@>', '<C-Space>', '<Esc>', '<C-c>', '<C-g>']}
 
 " auto-pairs plugin settings:
 let g:AutoPairsCenterLine = 0
