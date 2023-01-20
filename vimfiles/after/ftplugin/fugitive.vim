@@ -1,5 +1,5 @@
 nunmap <buffer> a
-nunmap <buffer> -
+nmap <buffer> - =
 
 nmap <buffer> <C-n> ]m>
 nmap <buffer> <C-p> [m>
