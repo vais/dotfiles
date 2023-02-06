@@ -328,7 +328,7 @@ let g:ale_linters = {
 \   'ruby': ['ruby'],
 \   'elixir': ['elixir-ls'],
 \}
-let g:ale_javascript_eslint_options="--rule 'no-debugger: off, no-only-tests/no-only-tests: off'"
+let g:ale_javascript_eslint_options="--rule 'no-debugger: off, no-only-tests/no-only-tests: off, import/no-unused-modules: off'"
 let g:ale_elixir_elixir_ls_release = expand('~/elixir-ls/rel')
 let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
