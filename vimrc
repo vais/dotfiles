@@ -317,6 +317,7 @@ let g:ale_fixers = {
 \   'html': ['prettier'],
 \   'css': ['prettier'],
 \   'elixir': ['mix_format'],
+\   'eelixir': ['mix_format'],
 \}
 
 let g:ale_lint_on_save = 1
