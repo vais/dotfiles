@@ -36,13 +36,13 @@ git commit -m "Install PLUGIN_NAME"
 To update all installed plugins:
 ```
 cd ~/dotfiles
-git submodule foreach git pull origin master
+git submodule foreach git pull
 git commit -am "Update all plugins"
 ```
 To update a single plugin:
 ```
 cd ~/dotfiles/vimfiles/pack/plugins/start/PLUGIN_NAME
-git pull origin master
+git pull
 git commit -am "Update PLUGIN_NAME"
 ```
 To remove a plugin:
