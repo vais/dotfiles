@@ -5,3 +5,5 @@ nmap <buffer> <C-n> ]m>
 nmap <buffer> <C-p> [m>
 
 nmap <buffer> <C-s> s>
+
+nmap <buffer> q gq
