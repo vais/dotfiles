@@ -419,3 +419,4 @@ highlight Terminal        guibg=#000000
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+highlight TabLineSel      guifg=#1c1c1c guibg=#9e9e9e gui=NONE ctermfg=234 ctermbg=247 cterm=NONE
