@@ -1,5 +1,5 @@
 git -C "%HOMEPATH%\dotfiles" pull
-vim -c PlugInstall -c qa
+git -C "%HOMEPATH%\dotfiles" submodule update --init --jobs 16
 
 mklink "%HOMEPATH%\.gitconfig" "%HOMEPATH%\dotfiles\gitconfig"
 mklink "%HOMEPATH%\.gitignore_global" "%HOMEPATH%\dotfiles\gitignore_global"
