@@ -380,6 +380,23 @@ let g:wheel#scroll_on_wrap = 0
 let g:wheel#map#left = '<C-h>'
 let g:wheel#map#right = '<C-l>'
 
+" vim-test plugin settings
+let test#strategy = 'floaterm'
+
+let test#enabled_runners = ['elixir#exunit']
+let test#elixir#exunit#options = {'file': '--trace', 'nearest': '--trace'}
+
+nmap <silent> <Space>a :update<Bar>TestFile<CR>
+nmap <silent> <Space>n :update<Bar>TestNearest<CR>
+nmap <silent> <Space>l :update<Bar>TestLast<CR>
+nmap <silent> <Space>v :TestVisit<CR>
+
+" vim-floaterm plugin settings
+let g:floaterm_title = ' vim-test '
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+
+"" colorscheme
 function! OverrideColorscheme() abort
   highlight Terminal        guibg=#000000
   highlight GitGutterAdd    guifg=#009900 ctermfg=2
