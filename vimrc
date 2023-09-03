@@ -95,6 +95,7 @@ set tags=./tags;                  " Look for tags files starting in directory of
 set tagcase=match                 " Make tags file search case-sensitive
 
 set smoothscroll                  " Make scrolling work when wrap is set
+set autoread                      " Automatically read a file if it's changed outside of Vim
 
 augroup CursorLine                " Make it so that only active window has cursorline
   autocmd!
