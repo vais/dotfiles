@@ -385,11 +385,25 @@ let g:wheel#map#right = '<C-l>'
 let test#strategy = 'floaterm'
 
 let test#enabled_runners = ['elixir#exunit']
-let test#elixir#exunit#options = {'file': '--trace', 'nearest': '--trace'}
 
-nmap <silent> <Space>a :update<Bar>TestFile<CR>
-nmap <silent> <Space>n :update<Bar>TestNearest<CR>
-nmap <silent> <Space>l :update<Bar>TestLast<CR>
+function! TestMode(mode)
+  if a:mode == 'verbose'
+    let g:test#elixir#exunit#options = '--trace'
+  else
+    let g:test#elixir#exunit#options = ''
+  endif
+endfunction
+
+nmap <silent> <Space>l :update<Bar>call TestMode('concise')<Bar>TestLast<CR>
+nmap <silent> <Space>u :update<Bar>call TestMode('concise')<Bar>TestSuite<CR>
+nmap <silent> <Space>n :update<Bar>call TestMode('concise')<Bar>TestNearest<CR>
+nmap <silent> <Space>a :update<Bar>call TestMode('concise')<Bar>TestFile<CR>
+
+nmap <silent> <Space>L :update<Bar>call TestMode('verbose')<Bar>TestLast<CR>
+nmap <silent> <Space>U :update<Bar>call TestMode('verbose')<Bar>TestSuite<CR>
+nmap <silent> <Space>N :update<Bar>call TestMode('verbose')<Bar>TestNearest<CR>
+nmap <silent> <Space>A :update<Bar>call TestMode('verbose')<Bar>TestFile<CR>
+
 nmap <silent> <Space>v :TestVisit<CR>
 
 " vim-floaterm plugin settings
