@@ -382,9 +382,14 @@ let g:wheel#map#left = '<C-h>'
 let g:wheel#map#right = '<C-l>'
 
 " vim-test plugin settings
-let test#strategy = 'floaterm'
+function! FloatermCmdTitle(cmd)
+  let g:floaterm_title = ' '.a:cmd.' '
+  execute 'FloatermNew --autoclose=0 '.a:cmd
+endfunction
 
-let test#enabled_runners = ['elixir#exunit']
+let g:test#custom_strategies = {'floaterm-cmd-title': function('FloatermCmdTitle')}
+let g:test#strategy = 'floaterm-cmd-title'
+let g:test#enabled_runners = ['elixir#exunit']
 
 function! TestMode(mode)
   if a:mode == 'verbose'
@@ -407,7 +412,6 @@ nmap <silent> <Space>A :update<Bar>call TestMode('verbose')<Bar>TestFile<CR>
 nmap <silent> <Space>v :TestVisit<CR>
 
 " vim-floaterm plugin settings
-let g:floaterm_title = ' vim-test '
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 
