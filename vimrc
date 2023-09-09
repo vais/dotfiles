@@ -247,7 +247,7 @@ nmap <silent> <Leader>gg :tab Git<Bar>silent! tabmove -1<CR>
 nmap <silent> <Leader>gb :Git blame<CR>
 nmap <silent> <Leader>gv :GV -99<CR>
 
-" vim-gitgutter plugin settings
+" vim-gitgutter plugin settings:
 set updatetime=100
 nmap <silent> <Leader>hz :GitGutterFold<CR>
 nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
@@ -317,24 +317,25 @@ let g:ruby_indent_block_style = 'do'
 " ALE plugin settings:
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'typescript': ['prettier'],
-\   'typescriptreact': ['prettier'],
-\   'html': ['prettier'],
-\   'css': ['prettier'],
-\   'elixir': ['mix_format'],
-\   'eelixir': ['mix_format'],
-\}
+      \   'javascript': ['eslint'],
+      \   'typescript': ['prettier'],
+      \   'typescriptreact': ['prettier'],
+      \   'html': ['prettier'],
+      \   'css': ['prettier'],
+      \   'elixir': ['mix_format'],
+      \   'eelixir': ['mix_format'],
+      \ }
 
 let g:ale_lint_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-\   'javascript': ['eslint', 'tsserver'],
-\   'typescript': ['tsserver'],
-\   'typescriptreact': ['tsserver'],
-\   'ruby': ['ruby'],
-\   'elixir': ['elixir-ls'],
-\}
+      \   'javascript': ['eslint', 'tsserver'],
+      \   'typescript': ['tsserver'],
+      \   'typescriptreact': ['tsserver'],
+      \   'ruby': ['ruby'],
+      \   'elixir': ['elixir-ls'],
+      \ }
+
 let g:ale_javascript_eslint_options="--rule 'no-debugger: off, no-only-tests/no-only-tests: off, import/no-unused-modules: off'"
 let g:ale_elixir_elixir_ls_release = expand('~/elixir-ls/rel')
 let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
@@ -370,18 +371,18 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
 
 " targets.vim plugin settings:
 autocmd User targets#mappings#user call targets#mappings#extend({
-    \ 'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
-    \ 'b': {'pair': [{'o':'(', 'c':')'}]},
-    \ 'q': {},
-    \ })
+      \   'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
+      \   'b': {'pair': [{'o':'(', 'c':')'}]},
+      \   'q': {},
+      \ })
 
-" vim-wheel plugin settings
+" vim-wheel plugin settings:
 let g:wheel#map#mouse = 0
 let g:wheel#scroll_on_wrap = 0
 let g:wheel#map#left = '<C-h>'
 let g:wheel#map#right = '<C-l>'
 
-" vim-test plugin settings
+" vim-test plugin settings:
 function! FloatermCmdTitle(cmd)
   let g:floaterm_title = ' '.a:cmd.' '
   execute 'FloatermNew --autoclose=0 '.a:cmd
@@ -411,11 +412,11 @@ nmap <silent> <Space>A :update<Bar>call TestMode('verbose')<Bar>TestFile<CR>
 
 nmap <silent> <Space>v :TestVisit<CR>
 
-" vim-floaterm plugin settings
+" vim-floaterm plugin settings:
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 
-"" colorscheme
+"" colorscheme settings:
 function! OverrideColorscheme() abort
   highlight Terminal        guibg=#000000
   highlight GitGutterAdd    guifg=#009900 ctermfg=2
