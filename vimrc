@@ -223,7 +223,7 @@ endfunction
 
 function! FindInFiles(text, ...)
   let txt = a:text
-  let cmd = ':copen | silent grep!'
+  let cmd = ':botright copen | silent grep!'
   if get(a:, 1, 0)
     if strlen(txt) == 0
       return
@@ -252,7 +252,7 @@ set updatetime=100
 nmap <silent> <Leader>hz :GitGutterFold<CR>
 nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
 nmap <silent> <Leader>hh :GitGutterToggle<CR>
-nmap <silent> <Leader>hq :GitGutterQuickFix<Bar>copen<CR>
+nmap <silent> <Leader>hq :GitGutterQuickFix<Bar>botright copen<CR>
 
 " vim-easymotion plugin settings:
 let g:EasyMotion_leader_key = '<Space>'
