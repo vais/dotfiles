@@ -288,6 +288,7 @@ let g:NERDTreeMinimalMenu=1
 let NERDTreeMinimalUI = 1
 let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
+let NERDTreeHijackNetrw = 0
 nmap <silent> <C-t> :NERDTreeToggle<CR>
 nmap <silent> <Leader>t :NERDTreeToggle<CR>
 nmap <silent> <C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
