@@ -416,7 +416,24 @@ nmap <silent> <Space>v :TestVisit<CR>
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 
-"" colorscheme settings:
+" QFEnter plugin settings:
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.open = ['<CR>', '<2-LeftMouse>']
+let g:qfenter_keymap.vopen = ['<C-w><CR>']
+let g:qfenter_keymap.hopen = ['<C-w><Space>']
+let g:qfenter_keymap.topen = ['<C-w><Tab>']
+
+let g:qfenter_excluded_action = 'error'
+
+let g:qfenter_exclude_filetypes = [
+      \   'fugitiveblame',
+      \   'fugitive',
+      \   'nerdtree',
+      \   'git',
+      \   'GV',
+      \ ]
+
+" colorscheme settings:
 function! OverrideColorscheme() abort
   highlight Terminal        guibg=#000000
   highlight GitGutterAdd    guifg=#009900 ctermfg=2
