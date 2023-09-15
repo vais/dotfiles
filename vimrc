@@ -114,8 +114,11 @@ map  <C-w>]              <C-w>g<C-]>
 map  <C-w><C-]>          <C-w>g<C-]>
 map  <C-w>g]             <C-w>g<C-]>
 
-" Map CTRL-W-F to go to file in a vertical split:
+" Go to file in a vertical split:
 nmap <C-w>f :vertical wincmd f<CR>
+
+" Make new buffer in a vertical split:
+nmap <silent> <C-w>n :vertical new<CR>
 
 " A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-o>
