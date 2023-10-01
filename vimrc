@@ -396,28 +396,34 @@ let g:test#strategy = 'floaterm-cmd-title'
 let g:test#enabled_runners = ['elixir#exunit']
 
 function! TestMode(mode)
-  if a:mode == 'verbose'
+  if a:mode == 'debug'
+    let g:test#elixir#exunit#executable = 'iex --dbg pry -S mix test'
+    let g:test#elixir#exunit#options = '--trace'
+  elseif a:mode == 'trace'
+    let g:test#elixir#exunit#executable = 'mix test'
     let g:test#elixir#exunit#options = '--trace'
   else
+    let g:test#elixir#exunit#executable = 'mix test'
     let g:test#elixir#exunit#options = ''
   endif
 endfunction
 
-nmap <silent> <Space>l :update<Bar>call TestMode('concise')<Bar>TestLast<CR>
-nmap <silent> <Space>u :update<Bar>call TestMode('concise')<Bar>TestSuite<CR>
-nmap <silent> <Space>n :update<Bar>call TestMode('concise')<Bar>TestNearest<CR>
-nmap <silent> <Space>a :update<Bar>call TestMode('concise')<Bar>TestFile<CR>
+nmap <silent> <Space>n :update<Bar>call TestMode('quiet')<Bar>TestNearest<CR>
+nmap <silent> <Space>a :update<Bar>call TestMode('quiet')<Bar>TestFile<CR>
+nmap <silent> <Space>u :update<Bar>call TestMode('quiet')<Bar>TestSuite<CR>
 
-nmap <silent> <Space>L :update<Bar>call TestMode('verbose')<Bar>TestLast<CR>
-nmap <silent> <Space>U :update<Bar>call TestMode('verbose')<Bar>TestSuite<CR>
-nmap <silent> <Space>N :update<Bar>call TestMode('verbose')<Bar>TestNearest<CR>
-nmap <silent> <Space>A :update<Bar>call TestMode('verbose')<Bar>TestFile<CR>
+nmap <silent> <Space>N :update<Bar>call TestMode('trace')<Bar>TestNearest<CR>
+nmap <silent> <Space>A :update<Bar>call TestMode('trace')<Bar>TestFile<CR>
+nmap <silent> <Space>U :update<Bar>call TestMode('trace')<Bar>TestSuite<CR>
 
+nmap <silent> <Space>d :update<Bar>call TestMode('debug')<Bar>TestNearest<CR>
+nmap <silent> <Space>l :update<Bar>TestLast<CR>
 nmap <silent> <Space>v :TestVisit<CR>
 
 " vim-floaterm plugin settings:
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
+nmap <silent> <F12> :FloatermShow<CR>
 
 " QFEnter plugin settings:
 let g:qfenter_keymap = {}

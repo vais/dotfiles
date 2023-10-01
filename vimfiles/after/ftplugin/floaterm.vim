@@ -1,3 +1,6 @@
+tmap <buffer> <silent> <F12>      <Esc><F12>
+nmap <buffer> <silent> <F12>      :FloatermHide<CR>
+nmap <buffer> <silent> <C-c>      :FloatermHide<CR>
 nmap <buffer> <silent> q          :FloatermHide<CR>
 nmap <buffer> <silent> <Space>l   :FloatermHide<CR><Space>l
 nmap <buffer> <silent> <Space>u   :FloatermHide<CR><Space>u
@@ -19,3 +22,6 @@ nmap <buffer> <silent> <Leader>gb :FloatermHide<CR><Leader>gb
 nmap <buffer> <silent> <Leader>gv :FloatermHide<CR><Leader>gv
 nmap <buffer> <silent> <F3>       :FloatermHide<CR><F3>      
 nmap <buffer> <silent> <S-F3>     :FloatermHide<CR><S-F3>    
+
+nmap <buffer> <C-j> j<C-e>
+nmap <buffer> <C-k> k<C-y>
