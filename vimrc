@@ -386,14 +386,40 @@ let g:wheel#map#left = '<C-h>'
 let g:wheel#map#right = '<C-l>'
 
 " vim-test plugin settings:
-function! FloatermCmdTitle(cmd)
+let g:test#enabled_runners = ['elixir#exunit']
+
+function! TestStrategyPopup(cmd)
   let g:floaterm_title = ' '.a:cmd.' '
-  execute 'FloatermNew --autoclose=0 '.a:cmd
+  execute 'FloatermNew --autoclose=0 --width=0.9 --height=0.9 '.a:cmd
 endfunction
 
-let g:test#custom_strategies = {'floaterm-cmd-title': function('FloatermCmdTitle')}
-let g:test#strategy = 'floaterm-cmd-title'
-let g:test#enabled_runners = ['elixir#exunit']
+function! TestStrategySplit(cmd)
+  execute 'AsyncRun -mode=term -pos=right -focus=0 '.a:cmd
+endfunction
+
+function! TestStrategyTab(cmd)
+  execute 'AsyncRun -mode=term -pos=TAB '.a:cmd
+  nnoremap <buffer> q :q<CR>
+  nnoremap <buffer> <C-c> :q<CR>
+endfunction
+
+let g:test#custom_strategies = {
+      \   'test-strategy-split': function('TestStrategySplit'),
+      \   'test-strategy-popup': function('TestStrategyPopup'),
+      \   'test-strategy-tab': function('TestStrategyTab'),
+      \ }
+
+let g:test#strategy = 'test-strategy-split'
+
+function! TestStrategy()
+  let g:test#strategy = {
+        \   'test-strategy-split': 'test-strategy-popup',
+        \   'test-strategy-popup': 'test-strategy-tab',
+        \   'test-strategy-tab': 'test-strategy-split',
+        \ }[g:test#strategy]
+
+  echo g:test#strategy
+endfunction
 
 function! TestMode(mode)
   if a:mode == 'debug'
@@ -420,9 +446,7 @@ nmap <silent> <Space>d :update<Bar>call TestMode('debug')<Bar>TestNearest<CR>
 nmap <silent> <Space>l :update<Bar>TestLast<CR>
 nmap <silent> <Space>v :TestVisit<CR>
 
-" vim-floaterm plugin settings:
-let g:floaterm_width = 0.9
-let g:floaterm_height = 0.9
+nmap <silent> <F2> :call TestStrategy()<CR>
 nmap <silent> <F12> :FloatermShow<CR>
 
 " QFEnter plugin settings:
