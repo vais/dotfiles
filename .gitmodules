@@ -118,3 +118,6 @@
 [submodule "vimfiles/pack/plugins/start/QFEnter"]
 	path = vimfiles/pack/plugins/start/QFEnter
 	url = https://github.com/yssl/QFEnter.git
+[submodule "vimfiles/pack/plugins/start/asyncrun.vim"]
+	path = vimfiles/pack/plugins/start/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim.git
