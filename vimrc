@@ -37,10 +37,7 @@ set visualbell t_vb=              " No beeping and no flashing.
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
-set directory=~/.vimswap//
-if !isdirectory(&directory)
-  call mkdir(&directory)
-endif
+set noswapfile                    " Don't make swap files.
 
 set virtualedit=block             " Allow virtual editing in Visual Block mode.
 
