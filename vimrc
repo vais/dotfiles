@@ -67,6 +67,7 @@ set grepprg+=\ -I                 " Don't match the pattern in binary files.
 set grepprg+=\ -n                 " Prefix the line number to matching lines.
 set grepprg+=\ --recurse-submodules
 
+set sessionoptions-=options       " Forget all options and mappings
 set sessionoptions-=blank         " Forget empty windows (e.g. NERDTree, quickfix, etc.)
 set sessionoptions+=resize        " Remember the size of the whole Vim window
 
