@@ -345,6 +345,8 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 0
+
+let g:ale_set_highlights = 0
 let g:ale_set_balloons = 0
 let g:ale_hover_cursor = 0
 
