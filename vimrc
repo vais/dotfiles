@@ -362,6 +362,27 @@ imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
 
+function! ALEStatus() abort
+  let l:issues = ale#statusline#Count(bufnr('')).total
+
+  if l:issues == 0
+    return ''
+  endif
+
+  if l:issues == 1
+    return '[1 issue]'
+  endif
+
+  return printf('[%d issues]', l:issues)
+endfunction
+
+set statusline+=%#error#%{ALEStatus()}%*
+
+augroup ALEProgress
+  autocmd!
+  autocmd User ALELintPost redrawstatus
+augroup END
+
 " targets.vim plugin settings:
 autocmd User targets#mappings#user call targets#mappings#extend({
       \   'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
