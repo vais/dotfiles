@@ -335,11 +335,12 @@ let g:ale_linters = {
       \   'typescript': ['tsserver'],
       \   'typescriptreact': ['tsserver'],
       \   'ruby': ['ruby'],
-      \   'elixir': ['lexical'],
+      \   'elixir': ['elixir-ls'],
       \ }
 
 let g:ale_javascript_eslint_options="--rule 'no-debugger: off, import/no-unused-modules: off'"
-let g:ale_elixir_lexical_release = expand('~/github/lexical/_build/dev/package/lexical/bin')
+let g:ale_elixir_elixir_ls_release = expand('~/github/elixir-ls/rel')
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
