@@ -485,6 +485,7 @@ function! OverrideColorscheme() abort
   highlight GitGutterChange guifg=#bbbb00 ctermfg=3
   highlight GitGutterDelete guifg=#ff2222 ctermfg=1
   highlight TabLineSel      guifg=#1c1c1c guibg=#9e9e9e gui=NONE ctermfg=234 ctermbg=247 cterm=NONE
+  highlight Directory       guifg=#87af87 guibg=NONE    gui=bold ctermfg=108 ctermbg=NONE cterm=bold
 endfunction
 
 augroup ColorschemeOverrides
