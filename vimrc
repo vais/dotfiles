@@ -446,16 +446,16 @@ function! TestMode(mode)
   endif
 endfunction
 
-nmap <silent> <Space>n :update<Bar>call TestMode('quiet')<Bar>TestNearest<CR>
-nmap <silent> <Space>a :update<Bar>call TestMode('quiet')<Bar>TestFile<CR>
-nmap <silent> <Space>u :update<Bar>call TestMode('quiet')<Bar>TestSuite<CR>
+nmap <silent> <Space>n :write<Bar>call TestMode('quiet')<Bar>TestNearest<CR>
+nmap <silent> <Space>a :write<Bar>call TestMode('quiet')<Bar>TestFile<CR>
+nmap <silent> <Space>u :write<Bar>call TestMode('quiet')<Bar>TestSuite<CR>
 
-nmap <silent> <Space>N :update<Bar>call TestMode('trace')<Bar>TestNearest<CR>
-nmap <silent> <Space>A :update<Bar>call TestMode('trace')<Bar>TestFile<CR>
-nmap <silent> <Space>U :update<Bar>call TestMode('trace')<Bar>TestSuite<CR>
+nmap <silent> <Space>N :write<Bar>call TestMode('trace')<Bar>TestNearest<CR>
+nmap <silent> <Space>A :write<Bar>call TestMode('trace')<Bar>TestFile<CR>
+nmap <silent> <Space>U :write<Bar>call TestMode('trace')<Bar>TestSuite<CR>
 
-nmap <silent> <Space>d :update<Bar>call TestMode('debug')<Bar>TestNearest<CR>
-nmap <silent> <Space>l :update<Bar>TestLast<CR>
+nmap <silent> <Space>d :write<Bar>call TestMode('debug')<Bar>TestNearest<CR>
+nmap <silent> <Space>l :write<Bar>TestLast<CR>
 nmap <silent> <Space>v :TestVisit<CR>
 
 nmap <silent> <F2> :call TestStrategy()<CR>
@@ -477,6 +477,42 @@ let g:qfenter_exclude_filetypes = [
       \   'git',
       \   'GV',
       \ ]
+
+" projectionist plugin settings:
+function! InitProjections()
+  let project_root = getcwd()
+
+  if empty(glob(project_root . '/mix.exs'))
+    echohl ErrorMsg
+    echo 'Cannot initialize projections for ' . project_root
+    echohl NONE
+    return
+  endif
+
+  if !empty(glob(project_root . '/.projections.json'))
+    let answer = confirm(
+          \ 'Warning: this will overwrite existing .projections.json',
+          \ "Ok press Enter\nCancel press Esc",
+          \ 1)
+    if answer != 1
+      return
+    endif
+  endif
+
+  let template_file = expand('~/dotfiles/projections.elixir.json')
+  let template_data = join(readfile(template_file), "\n")
+
+  let project_basename = fnamemodify(project_root, ':t')
+  let projections_data = substitute(template_data, 'PROJECT_BASENAME', project_basename, 'g')
+
+  silent edit! .projections.json
+  norm ggdG
+  put =projections_data
+  norm ggdd
+  silent write
+endfunction
+
+command InitProjections call InitProjections()
 
 " colorscheme settings:
 function! OverrideColorscheme() abort
