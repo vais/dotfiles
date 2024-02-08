@@ -1,29 +1,29 @@
 {
-  "lib/PROJECT_BASENAME_web/controllers/*_controller.ex": {
+  "lib/PROJECT_BASENAME_web/controllers/*.ex": {
     "type": "controller",
-    "alternate": "test/{project|basename}_web/controllers/{}_controller_test.exs",
+    "alternate": "test/{project|basename}_web/controllers/{}_test.exs",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}Controller do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot} do",
       "  use {project|basename|camelcase|capitalize}Web, :controller",
       "end"
     ]
   },
 
-  "test/PROJECT_BASENAME_web/controllers/*_controller_test.exs": {
+  "test/PROJECT_BASENAME_web/controllers/*_test.exs": {
     "type": "test",
-    "alternate": "lib/{project|basename}_web/controllers/{}_controller.ex",
+    "alternate": "lib/{project|basename}_web/controllers/{}.ex",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}ControllerTest do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot}Test do",
       "  use {project|basename|camelcase|capitalize}Web.ConnCase, async: true",
       "end"
     ]
   },
 
-  "lib/PROJECT_BASENAME_web/live/*_live.ex": {
+  "lib/PROJECT_BASENAME_web/live/*.ex": {
     "type": "live",
-    "alternate": "test/{project|basename}_web/live/{}_live_test.exs",
+    "alternate": "test/{project|basename}_web/live/{}_test.exs",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}Live do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot} do",
       "  use {project|basename|camelcase|capitalize}Web, :live_view",
       "",
       "  def render(assigns) do",
@@ -33,44 +33,43 @@
       "end"
     ]
   },
-
-  "test/PROJECT_BASENAME_web/live/*_live_test.exs": {
+  "test/PROJECT_BASENAME_web/live/*_test.exs": {
     "type": "test",
-    "alternate": "lib/{project|basename}_web/live/{}_live.ex",
+    "alternate": "lib/{project|basename}_web/live/{}.ex",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}LiveTest do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot}Test do",
       "  use {project|basename|camelcase|capitalize}Web.ConnCase, async: true",
       "",
       "  import Phoenix.LiveViewTest",
       "",
-      "  test \"renders\", %{open}conn: conn{close} do",
-      "    {open}:ok, view, _html{close} = live(conn, ~p\"/{}\")",
+      "  test \"\", %{open}conn: conn{close} do",
+      "    {open}:ok, view, _html{close} = live(conn, ~p\"\")",
       "  end",
       "end"
     ]
   },
 
-  "lib/PROJECT_BASENAME_web/components/*_components.ex": {
+  "lib/PROJECT_BASENAME_web/components/*.ex": {
     "type": "component",
-    "alternate": "test/{project|basename}_web/components/{}_components_test.exs",
+    "alternate": "test/{project|basename}_web/components/{}_test.exs",
     "related": "lib/{project|basename}_web/live/{}_live.ex",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}Components do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot} do",
       "  use Phoenix.Component",
       "end"
     ]
   },
 
-  "test/PROJECT_BASENAME_web/components/*_components_test.exs": {
+  "test/PROJECT_BASENAME_web/components/*_test.exs": {
     "type": "test",
-    "alternate": "lib/{project|basename}_web/components/{}_components.ex",
+    "alternate": "lib/{project|basename}_web/components/{}.ex",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}ComponentsTest do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot}Test do",
       "  use ExUnit.Case, async: true",
       "",
       "  import Phoenix.LiveViewTest",
       "  import Phoenix.Component, only: [sigil_H: 2]",
-      "  import {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}Components",
+      "  import {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot}",
       "end"
     ]
   },
@@ -78,7 +77,7 @@
   "test/PROJECT_BASENAME_web/features/*_test.exs": {
     "type": "feature",
     "template": [
-      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize}Test do",
+      "defmodule {project|basename|camelcase|capitalize}Web.{camelcase|capitalize|dot}Test do",
       "  use {project|basename|camelcase|capitalize}Web.FeatureCase, async: true",
       "end"
     ]
