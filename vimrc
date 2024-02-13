@@ -479,40 +479,31 @@ let g:qfenter_exclude_filetypes = [
       \ ]
 
 " projectionist plugin settings:
-function! InitProjections()
-  let project_root = getcwd()
+nmap <silent> <Leader>a :A<CR>
 
-  if empty(glob(project_root . '/mix.exs'))
-    echohl ErrorMsg
-    echo 'Cannot initialize projections for ' . project_root
-    echohl NONE
-    return
-  endif
-
-  if !empty(glob(project_root . '/.projections.json'))
-    let answer = confirm(
-          \ 'Warning: this will overwrite existing .projections.json',
-          \ "Ok press Enter\nCancel press Esc",
-          \ 1)
-    if answer != 1
-      return
-    endif
-  endif
-
-  let template_file = expand('~/dotfiles/projections.elixir.json')
-  let template_data = join(readfile(template_file), "\n")
-
-  let project_basename = fnamemodify(project_root, ':t')
-  let projections_data = substitute(template_data, 'PROJECT_BASENAME', project_basename, 'g')
-
-  silent edit! .projections.json
-  norm ggdG
-  put =projections_data
-  norm ggdd
-  silent write
-endfunction
-
-command InitProjections call InitProjections()
+let g:projectionist_heuristics = {
+      \   'mix.exs': {
+      \     'lib/*.ex': {
+      \       'type': 'source',
+      \       'alternate': 'test/{}_test.exs',
+      \       'template': [
+      \         'defmodule {camelcase|capitalize|dot} do',
+      \         'end'
+      \       ]
+      \     },
+      \     'test/*_test.exs': {
+      \       'type': 'test',
+      \       'alternate': 'lib/{}.ex',
+      \       'template': [
+      \         'defmodule {camelcase|capitalize|dot}Test do',
+      \         '  use ExUnit.Case, async: true',
+      \         '',
+      \         '  alias {camelcase|capitalize|dot}',
+      \         'end'
+      \       ]
+      \     }
+      \   }
+      \ }
 
 " colorscheme settings:
 function! OverrideColorscheme() abort
