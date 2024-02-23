@@ -181,8 +181,9 @@ tmap jj <Esc>
 nmap <Leader>w <C-w>
 vmap <Leader>w <C-w>
 
-" Map <Leader>s to fix broken syntax highlighting :(
-nmap <silent> <Leader>s :syntax sync fromstart<CR>
+" Map <Leader>c to clear and redraw the screen,
+" fix broken syntax highlighting, and get rid of stale lint errors:
+nnoremap <silent> <Leader>c <C-l>:syntax sync fromstart<CR>:ALELint<CR>
 
 " Make <Esc> switch from Terminal to Terminal-Normal mode:
 tnoremap <Esc> <C-w>N
