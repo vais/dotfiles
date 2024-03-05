@@ -231,7 +231,7 @@ function! FindInFiles(text, ...)
       return
     endif
     let txt = '\b' . txt . '\b'
-    let cmd = cmd . ' -E'
+    let cmd = cmd . ' -P'
   else
     let cmd = cmd . ' -F -i'
   endif
