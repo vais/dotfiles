@@ -506,19 +506,5 @@ let g:projectionist_heuristics = {
       \   }
       \ }
 
-" colorscheme settings:
-function! OverrideColorscheme() abort
-  highlight Terminal        guibg=#000000
-  highlight GitGutterAdd    guifg=#009900 ctermfg=2
-  highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-  highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-  highlight TabLineSel      guifg=#1c1c1c guibg=#9e9e9e gui=NONE ctermfg=234 ctermbg=247 cterm=NONE
-  highlight Directory       guifg=#87af87 guibg=NONE    gui=bold ctermfg=108 ctermbg=NONE cterm=bold
-endfunction
-
-augroup ColorschemeOverrides
-  autocmd!
-  autocmd ColorScheme habamax call OverrideColorscheme()
-augroup END
-
-colorscheme habamax
+set background=dark
+colorscheme retrobox
