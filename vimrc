@@ -506,5 +506,15 @@ let g:projectionist_heuristics = {
       \   }
       \ }
 
+" colorscheme settings:
+function! OverrideColorscheme() abort
+  highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
+endfunction
+
+augroup ColorschemeOverrides
+  autocmd!
+  autocmd ColorScheme retrobox call OverrideColorscheme()
+augroup END
+
 set background=dark
 colorscheme retrobox
