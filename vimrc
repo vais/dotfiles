@@ -509,6 +509,7 @@ let g:projectionist_heuristics = {
 " colorscheme settings:
 function! OverrideColorscheme() abort
   highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
+  highlight QuickFixLine guifg=#1c1c1c guibg=#8ec07c gui=NONE ctermfg=234 ctermbg=107 cterm=NONE
   highlight link GitCommitSummary Title
 endfunction
 
