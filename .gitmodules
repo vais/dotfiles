@@ -124,3 +124,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-dadbod-ui"]
 	path = vimfiles/pack/plugins/start/vim-dadbod-ui
 	url = https://github.com/kristijanhusak/vim-dadbod-ui.git
+[submodule "vimfiles/pack/plugins/start/vim-dadbod-completion"]
+	path = vimfiles/pack/plugins/start/vim-dadbod-completion
+	url = https://github.com/kristijanhusak/vim-dadbod-completion.git
