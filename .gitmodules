@@ -118,3 +118,6 @@
 [submodule "vimfiles/pack/plugins/start/asyncrun.vim"]
 	path = vimfiles/pack/plugins/start/asyncrun.vim
 	url = https://github.com/skywind3000/asyncrun.vim.git
+[submodule "vimfiles/pack/plugins/start/vim-dadbod"]
+	path = vimfiles/pack/plugins/start/vim-dadbod
+	url = https://github.com/tpope/vim-dadbod.git
