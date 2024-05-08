@@ -506,6 +506,11 @@ let g:projectionist_heuristics = {
       \   }
       \ }
 
+" vim-dadbod-ui plugin settings:
+let g:db_ui_show_help = 0
+let g:db_ui_auto_execute_table_helpers = 1
+let g:db_ui_force_echo_notifications = 1
+
 " colorscheme settings:
 function! OverrideColorscheme() abort
   highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
