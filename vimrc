@@ -401,38 +401,15 @@ let g:wheel#map#right = '<C-l>'
 " vim-test plugin settings:
 let g:test#enabled_runners = ['elixir#exunit']
 
-function! TestStrategyPopup(cmd)
-  let g:floaterm_title = ' '.a:cmd.' '
-  execute 'FloatermNew --autoclose=0 --width=0.9 --height=0.9 '.a:cmd
-endfunction
-
 function! TestStrategySplit(cmd)
   execute 'AsyncRun -mode=term -pos=right -focus=0 '.a:cmd
 endfunction
 
-function! TestStrategyTab(cmd)
-  execute 'AsyncRun -mode=term -pos=TAB '.a:cmd
-  nnoremap <buffer> q :q<CR>
-  nnoremap <buffer> <C-c> :q<CR>
-endfunction
-
 let g:test#custom_strategies = {
       \   'test-strategy-split': function('TestStrategySplit'),
-      \   'test-strategy-popup': function('TestStrategyPopup'),
-      \   'test-strategy-tab': function('TestStrategyTab'),
       \ }
 
 let g:test#strategy = 'test-strategy-split'
-
-function! TestStrategy()
-  let g:test#strategy = {
-        \   'test-strategy-split': 'test-strategy-popup',
-        \   'test-strategy-popup': 'test-strategy-tab',
-        \   'test-strategy-tab': 'test-strategy-split',
-        \ }[g:test#strategy]
-
-  echo g:test#strategy
-endfunction
 
 function! TestMode(mode)
   if a:mode == 'debug'
@@ -458,9 +435,6 @@ nmap <silent> <Space>U :write<Bar>call TestMode('trace')<Bar>TestSuite<CR>
 nmap <silent> <Space>d :write<Bar>call TestMode('debug')<Bar>TestNearest<CR>
 nmap <silent> <Space>l :write<Bar>TestLast<CR>
 nmap <silent> <Space>v :TestVisit<CR>
-
-nmap <silent> <F2> :call TestStrategy()<CR>
-nmap <silent> <F12> :FloatermShow<CR>
 
 " QFEnter plugin settings:
 let g:qfenter_keymap = {}

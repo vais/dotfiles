@@ -109,9 +109,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-test"]
 	path = vimfiles/pack/plugins/start/vim-test
 	url = https://github.com/vim-test/vim-test.git
-[submodule "vimfiles/pack/plugins/start/vim-floaterm"]
-	path = vimfiles/pack/plugins/start/vim-floaterm
-	url = https://github.com/voldikss/vim-floaterm.git
 [submodule "vimfiles/pack/plugins/start/QFEnter"]
 	path = vimfiles/pack/plugins/start/QFEnter
 	url = https://github.com/yssl/QFEnter.git
