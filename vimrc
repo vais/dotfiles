@@ -101,6 +101,8 @@ augroup CursorLine                " Make it so that only active window has curso
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
+let mapleader = "\<Space>"        " Space is my Leader
+
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
 map  g]                       g<C-]>
 map  <C-]>                    g<C-]>
@@ -256,15 +258,6 @@ nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
 nmap <silent> <Leader>hh :GitGutterToggle<CR>
 nmap <silent> <Leader>hq :GitGutterQuickFix<Bar>botright copen<CR>
 
-" vim-easymotion plugin settings:
-let g:EasyMotion_leader_key = '<Space>'
-nmap <Space><Space>j <Plug>(easymotion-overwin-line)
-nmap <Space><Space>k <Plug>(easymotion-overwin-line)
-nmap <Space><Space>w <Plug>(easymotion-overwin-w)
-nmap <Space><Space>b <Plug>(easymotion-overwin-w)
-nmap <Space><Space>f <Plug>(easymotion-overwin-f)
-nmap <Space><Space>s <Plug>(easymotion-overwin-f)
-
 " ctrlp.vim plugin settings:
 let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 0
@@ -356,6 +349,7 @@ nmap <F1> :ALEHover<CR>
 
 nmap gd         :ALEGoToDefinition<CR>
 nmap <C-w>d     :ALEGoToDefinition -vsplit<CR>
+nmap <C-w>D     :ALEGoToDefinition -split<CR>
 nmap <C-w><C-d> :ALEGoToDefinition -split<CR>
 nmap <C-w>gd    :ALEGoToDefinition -tab<CR>
 
@@ -424,17 +418,17 @@ function! TestMode(mode)
   endif
 endfunction
 
-nmap <silent> <Space>n :write<Bar>call TestMode('quiet')<Bar>TestNearest<CR>
-nmap <silent> <Space>a :write<Bar>call TestMode('quiet')<Bar>TestFile<CR>
-nmap <silent> <Space>u :write<Bar>call TestMode('quiet')<Bar>TestSuite<CR>
+nmap <silent> <Leader>rn :write<Bar>call TestMode('quiet')<Bar>TestNearest<CR>
+nmap <silent> <Leader>rf :write<Bar>call TestMode('quiet')<Bar>TestFile<CR>
+nmap <silent> <Leader>rs :write<Bar>call TestMode('quiet')<Bar>TestSuite<CR>
 
-nmap <silent> <Space>N :write<Bar>call TestMode('trace')<Bar>TestNearest<CR>
-nmap <silent> <Space>A :write<Bar>call TestMode('trace')<Bar>TestFile<CR>
-nmap <silent> <Space>U :write<Bar>call TestMode('trace')<Bar>TestSuite<CR>
+nmap <silent> <Leader>rN :write<Bar>call TestMode('trace')<Bar>TestNearest<CR>
+nmap <silent> <Leader>rF :write<Bar>call TestMode('trace')<Bar>TestFile<CR>
+nmap <silent> <Leader>rS :write<Bar>call TestMode('trace')<Bar>TestSuite<CR>
 
-nmap <silent> <Space>d :write<Bar>call TestMode('debug')<Bar>TestNearest<CR>
-nmap <silent> <Space>l :write<Bar>TestLast<CR>
-nmap <silent> <Space>v :TestVisit<CR>
+nmap <silent> <Leader>rd :write<Bar>call TestMode('debug')<Bar>TestNearest<CR>
+nmap <silent> <Leader>rl :write<Bar>TestLast<CR>
+nmap <silent> <Leader>rv :TestVisit<CR>
 
 " QFEnter plugin settings:
 let g:qfenter_keymap = {}
