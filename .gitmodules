@@ -10,9 +10,6 @@
 [submodule "vimfiles/pack/plugins/start/tcomment_vim"]
 	path = vimfiles/pack/plugins/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vimfiles/pack/plugins/start/vim-easymotion"]
-	path = vimfiles/pack/plugins/start/vim-easymotion
-	url = https://github.com/vais/vim-easymotion.git
 [submodule "vimfiles/pack/plugins/start/vim-endwise"]
 	path = vimfiles/pack/plugins/start/vim-endwise
 	url = https://github.com/tpope/vim-endwise.git
