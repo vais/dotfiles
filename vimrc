@@ -284,6 +284,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
 let NERDTreeHijackNetrw = 0
+let NERDTreeNodeDelimiter="\u00b7" " (middle dot)
 nmap <silent> <C-t> :NERDTreeToggle<CR>
 nmap <silent> <Leader>t :NERDTreeToggle<CR>
 nmap <silent> <C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
@@ -434,7 +435,6 @@ nmap <silent> <Leader>rv :TestVisit<CR>
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>', '<2-LeftMouse>']
 let g:qfenter_keymap.vopen = ['<C-w><CR>']
-let g:qfenter_keymap.hopen = ['<C-w><Space>']
 let g:qfenter_keymap.topen = ['<C-w><Tab>']
 
 let g:qfenter_excluded_action = 'error'
@@ -485,6 +485,10 @@ call tcomment#type#Define('plsql', '-- %s')
 imap <C-j> <Plug>(copilot-next)
 imap <C-k> <Plug>(copilot-previous)
 imap <C-l> <Plug>(copilot-accept-word)
+
+" vim9-stargate plugin settings:
+noremap <Leader>j <Cmd>call stargate#OKvim(1)<CR>
+noremap <C-w><Space> <Cmd>call stargate#Galaxy()<CR>
 
 " colorscheme settings:
 function! OverrideColorscheme() abort
