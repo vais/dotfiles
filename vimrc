@@ -141,6 +141,11 @@ tmap <silent> <C-w>m <C-w>:wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
 " Close NERDTree before expanding windows horizontally lest it be crippled:
 nmap <silent> <C-w>\| :NERDTreeClose<Bar>wincmd \|<CR>
 
+" Coverflow(tm)-style navigation for splits:
+nmap <silent> <C-w>\ :set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+nmap <silent> <C-w>] :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+nmap <silent> <C-w>[ :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x
 vnoremap <C-c> "+y
