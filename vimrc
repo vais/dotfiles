@@ -152,6 +152,12 @@ nmap <silent> <Leader>co :botright copen<CR>
 nmap <silent> <Leader>ct :Qfilter!\V\<test\>\C<CR>
 nmap <silent> <Leader>cT :Qfilter\V\<test\>\C<CR>
 
+" Tab navigation mappings:
+nmap <silent> [t :tabprevious<CR>
+nmap <silent> [T :tabfirst<CR>
+nmap <silent> ]t :tabnext<CR>
+nmap <silent> ]T :tablast<CR>
+
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x
 vnoremap <C-c> "+y
