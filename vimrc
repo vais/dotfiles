@@ -146,6 +146,12 @@ nmap <silent> <C-w>\ :set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winm
 nmap <silent> <C-w>] :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 nmap <silent> <C-w>[ :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
+" Quickfix window mappings:
+nmap <silent> <Leader>cc :cclose<CR>
+nmap <silent> <Leader>co :botright copen<CR>
+nmap <silent> <Leader>ct :Qfilter!\V\<test\>\C<CR>
+nmap <silent> <Leader>cT :Qfilter\V\<test\>\C<CR>
+
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x
 vnoremap <C-c> "+y
@@ -188,9 +194,11 @@ tmap jj <Esc>
 nmap <Leader>w <C-w>
 vmap <Leader>w <C-w>
 
-" Map <Leader>c to clear and redraw the screen,
-" fix broken syntax highlighting, and get rid of stale lint errors:
-nnoremap <silent> <Leader>c <C-l>:syntax sync fromstart<CR>:ALELint<CR>
+" Map <Leader>l to:
+" 1. clear and redraw the screen
+" 2. fix broken syntax highlighting
+" 3. get rid of stale lint errors
+nnoremap <silent> <Leader>l <C-l>:syntax sync fromstart<CR>:ALELint<CR>
 
 " Make <Esc> switch from Terminal to Terminal-Normal mode:
 tnoremap <Esc> <C-w>N
