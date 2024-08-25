@@ -400,6 +400,7 @@ augroup ALEProgress
 augroup END
 
 " targets.vim plugin settings:
+let g:targets_nl = 'nN'
 autocmd User targets#mappings#user call targets#mappings#extend({
       \   'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
       \   'b': {'pair': [{'o':'(', 'c':')'}]},
