@@ -127,3 +127,6 @@
 [submodule "vimfiles/pack/plugins/start/vim9-stargate"]
 	path = vimfiles/pack/plugins/start/vim9-stargate
 	url = https://github.com/monkoose/vim9-stargate.git
+[submodule "vimfiles/pack/plugins/start/vim-closetag"]
+	path = vimfiles/pack/plugins/start/vim-closetag
+	url = https://github.com/alvan/vim-closetag.git

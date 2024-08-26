@@ -508,6 +508,13 @@ imap <C-l> <Plug>(copilot-accept-word)
 noremap <Leader>j <Cmd>call stargate#OKvim(1)<CR>
 noremap <C-w><Space> <Cmd>call stargate#Galaxy()<CR>
 
+" vim-closetag plugin settings:
+let g:closetag_filetypes = 'html,xml,javascript,elixir,eelixir'
+let g:closetag_regions = {
+      \ 'javascript': 'litHtmlRegion',
+      \ 'elixir': 'elixirHeexSigil',
+      \ }
+
 " colorscheme settings:
 function! OverrideColorscheme() abort
   highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
