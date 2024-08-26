@@ -130,3 +130,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-closetag"]
 	path = vimfiles/pack/plugins/start/vim-closetag
 	url = https://github.com/alvan/vim-closetag.git
+[submodule "vimfiles/pack/plugins/start/vim-textobj-xmlattr"]
+	path = vimfiles/pack/plugins/start/vim-textobj-xmlattr
+	url = https://github.com/whatyouhide/vim-textobj-xmlattr.git
