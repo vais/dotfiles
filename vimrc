@@ -375,8 +375,6 @@ nmap <C-w>gd    :ALEGoToDefinition -tab<CR>
 
 imap <expr> <C-@> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
-inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
 
 function! ALEStatus() abort
   let l:issues = ale#statusline#Count(bufnr('')).total
