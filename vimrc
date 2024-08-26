@@ -316,9 +316,6 @@ vmap <C-\><C-\> <plug>(emmet-expand-abbr)
 imap <C-\><C-]> <plug>(emmet-move-next)
 imap <C-\><C-[> <plug>(emmet-move-prev)
 
-" When emmet-expand-abbr expands to something like <div>|</div>, it helps
-" to map Ctrl-Enter to break current line and start a new line in-between:
-imap <C-Enter> <CR><Esc>O<C-g>u
 
 " Disable the built-in Netrw plugin
 let g:loaded_netrwPlugin = 1
