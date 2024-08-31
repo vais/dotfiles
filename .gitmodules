@@ -34,9 +34,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-javascript"]
 	path = vimfiles/pack/plugins/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "vimfiles/pack/plugins/start/vim-ragtag"]
-	path = vimfiles/pack/plugins/start/vim-ragtag
-	url = https://github.com/tpope/vim-ragtag.git
 [submodule "vimfiles/pack/plugins/start/vim-exchange"]
 	path = vimfiles/pack/plugins/start/vim-exchange
 	url = https://github.com/tommcdo/vim-exchange.git
