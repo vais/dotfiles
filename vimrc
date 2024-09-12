@@ -367,6 +367,11 @@ nmap <C-w>D     :ALEGoToDefinition -split<CR>
 nmap <C-w><C-d> :ALEGoToDefinition -split<CR>
 nmap <C-w>gd    :ALEGoToDefinition -tab<CR>
 
+nmap [E :ALEFirst<CR>
+nmap [e :ALEPrevious<CR>
+nmap ]e :ALENext<CR>
+nmap ]E :ALELast<CR>
+
 imap <expr> <C-@> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 
