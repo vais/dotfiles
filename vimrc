@@ -120,6 +120,10 @@ nmap <C-w>f :vertical wincmd f<CR>
 " Make new buffer in a vertical split:
 nmap <silent> <C-w>n :vertical new<CR>
 
+" Make all windows equal with wincmd space:
+nmap <C-w><Space> <C-w>=
+nmap <C-w><C-Space> <C-w>=
+
 " A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-o>
 
@@ -505,7 +509,7 @@ imap <C-l> <Plug>(copilot-accept-word)
 
 " vim9-stargate plugin settings:
 noremap <Leader>j <Cmd>call stargate#OKvim(1)<CR>
-noremap <C-w><Space> <Cmd>call stargate#Galaxy()<CR>
+noremap <C-w>; <Cmd>call stargate#Galaxy()<CR>
 
 " vim-closetag plugin settings:
 let g:closetag_filetypes = 'html,xml,javascript,elixir,eelixir'
