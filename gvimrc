@@ -11,7 +11,8 @@ set guioptions-=L               " Never show left scrollbar.
 
 if has('win32') || has('win64') " Set GUI preferences unique to each OS:
 
-  set guifont=Courier_New:h10:cANSI
+  set guifont=Consolas:h11
+  set guioptions+=d
 
 elseif has('mac')
 

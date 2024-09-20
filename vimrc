@@ -270,7 +270,7 @@ function! FindInFiles(text, ...)
 endfunction
 
 " vim-fugitive plugin settings:
-nmap <silent> <Leader>gg :tab Git<Bar>silent! tabmove -1<CR>
+nmap <silent> <Leader>gg :-tab Git<CR>
 nmap <silent> <Leader>gb :Git blame<CR>
 nmap <silent> <Leader>gv :GV -99<CR>
 
