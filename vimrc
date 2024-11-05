@@ -65,7 +65,6 @@ set winminwidth=1                 " The minimal width of a window, when it's not
 let &grepprg='git grep -f "' . expand('~/.vimsearch') . '"' " Read patterns from <file>, one per line.
 set grepprg+=\ -I                 " Don't match the pattern in binary files.
 set grepprg+=\ -n                 " Prefix the line number to matching lines.
-set grepprg+=\ --recurse-submodules
 
 set sessionoptions-=options       " Forget all options and mappings
 set sessionoptions-=blank         " Forget empty windows (e.g. NERDTree, quickfix, etc.)
