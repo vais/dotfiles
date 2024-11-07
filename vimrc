@@ -429,10 +429,10 @@ let g:test#strategy = 'test-strategy-split'
 function! TestMode(mode)
   if a:mode == 'debug'
     let g:test#elixir#exunit#executable = 'iex --dbg pry -S mix test'
-    let g:test#elixir#exunit#options = '--trace'
+    let g:test#elixir#exunit#options = '--trace --seed 0'
   elseif a:mode == 'trace'
     let g:test#elixir#exunit#executable = 'mix test'
-    let g:test#elixir#exunit#options = '--trace'
+    let g:test#elixir#exunit#options = '--trace --seed 0'
   else
     let g:test#elixir#exunit#executable = 'mix test'
     let g:test#elixir#exunit#options = ''
