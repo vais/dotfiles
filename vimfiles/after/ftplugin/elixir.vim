@@ -7,4 +7,9 @@ call textobj#user#plugin('elixir', {
       \     'select-a': '<buffer> am',
       \     'select-i': '<buffer> im',
       \   },
+      \   'interpolation': {
+      \     'pattern': ['#{', '}'],
+      \     'select-a': '<buffer> ao',
+      \     'select-i': '<buffer> io',
+      \   },
       \ })
