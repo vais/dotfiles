@@ -497,9 +497,17 @@ let g:projectionist_heuristics = {
 let g:db_ui_show_help = 0
 let g:db_ui_auto_execute_table_helpers = 1
 let g:db_ui_force_echo_notifications = 1
+
 call tcomment#type#Define('mysql', '-- %s')
 call tcomment#type#Define('plsql', '-- %s')
+
 nmap <silent> <Leader>d :DBUIToggle<CR>
+
+let g:db_ui_table_helpers = {
+      \ 	'mysql': {
+      \ 		'Show Create Table': 'SHOW CREATE TABLE {optional_schema}`{table}`',
+      \ 	}
+      \ }
 
 " copilot.vim plugin settings:
 imap <C-j> <Plug>(copilot-next)
