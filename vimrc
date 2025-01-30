@@ -310,10 +310,9 @@ let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeNodeDelimiter="\u00b7" " (middle dot)
-nmap <silent> <C-t> :NERDTreeToggle<CR>
-nmap <silent> <Leader>t :NERDTreeToggle<CR>
-nmap <silent> <C-f> :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
-nmap <silent> <Leader>f :NERDTreeFind<Bar>wincmd p<Bar>wincmd p<CR>
+nmap <silent> <Leader>fo :NERDTreeFocus<CR>
+nmap <silent> <Leader>fq :NERDTreeClose<CR>
+nmap <silent> <Leader>ff :NERDTreeFind<CR>
 
 " emmet-vim plugin settings:
 let g:emmet_install_only_plug = 1
