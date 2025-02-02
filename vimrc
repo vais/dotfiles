@@ -120,6 +120,7 @@ nmap <C-w>f :vertical wincmd f<CR>
 
 " Make new buffer in a vertical split:
 nmap <silent> <C-w>n :vertical new<CR>
+tmap <silent> <C-w>n <C-w>:vertical new<CR>
 
 " Make all windows equal with wincmd space:
 nmap <C-w><Space> <C-w>=
