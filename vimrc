@@ -54,7 +54,7 @@ set statusline=[%n]\ %<%.999f\ %h%w%1*%m%*%#error#%r%*
 set complete=.,w,b                " Auto-complete from all currently loaded buffers.
 set completeopt=menuone,noselect,noinsert
 
-set history=420                   " The number of commands and search patterns to keep in history.
+set history=1000                  " The number of commands and search patterns to keep in history.
 
 set mouse=a                       " Enable the use of the mouse in all modes.
 
