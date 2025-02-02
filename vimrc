@@ -202,7 +202,7 @@ imap <silent> <F5> <Esc><F5>
 
 " Map jj to Esc
 imap jj <Esc>
-tmap jj <Esc>
+tmap jj <C-w>N
 
 " Experiment with <Leader>w as wincmd
 nmap <Leader>w <C-w>
@@ -213,11 +213,6 @@ vmap <Leader>w <C-w>
 " 2. fix broken syntax highlighting
 " 3. get rid of stale lint errors
 nnoremap <silent> <Leader>l <C-l>:syntax sync fromstart<CR>:ALELint<CR>
-
-" Make <Esc> switch from Terminal to Terminal-Normal mode:
-tnoremap <Esc> <C-w>N
-" To still be able to send Esc to the terminal job itself:
-tnoremap <C-w><Esc> <Esc>
 
 cnoremap <expr> <C-p> wildmenumode() ? '<C-p>' : '<Up>'
 cnoremap <expr> <C-n> wildmenumode() ? '<C-n>' : '<Down>'
