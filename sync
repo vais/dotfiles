@@ -13,3 +13,5 @@ ln -sn ~/dotfiles/vimfiles ~/.vim
 ln -s ~/dotfiles/irbrc ~/.irbrc
 
 ln -s ~/dotfiles/ctags ~/.ctags
+
+ln -s ~/dotfiles/aider.conf.yml ~/.aider.conf.yml
