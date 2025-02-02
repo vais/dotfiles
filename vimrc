@@ -94,6 +94,8 @@ set tagcase=match                 " Make tags file search case-sensitive
 set smoothscroll                  " Make scrolling work when wrap is set
 set autoread                      " Automatically read a file if it's changed outside of Vim
 
+set termwinscroll=100000          " 10x the default number of terminal scrollback lines to keep
+
 augroup CursorLine                " Make it so that only active window has cursorline
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
