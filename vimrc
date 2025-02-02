@@ -260,7 +260,7 @@ function! FindInFiles(text, ...)
     let txt = '\b' . txt . '\b'
     let cmd = cmd . ' -P'
   else
-    let cmd = cmd . ' -F -i'
+    let cmd = cmd . ' -Fi'
   endif
   let str = input('Search ' . getcwd() . '>', txt)
   if empty(str)
