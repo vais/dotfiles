@@ -153,8 +153,8 @@ nmap <silent> <C-w>] :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winm
 nmap <silent> <C-w>[ :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
 " Quickfix window mappings:
-nmap <silent> <Leader>cc :cclose<CR>
 nmap <silent> <Leader>co :botright copen<CR>
+nmap <silent> <Leader>cq :cclose<CR>
 nmap <silent> <Leader>ct :Qfilter!\V\<test\>\C<CR>
 nmap <silent> <Leader>cT :Qfilter\V\<test\>\C<CR>
 
@@ -503,7 +503,9 @@ let g:db_ui_force_echo_notifications = 1
 call tcomment#type#Define('mysql', '-- %s')
 call tcomment#type#Define('plsql', '-- %s')
 
-nmap <silent> <Leader>d :DBUIToggle<CR>
+nmap <silent> <Leader>do :DBUI<CR>
+nmap <silent> <Leader>dq :DBUIClose<CR>
+nmap <silent> <Leader>df :DBUIFindBuffer<CR>
 
 let g:db_ui_table_helpers = {
       \ 	'mysql': {
