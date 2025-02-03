@@ -218,6 +218,9 @@ nnoremap <silent> <Leader>l <C-l>:syntax sync fromstart<CR>:ALELint<CR>
 cnoremap <expr> <C-p> wildmenumode() ? '<C-p>' : '<Up>'
 cnoremap <expr> <C-n> wildmenumode() ? '<C-n>' : '<Down>'
 
+" Replace :bm with :ls+ because there's no way to make :bm ignore Terminal buffers:
+cabbrev bm <c-r>=(getcmdtype() == ':' && getcmdpos() == 1 ? 'ls+' : 'bm')<CR>
+
 " Find in files:
 nnoremap <silent> <F3>   :call FindInFiles('')<CR>
 nnoremap <silent> <S-F3> :call FindInFiles(SetSearchTermNormal(), 1)<CR>
