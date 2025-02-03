@@ -158,6 +158,7 @@ nmap <silent> <C-w>[ :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winm
 " Quickfix window mappings:
 nmap <silent> <Leader>co :botright copen<CR>
 nmap <silent> <Leader>cq :cclose<CR>
+nmap <silent> <Leader>cc :cc<CR>
 nmap <silent> <Leader>ct :Qfilter!\V\<test\>\C<CR>
 nmap <silent> <Leader>cT :Qfilter\V\<test\>\C<CR>
 
