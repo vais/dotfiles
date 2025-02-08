@@ -102,6 +102,11 @@ augroup CursorLine                " Make it so that only active window has curso
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
+augroup HideTerminalLineNumbers   " Do not show line numbers in terminal buffers
+  autocmd!
+  autocmd TerminalOpen * setlocal nonumber norelativenumber
+augroup END
+
 let mapleader = "\<Space>"        " Space is my Leader
 
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
