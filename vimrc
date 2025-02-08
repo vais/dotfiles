@@ -119,12 +119,15 @@ map  <C-w>g]             <C-w>g<C-]>
 nmap <C-w>f :vertical wincmd f<CR>
 
 " Make new buffer in a vertical split:
-nmap <silent> <C-w>n :vertical new<CR>
+nmap <silent> <C-w>n      :vertical new<CR>
 tmap <silent> <C-w>n <C-w>:vertical new<CR>
 
 " Make all windows equal with wincmd space:
-nmap <C-w><Space> <C-w>=
+nmap <C-w><Space>   <C-w>=
+tmap <C-w><Space>   <C-w>=
+
 nmap <C-w><C-Space> <C-w>=
+tmap <C-w><C-Space> <C-w>=
 
 " A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-o>
@@ -140,20 +143,35 @@ vnoremap <silent> <Tab> VVgv>gv
 vnoremap <silent> <S-Tab> VVgv<gv
 
 " Shortcut to create a new tab:
-nmap <silent> <C-w>a :tabnew<CR>
-nmap <silent> <C-w>A :-1tabnew<CR>
-nmap <silent> <C-w>m :wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
-tmap <silent> <C-w>m <C-w>:wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
-nmap <silent> <C-w>M :wincmd v<Bar>wincmd T<CR>
-tmap <silent> <C-w>M <C-w>:wincmd v<Bar>wincmd T<CR>
+nmap <silent> <C-w>a          :tabnew<CR>
+tmap <silent> <C-w>a     <C-w>:tabnew<CR>
+
+nmap <silent> <C-w><C-a>      :tabnew<CR>
+tmap <silent> <C-w><C-a> <C-w>:tabnew<CR>
+
+nmap <silent> <C-w>A          :-1tabnew<CR>
+
+nmap <silent> <C-w>m          :wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+tmap <silent> <C-w>m     <C-w>:wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+
+nmap <silent> <C-w><C-m>      :wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+tmap <silent> <C-w><C-m> <C-w>:wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
+
+nmap <silent> <C-w>M          :wincmd v<Bar>wincmd T<CR>
 
 " Close NERDTree before expanding windows horizontally lest it be crippled:
-nmap <silent> <C-w>\| :NERDTreeClose<Bar>wincmd \|<CR>
+nmap <silent> <C-w>\|         :NERDTreeClose<Bar>wincmd \|<CR>
+tmap <silent> <C-w>\|    <C-w>:NERDTreeClose<Bar>wincmd \|<CR>
 
 " Coverflow(tm)-style navigation for splits:
-nmap <silent> <C-w>\ :set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
-nmap <silent> <C-w>] :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
-nmap <silent> <C-w>[ :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+nmap <silent> <C-w>\          :set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+tmap <silent> <C-w>\     <C-w>:set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+
+nmap <silent> <C-w>]          :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+tmap <silent> <C-w>]     <C-w>:set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+
+nmap <silent> <C-w>[          :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+tmap <silent> <C-w>[     <C-w>:set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
 " Quickfix window mappings:
 nmap <silent> <Leader>co :botright copen<CR>
@@ -524,6 +542,7 @@ imap <C-l> <Plug>(copilot-accept-word)
 " vim9-stargate plugin settings:
 noremap <Leader>j <Cmd>call stargate#OKvim(1)<CR>
 noremap <C-w>; <Cmd>call stargate#Galaxy()<CR>
+tnoremap <C-w>; <Cmd>call stargate#Galaxy()<CR>
 
 " vim-closetag plugin settings:
 let g:closetag_filetypes = 'html,xml,javascript,elixir,eelixir'
