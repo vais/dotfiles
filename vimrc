@@ -96,13 +96,13 @@ set autoread                      " Automatically read a file if it's changed ou
 
 set termwinscroll=100000          " 10x the default number of terminal scrollback lines to keep
 
-augroup CursorLine                " Make it so that only active window has cursorline
+augroup ConfigureCursorline       " Make it so that only active window has cursorline
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-augroup HideTerminalLineNumbers   " Do not show line numbers in terminal buffers
+augroup ConfigureTerminal         " Do not show line numbers in terminal buffers
   autocmd!
   autocmd TerminalOpen * setlocal nonumber norelativenumber
 augroup END
@@ -422,14 +422,14 @@ endfunction
 
 set statusline+=%#error#%{ALEStatus()}%*
 
-augroup ALEProgress
+augroup ConfigureAlePlugin
   autocmd!
   autocmd User ALELintPost redrawstatus
 augroup END
 
 " targets.vim plugin settings:
 let g:targets_nl = 'nN'
-augroup ConfigureTargetsDotVim
+augroup ConfigureTargetsPlugin
   autocmd!
   autocmd User targets#mappings#user call targets#mappings#extend({
         \   'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]},
@@ -574,7 +574,7 @@ function! OverrideColorscheme() abort
   highlight link GitCommitSummary Title
 endfunction
 
-augroup ColorschemeOverrides
+augroup ConfigureColorscheme
   autocmd!
   autocmd ColorScheme retrobox call OverrideColorscheme()
 augroup END
