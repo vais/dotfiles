@@ -102,8 +102,13 @@ augroup ConfigureCursorline       " Make it so that only active window has curso
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-augroup ConfigureTerminal         " Do not show line numbers in terminal buffers
+augroup ConfigureTerminal
   autocmd!
+
+  " Set terminal width equal to window width:
+  autocmd TerminalOpen * execute "setlocal termwinsize=0x" . winwidth(0)
+
+  " Do not show line numbers in terminal buffers:
   autocmd TerminalOpen * setlocal nonumber norelativenumber
 augroup END
 
