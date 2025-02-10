@@ -234,10 +234,6 @@ imap <silent> <F5> <Esc><F5>
 imap jj <Esc>
 tmap jj <C-w>N
 
-" Experiment with <Leader>w as wincmd
-nmap <Leader>w <C-w>
-vmap <Leader>w <C-w>
-
 " Map <Leader>l to:
 " 1. clear and redraw the screen
 " 2. fix broken syntax highlighting
