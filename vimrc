@@ -183,6 +183,13 @@ tmap <silent> <C-w>]     <C-w>:set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar
 nmap <silent> <C-w>[          :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 tmap <silent> <C-w>[     <C-w>:set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
+" Resize window to fit content width:
+nmap <silent> <C-w>e          :exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
+tmap <silent> <C-w>e     <C-w>:exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
+
+nmap <silent> <C-w><C-e>      :exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
+tmap <silent> <C-w><C-e> <C-w>:exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
+
 " Quickfix window mappings:
 nmap <silent> <Leader>co :botright copen<CR>
 nmap <silent> <Leader>cq :cclose<CR>
