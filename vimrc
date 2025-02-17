@@ -139,6 +139,9 @@ tmap <C-w><Space>   <C-w>=
 nmap <C-w><C-Space> <C-w>=
 tmap <C-w><C-Space> <C-w>=
 
+" Fix Shift+Space bug in terminal mode:
+tmap <S-Space> <Space>
+
 " A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-o>
 
