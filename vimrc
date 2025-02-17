@@ -102,14 +102,17 @@ augroup ConfigureCursorline       " Make it so that only active window has curso
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-augroup ConfigureTerminal
-  autocmd!
-
+function! ConfigureTerminal() abort
   " Set terminal width equal to window width:
-  autocmd TerminalOpen * execute "setlocal termwinsize=0x" . winwidth(0)
+  execute "setlocal termwinsize=0x" . winwidth(0)
 
   " Do not show line numbers in terminal buffers:
-  autocmd TerminalOpen * setlocal nonumber norelativenumber
+  setlocal nonumber norelativenumber
+endfunction
+
+augroup ConfigureTerminal
+  autocmd!
+  autocmd TerminalOpen * call ConfigureTerminal()
 augroup END
 
 let mapleader = "\<Space>"        " Space is my Leader
@@ -187,11 +190,11 @@ nmap <silent> <C-w>[          :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar
 tmap <silent> <C-w>[     <C-w>:set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
 " Resize window to fit content width:
-nmap <silent> <C-w>e          :exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
-tmap <silent> <C-w>e     <C-w>:exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
+nmap <silent> <C-w>e          :exe "vertical resize " . min([get(term_getsize(''), 1, 99999), max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])])<CR>
+tmap <silent> <C-w>e     <C-w>:exe "vertical resize " . min([get(term_getsize(''), 1, 99999), max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])])<CR>
 
-nmap <silent> <C-w><C-e>      :exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
-tmap <silent> <C-w><C-e> <C-w>:exe "vertical resize " . max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])<CR>
+nmap <silent> <C-w><C-e>      :exe "vertical resize " . min([get(term_getsize(''), 1, 99999), max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])])<CR>
+tmap <silent> <C-w><C-e> <C-w>:exe "vertical resize " . min([get(term_getsize(''), 1, 99999), max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])])<CR>
 
 " Quickfix window mappings:
 nmap <silent> <Leader>co :botright copen<CR>
