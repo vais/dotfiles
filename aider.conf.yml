@@ -177,7 +177,7 @@ cache-keepalive-pings: 12
 #restore-chat-history: false
 
 ## Log the conversation with the LLM to this file (for example, .aider.llm.history)
-#llm-history-file: xxx
+llm-history-file: .aider.llm.history
 
 ##################
 # Output settings:
@@ -311,7 +311,7 @@ dark-mode: true
 #analytics-log: xxx
 
 ## Permanently disable analytics
-#analytics-disable: false
+analytics-disable: true
 
 ############
 # Upgrading:
