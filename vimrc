@@ -145,6 +145,9 @@ tmap <C-w><C-Space> <C-w>=
 " Fix Shift+Space bug in terminal mode:
 tmap <S-Space> <Space>
 
+" Fix <C-w><C-w> delay in terminal mode:
+tmap <C-w><C-w> <C-w>w
+
 " A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-o>
 
