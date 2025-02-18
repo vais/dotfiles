@@ -576,6 +576,10 @@ let g:closetag_regions = {
       \ 'elixir': 'elixirHeexSigil',
       \ }
 
+" vim-terminaider plugin settings:
+nmap <silent> <Leader>to :Terminaider --watch-files<CR>
+nmap <silent> <Leader>tq :TerminaiderHide<CR>
+
 " colorscheme settings:
 function! OverrideColorscheme() abort
   if &background ==# 'dark'
