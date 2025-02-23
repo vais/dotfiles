@@ -579,6 +579,9 @@ let g:closetag_regions = {
 " vim-terminaider plugin settings:
 nmap <silent> <Leader>to :Terminaider --watch-files<CR>
 nmap <silent> <Leader>tq :TerminaiderHide<CR>
+nmap <silent> <Leader>ta :TerminaiderAdd<CR>
+nmap <silent> <Leader>tr :TerminaiderAddReadOnly<CR>
+nmap <silent> <Leader>td :TerminaiderDrop<CR>
 
 " colorscheme settings:
 function! OverrideColorscheme() abort
