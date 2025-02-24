@@ -18,6 +18,7 @@ elseif has('mac')
 
   set guifont=Monaco:h14
   set guioptions-=b             " Turn off bottom scrollbars on gui macvim
+  set guioptions+=e             " Use MacVim tabs again now that they're awesome
 
   " Unmap default menu mappings:
   macmenu &Edit.Cut   key=<nop>
