@@ -445,7 +445,10 @@ augroup ConfigureAlePlugin
 augroup END
 
 " targets.vim plugin settings:
-let g:targets_nl = 'nN'
+if !exists('g:targets_nl')
+  let g:targets_nl = 'nN'
+endif
+
 augroup ConfigureTargetsPlugin
   autocmd!
   autocmd User targets#mappings#user call targets#mappings#extend({
