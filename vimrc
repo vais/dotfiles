@@ -108,6 +108,10 @@ function! ConfigureTerminal() abort
 
   " Do not show line numbers in terminal buffers:
   setlocal nonumber norelativenumber
+
+  " Add "insert mode" indicator for terminal buffers:
+  let l:mode = "%#DiffText#%{term_getstatus('') == 'running' ? '-- INSERT --' : ''}%*"
+  execute "setlocal statusline=" . escape(l:mode .  &statusline, " ")
 endfunction
 
 augroup ConfigureTerminal
