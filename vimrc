@@ -448,6 +448,21 @@ augroup ConfigureAlePlugin
   autocmd User ALELintPost redrawstatus
 augroup END
 
+function! ReapplyALEHighlights() abort
+  highlight link ALEErrorSign error
+  highlight link ALEStyleErrorSign ALEErrorSign
+  highlight link ALEWarningSign todo
+  highlight link ALEStyleWarningSign ALEWarningSign
+  highlight link ALEInfoSign ALEWarningSign
+  highlight link ALESignColumnWithErrors error
+
+  highlight link ALEVirtualTextError Comment
+  highlight link ALEVirtualTextStyleError ALEVirtualTextError
+  highlight link ALEVirtualTextWarning Comment
+  highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
+  highlight link ALEVirtualTextInfo ALEVirtualTextWarning
+endfunction
+
 " targets.vim plugin settings:
 if !exists('g:targets_nl')
   let g:targets_nl = 'nN'
@@ -603,6 +618,8 @@ function! OverrideColorscheme() abort
   endif
 
   highlight link GitCommitSummary Title
+
+  call ReapplyALEHighlights()
 endfunction
 
 augroup ConfigureColorscheme
