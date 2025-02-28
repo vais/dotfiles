@@ -366,9 +366,6 @@ let g:emmet_install_only_plug = 1
 imap <C-\> <plug>(emmet-expand-abbr)
 vmap <C-\> <plug>(emmet-expand-abbr)
 
-" Disable the built-in Netrw plugin
-let g:loaded_netrwPlugin = 1
-
 " Disable the built-in Zip plugin
 let g:loaded_zipPlugin = 1
 let g:loaded_zip = 1
