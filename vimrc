@@ -601,6 +601,8 @@ nmap <silent> <Leader>tq :TerminaiderHide<CR>
 nmap <silent> <Leader>ta :TerminaiderAdd<CR>
 nmap <silent> <Leader>tr :TerminaiderAddReadOnly<CR>
 nmap <silent> <Leader>td :TerminaiderDrop<CR>
+nmap <silent> <Leader>tx :TerminaiderExit<CR>
+nmap <silent> <Leader>tm :TerminaiderToggleRepoMap<CR>
 
 " colorscheme settings:
 function! OverrideColorscheme() abort
