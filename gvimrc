@@ -16,7 +16,7 @@ if has('win32') || has('win64') " Set GUI preferences unique to each OS:
 
 elseif has('mac')
 
-  set guifont=Monaco:h14
+  set guifont=JetBrainsMono-Regular:h14
   set guioptions-=b             " Turn off bottom scrollbars on gui macvim
   set guioptions+=e             " Use MacVim tabs again now that they're awesome
 
