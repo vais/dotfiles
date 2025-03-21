@@ -139,12 +139,12 @@ nmap <C-w>f :vertical wincmd f<CR>
 nmap <silent> <C-w>n      :vertical new<CR>
 tmap <silent> <C-w>n <C-w>:vertical new<CR>
 
-" Make all windows equal with wincmd space:
-nmap <C-w><Space>   <C-w>=
-tmap <C-w><Space>   <C-w>=
+" Make all windows equally wide with wincmd space:
+nmap <silent> <C-w><Space>   :horizontal wincmd =<CR>
+tmap <silent> <C-w><Space>   <C-w>:horizontal wincmd =<CR>
 
-nmap <C-w><C-Space> <C-w>=
-tmap <C-w><C-Space> <C-w>=
+nmap <silent> <C-w><C-Space> :horizontal wincmd =<CR>
+tmap <silent> <C-w><C-Space> <C-w>:horizontal wincmd =<CR>
 
 " Fix Shift+Space bug in terminal mode:
 tmap <S-Space> <Space>
@@ -187,8 +187,8 @@ nmap <silent> <C-w>\|         :NERDTreeClose<Bar>wincmd \|<CR>
 tmap <silent> <C-w>\|    <C-w>:NERDTreeClose<Bar>wincmd \|<CR>
 
 " Coverflow(tm)-style navigation for splits:
-nmap <silent> <C-w>\          :set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
-tmap <silent> <C-w>\     <C-w>:set winminwidth=20<Bar>wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+nmap <silent> <C-w>\          :set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+tmap <silent> <C-w>\     <C-w>:set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
 nmap <silent> <C-w>]          :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 tmap <silent> <C-w>]     <C-w>:set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
