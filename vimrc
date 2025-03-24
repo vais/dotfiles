@@ -152,6 +152,10 @@ tmap <S-Space> <Space>
 " Fix <C-w><C-w> delay in terminal mode:
 tmap <C-w><C-w> <C-w>w
 
+" Set terminal width equal to window width when moved to the very top/bottom:
+tmap <silent> <C-w>K <C-w>K<C-w>:execute "setlocal termwinsize=0x" . winwidth(0)<CR>
+tmap <silent> <C-w>J <C-w>J<C-w>:execute "setlocal termwinsize=0x" . winwidth(0)<CR>
+
 " A more ergonomic mapping for returning to a previous position in the jump list:
 nmap gr <C-o>
 
