@@ -82,6 +82,7 @@
 [submodule "vimfiles/pack/plugins/start/vim-resize-mode"]
 	path = vimfiles/pack/plugins/start/vim-resize-mode
 	url = https://github.com/vais/vim-resize-mode.git
+	branch = add-terminal-mode-support
 [submodule "vimfiles/pack/plugins/start/vim-gitgutter"]
 	path = vimfiles/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -114,7 +115,8 @@
 	url = https://github.com/tpope/vim-dadbod.git
 [submodule "vimfiles/pack/plugins/start/vim-dadbod-ui"]
 	path = vimfiles/pack/plugins/start/vim-dadbod-ui
-	url = https://github.com/kristijanhusak/vim-dadbod-ui.git
+	url = https://github.com/vais/vim-dadbod-ui.git
+	branch = db_ui_drawer_sections
 [submodule "vimfiles/pack/plugins/start/vim-dadbod-completion"]
 	path = vimfiles/pack/plugins/start/vim-dadbod-completion
 	url = https://github.com/kristijanhusak/vim-dadbod-completion.git
