@@ -1,0 +1,61 @@
+{
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+  "editor.cursorBlinking": "solid",
+  "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": false,
+  "editor.guides.indentation": false,
+  "editor.hover.delay": 10000,
+  "editor.matchBrackets": "near",
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": false,
+  "editor.stickyScroll.enabled": false,
+
+  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.format.enable": true,
+
+  "terminal.integrated.fontSize": 14,
+
+  "workbench.colorTheme": "Cursor Dark Midnight",
+  "workbench.tree.enableStickyScroll": false,
+
+  "vim.easymotion": true,
+  "vim.easymotionMarkerForegroundColorOneChar": "#00ff00",
+  "vim.hlsearch": true,
+  "vim.leader": "<Space>",
+  "vim.searchHighlightColor": "#98971A",
+  "vim.searchHighlightTextColor": "#1C1C1C",
+  "vim.visualstar": true,
+
+  "vim.insertModeKeyBindingsNonRecursive": [
+    { "before": [ "j", "j" ], "after": [ "<Esc>" ] }
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": [ "<C-Space>" ], "commands": [ "workbench.action.showAllEditorsByMostRecentlyUsed" ] },
+    { "before": [ "<C-j>" ], "after": [ "<C-e>", "j" ] },
+    { "before": [ "<C-k>" ], "after": [ "<C-y>", "k" ] },
+    { "before": [ "<Leader>", "A" ], "commands": [ "alternateFile.createAlternateFileInSplit" ] },
+    { "before": [ "<Leader>", "a" ], "commands": [ "alternateFile.createAlternateFile" ] },
+    { "before": [ "<Leader>", "h" ], "commands": [ "editor.action.showHover" ] },
+    { "before": [ "<Leader>", "j" ], "after": [ "<Leader>", "<Leader>", "s" ]},
+    { "before": [ "<Leader>", "p" ], "commands": [ "workbench.action.quickOpen" ] },
+    { "before": [ "[", "T" ], "commands": [ ":tabfirst" ] },
+    { "before": [ "[", "q" ], "commands": [ "search.action.focusPreviousSearchResult" ] },
+    { "before": [ "[", "t" ], "commands": [ ":tabprevious" ] },
+    { "before": [ "]", "T" ], "commands": [ ":tablast" ] },
+    { "before": [ "]", "q" ], "commands": [ "search.action.focusNextSearchResult" ] },
+    { "before": [ "]", "t" ], "commands": [ ":tabnext" ] },
+    { "before": [ "g", "h" ], "commands": [ ":set hlsearch!" ] },
+    { "before": [ "g", "n" ], "after": [ "*", "N", "z", "z" ] },
+    { "before": [ "g", "r" ], "after": [ "<C-o>" ] }
+  ],
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    { "before": [ "<C-j>" ], "after": [ "<C-e>", "j" ] },
+    { "before": [ "<C-k>" ], "after": [ "<C-y>", "k" ] },
+    { "before": [ "<S-Tab>" ], "commands": [ "editor.action.outdentLines" ] },
+    { "before": [ "<Tab>" ], "commands": [ "editor.action.indentLines" ] },
+    { "before": [ "g", "n" ], "after": [ "*", "N", "z", "z" ] }
+  ]
+}
