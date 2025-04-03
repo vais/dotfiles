@@ -412,7 +412,7 @@ let g:ale_set_highlights = 0
 let g:ale_set_balloons = 0
 let g:ale_hover_cursor = 0
 
-nmap <F1> :ALEHover<CR>
+nmap <Leader>h :ALEHover<CR>
 
 nmap gd         :ALEGoToDefinition<CR>
 nmap <C-w>d     :ALEGoToDefinition -vsplit<CR>
