@@ -539,6 +539,7 @@ let g:qfenter_exclude_filetypes = [
 
 " projectionist plugin settings:
 nmap <silent> <Leader>a :A<CR>
+nmap <silent> <Leader>A :AV<CR>
 
 let g:projectionist_heuristics = {
       \   'mix.exs': {
