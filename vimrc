@@ -478,44 +478,6 @@ let g:wheel#scroll_on_wrap = 0
 let g:wheel#map#left = '<C-h>'
 let g:wheel#map#right = '<C-l>'
 
-" vim-test plugin settings:
-let g:test#enabled_runners = ['elixir#exunit']
-
-function! TestStrategySplit(cmd)
-  execute 'AsyncRun -mode=term -pos=right -focus=0 '.a:cmd
-endfunction
-
-let g:test#custom_strategies = {
-      \   'test-strategy-split': function('TestStrategySplit'),
-      \ }
-
-let g:test#strategy = 'test-strategy-split'
-
-function! TestMode(mode)
-  if a:mode == 'debug'
-    let g:test#elixir#exunit#executable = 'iex --dbg pry -S mix test'
-    let g:test#elixir#exunit#options = '--trace --seed 0'
-  elseif a:mode == 'trace'
-    let g:test#elixir#exunit#executable = 'mix test'
-    let g:test#elixir#exunit#options = '--trace --seed 0'
-  else
-    let g:test#elixir#exunit#executable = 'mix test'
-    let g:test#elixir#exunit#options = ''
-  endif
-endfunction
-
-nmap <silent> <Leader>rn :write<Bar>call TestMode('quiet')<Bar>TestNearest<CR>
-nmap <silent> <Leader>rf :write<Bar>call TestMode('quiet')<Bar>TestFile<CR>
-nmap <silent> <Leader>rs :write<Bar>call TestMode('quiet')<Bar>TestSuite<CR>
-
-nmap <silent> <Leader>rN :write<Bar>call TestMode('trace')<Bar>TestNearest<CR>
-nmap <silent> <Leader>rF :write<Bar>call TestMode('trace')<Bar>TestFile<CR>
-nmap <silent> <Leader>rS :write<Bar>call TestMode('trace')<Bar>TestSuite<CR>
-
-nmap <silent> <Leader>rd :write<Bar>call TestMode('debug')<Bar>TestNearest<CR>
-nmap <silent> <Leader>rl :write<Bar>TestLast<CR>
-nmap <silent> <Leader>rv :TestVisit<CR>
-
 " QFEnter plugin settings:
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>', '<2-LeftMouse>']
