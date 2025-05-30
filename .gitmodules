@@ -119,9 +119,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-dadbod-completion"]
 	path = vimfiles/pack/plugins/start/vim-dadbod-completion
 	url = https://github.com/kristijanhusak/vim-dadbod-completion.git
-[submodule "vimfiles/pack/plugins/start/copilot.vim"]
-	path = vimfiles/pack/plugins/start/copilot.vim
-	url = https://github.com/github/copilot.vim.git
 [submodule "vimfiles/pack/plugins/start/vim9-stargate"]
 	path = vimfiles/pack/plugins/start/vim9-stargate
 	url = https://github.com/monkoose/vim9-stargate.git

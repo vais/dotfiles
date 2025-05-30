@@ -584,11 +584,6 @@ let g:db_ui_table_helpers = {
       \ 	}
       \ }
 
-" copilot.vim plugin settings:
-imap <C-j> <Plug>(copilot-next)
-imap <C-k> <Plug>(copilot-previous)
-imap <C-l> <Plug>(copilot-accept-word)
-
 " vim9-stargate plugin settings:
 noremap <Leader>j <Cmd>call stargate#OKvim(1)<CR>
 noremap <C-w>; <Cmd>call stargate#Galaxy()<CR>
