@@ -385,8 +385,6 @@ let g:ale_fixers = {
       \   'typescriptreact': ['prettier'],
       \   'html': ['prettier'],
       \   'css': ['prettier'],
-      \   'elixir': ['mix_format'],
-      \   'eelixir': ['mix_format'],
       \ }
 
 let g:ale_lint_on_save = 1
@@ -396,12 +394,9 @@ let g:ale_linters = {
       \   'typescript': ['tsserver'],
       \   'typescriptreact': ['tsserver'],
       \   'ruby': ['ruby'],
-      \   'elixir': ['elixir-ls'],
       \ }
 
 let g:ale_javascript_eslint_options="--rule 'no-debugger: off, import/no-unused-modules: off'"
-let g:ale_elixir_elixir_ls_release = expand('~/github/elixir-ls/rel')
-let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
@@ -541,30 +536,6 @@ let g:qfenter_exclude_filetypes = [
 nmap <silent> <Leader>a :A<CR>
 nmap <silent> <Leader>A :AV<CR>
 
-let g:projectionist_heuristics = {
-      \   'mix.exs': {
-      \     'lib/*.ex': {
-      \       'type': 'source',
-      \       'alternate': 'test/{}_test.exs',
-      \       'template': [
-      \         'defmodule {camelcase|capitalize|dot} do',
-      \         'end'
-      \       ]
-      \     },
-      \     'test/*_test.exs': {
-      \       'type': 'test',
-      \       'alternate': 'lib/{}.ex',
-      \       'template': [
-      \         'defmodule {camelcase|capitalize|dot}Test do',
-      \         '  use ExUnit.Case, async: true',
-      \         '',
-      \         '  alias {camelcase|capitalize|dot}',
-      \         'end'
-      \       ]
-      \     }
-      \   }
-      \ }
-
 " vim-dadbod-ui plugin settings:
 let g:db_ui_show_help = 0
 let g:db_ui_auto_execute_table_helpers = 1
@@ -590,10 +561,9 @@ noremap <C-w>; <Cmd>call stargate#Galaxy()<CR>
 tnoremap <C-w>; <Cmd>call stargate#Galaxy()<CR>
 
 " vim-closetag plugin settings:
-let g:closetag_filetypes = 'html,xml,javascript,elixir,eelixir'
+let g:closetag_filetypes = 'html,xml,javascript'
 let g:closetag_regions = {
       \ 'javascript': 'litHtmlRegion',
-      \ 'elixir': 'elixirHeexSigil',
       \ }
 
 " vim-terminaider plugin settings:
