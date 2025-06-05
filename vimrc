@@ -504,6 +504,9 @@ let g:db_ui_auto_execute_table_helpers = 1
 let g:db_ui_force_echo_notifications = 1
 let g:db_ui_drawer_sections = ['new_query', 'schemas', 'saved_queries', 'buffers']
 
+" disable vim-dadbod-completion:
+let g:vim_dadbod_completion_loaded = 1
+
 call tcomment#type#Define('mysql', '-- %s')
 call tcomment#type#Define('plsql', '-- %s')
 
