@@ -475,6 +475,13 @@ augroup ConfigureTargetsPlugin
         \ })
 augroup END
 
+" vim-textobj-entire plugin settings:
+let g:textobj_entire_no_default_key_mappings = 1
+xmap ag <Plug>(textobj-entire-a)
+omap ag <Plug>(textobj-entire-a)
+xmap ig <Plug>(textobj-entire-i)
+omap ig <Plug>(textobj-entire-i)
+
 " vim-wheel plugin settings:
 let g:wheel#map#mouse = 0
 let g:wheel#scroll_on_wrap = 0
