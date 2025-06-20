@@ -121,6 +121,10 @@ augroup END
 
 let mapleader = "\<Space>"        " Space is my Leader
 
+let g:aider_width = get(g:, 'aider_width', 80)
+command! -nargs=* Aider execute "vertical botright terminal ++cols=" . g:aider_width . " aider <args>" | set filetype=aider
+command! -nargs=* Claude execute "vertical botright terminal claude <args>" | set filetype=claude
+
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
 map  g]                       g<C-]>
 map  <C-]>                    g<C-]>
@@ -574,3 +578,8 @@ augroup END
 
 set background=dark
 colorscheme retrobox
+
+" Source local configuration if it exists:
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
