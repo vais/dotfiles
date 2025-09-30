@@ -8,8 +8,6 @@ mklink "%HOMEPATH%\_vimrc" "%HOMEPATH%\dotfiles\vimrc"
 mklink "%HOMEPATH%\_gvimrc" "%HOMEPATH%\dotfiles\gvimrc"
 mklink "%HOMEPATH%\vimfiles" "%HOMEPATH%\dotfiles\vimfiles"
 
-mklink "%HOMEPATH%\.irbrc" "%HOMEPATH%\dotfiles\irbrc"
-
 mklink "%HOMEPATH%\.ctags" "%HOMEPATH%\dotfiles\ctags"
 
 mklink "%HOMEPATH%\.sql-formatter.json" "%HOMEPATH%\dotfiles\sql-formatter.json"
