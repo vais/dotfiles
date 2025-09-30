@@ -10,8 +10,6 @@ ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/gvimrc ~/.gvimrc
 ln -sn ~/dotfiles/vimfiles ~/.vim
 
-ln -s ~/dotfiles/ctags ~/.ctags
-
 ln -s ~/dotfiles/sql-formatter.json ~/.sql-formatter.json
 
 ln -s ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
