@@ -317,6 +317,10 @@ imap <silent> <F5> <Esc><F5>
 imap jj <Esc>
 tmap jj <C-w>N
 
+" Trigger normal mode on scroll in terminal
+tnoremap <ScrollWheelUp>   <C-w>N<ScrollWheelUp>
+tnoremap <ScrollWheelDown> <C-w>N<ScrollWheelDown>
+
 " Map <Leader>l to:
 " 1. clear and redraw the screen
 " 2. fix broken syntax highlighting
