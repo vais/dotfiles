@@ -2,7 +2,7 @@ setlocal termwinscroll=500
 execute "setlocal termwinsize=" . winheight(0) . "x" . winwidth(0)
 
 " Prompt pattern
-let s:prompt_pattern = '^[a-z -]*>\ '
+let s:prompt_pattern = '^ │ '
 
 " Fold on prompt pattern
 setlocal foldmethod=expr

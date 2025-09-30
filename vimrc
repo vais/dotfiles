@@ -94,11 +94,9 @@ set tagcase=match                 " Make tags file search case-sensitive
 set smoothscroll                  " Make scrolling work when wrap is set
 set autoread                      " Automatically read a file if it's changed outside of Vim
 
-set termwinscroll=100000          " 10x the default number of terminal scrollback lines to keep
-
 augroup ConfigureCursorline       " Make it so that only active window has cursorline
   autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd VimEnter,WinEnter,BufWinEnter * if &buftype !=# 'terminal' | setlocal cursorline | endif
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
@@ -109,8 +107,13 @@ function! ConfigureTerminal() abort
   " Do not show line numbers in terminal buffers:
   setlocal nonumber norelativenumber
 
+  " Reduce jank
+  setlocal nocursorline nocursorcolumn
+  setlocal lazyredraw
+  setlocal syntax=OFF
+
   " Add "insert mode" indicator for terminal buffers:
-  let l:mode = "%#DiffText#%{term_getstatus('') == 'running' ? '-- INSERT --' : ''}%*"
+  let l:mode = "%#DiffText#%{term_getstatus('') == 'running' ? '-- TERMINAL --' : ''}%*"
   execute "setlocal statusline=" . escape(l:mode .  &statusline, " ")
 endfunction
 
@@ -119,11 +122,55 @@ augroup ConfigureTerminal
   autocmd TerminalOpen * call ConfigureTerminal()
 augroup END
 
+" Copy current buffer paths to the system clipboard.
+function! s:GetCopyPath(kind) abort
+  let l:file = expand('%:p')
+  if empty(l:file)
+    echoerr 'No file path available for this buffer'
+    return ''
+  endif
+
+  if a:kind ==# 'absolute'
+    return l:file
+  endif
+
+  " Default to a path relative to the working directory.
+  return fnamemodify(l:file, ':.')
+endfunction
+
+function! s:CopyFilePath(kind, start_line, end_line) abort
+  let l:path = s:GetCopyPath(a:kind)
+  if empty(l:path)
+    return
+  endif
+
+  let l:start = a:start_line
+  let l:end = a:end_line
+
+  if l:start > 0
+    let l:end = l:end > 0 ? l:end : l:start
+    if l:start > l:end
+      let [l:start, l:end] = [l:end, l:start]
+    endif
+    if l:start == l:end
+      let l:path .= ':' . l:start
+    else
+      let l:path .= ':' . l:start . '-' . l:end
+    endif
+  endif
+
+  call setreg('+', l:path, 'v')
+  call setreg('+', l:path, 'v')
+  echo 'Copied: ' . l:path
+endfunction
+
 let mapleader = "\<Space>"        " Space is my Leader
 
-let g:aider_width = get(g:, 'aider_width', 80)
-command! -nargs=* Aider execute "vertical botright terminal ++cols=" . g:aider_width . " aider <args>" | set filetype=aider
-command! -nargs=* Claude execute "vertical botright terminal claude <args>" | set filetype=claude
+let g:terminal_width = get(g:, 'terminal_width', 100)
+command! -nargs=* Aider  execute "vertical botright terminal ++cols=" . g:terminal_width . " aider        <args>" | set filetype=aider
+command! -nargs=* Claude execute "vertical botright terminal ++cols=" . g:terminal_width . " claude       <args>" | set filetype=claude
+command! -nargs=* Codex  execute "vertical botright terminal ++cols=" . g:terminal_width . " codex        <args>" | set filetype=codex
+command! -nargs=* Cursor execute "vertical botright terminal ++cols=" . g:terminal_width . " cursor-agent <args>" | set filetype=cursor
 
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
 map  g]                       g<C-]>
@@ -165,6 +212,14 @@ nmap gr <C-o>
 
 " Neuter ZZ because it's too dangerous:
 nnoremap ZZ zz
+
+nnoremap <silent> <Leader>fa :call <SID>CopyFilePath('absolute', 0, 0)<CR>
+nnoremap <silent> <Leader>fr :call <SID>CopyFilePath('relative', 0, 0)<CR>
+nnoremap <silent> <Leader>fl :call <SID>CopyFilePath('relative', line('.'), line('.'))<CR>
+
+vnoremap <silent> <Leader>fa :<C-u>call <SID>CopyFilePath('absolute', line("'<"), line("'>"))<CR>
+vnoremap <silent> <Leader>fr :<C-u>call <SID>CopyFilePath('relative', line("'<"), line("'>"))<CR>
+vnoremap <silent> <Leader>fl :<C-u>call <SID>CopyFilePath('relative', line("'<"), line("'>"))<CR>
 
 " Expand %% on the command line to current file's directory path:
 cnoremap %% <C-r>=expand('%:p:h')<CR>
@@ -570,8 +625,3 @@ augroup END
 
 set background=dark
 colorscheme retrobox
-
-" Source local configuration if it exists:
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif

@@ -1,4 +1,5 @@
-setlocal termwinsize=0x0
+setlocal termwinscroll=500
+execute "setlocal termwinsize=" . winheight(0) . "x" . winwidth(0)
 
 " Prompt pattern
 let s:prompt_pattern = '^>\ '
