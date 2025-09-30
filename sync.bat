@@ -12,6 +12,4 @@ mklink "%HOMEPATH%\.irbrc" "%HOMEPATH%\dotfiles\irbrc"
 
 mklink "%HOMEPATH%\.ctags" "%HOMEPATH%\dotfiles\ctags"
 
-mklink "%HOMEPATH%\.aider.conf.yml" "%HOMEPATH%\dotfiles\aider.conf.yml"
-
 mklink "%HOMEPATH%\.sql-formatter.json" "%HOMEPATH%\dotfiles\sql-formatter.json"

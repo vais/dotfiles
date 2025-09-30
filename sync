@@ -14,8 +14,6 @@ ln -s ~/dotfiles/irbrc ~/.irbrc
 
 ln -s ~/dotfiles/ctags ~/.ctags
 
-ln -s ~/dotfiles/aider.conf.yml ~/.aider.conf.yml
-
 ln -s ~/dotfiles/sql-formatter.json ~/.sql-formatter.json
 
 ln -s ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
