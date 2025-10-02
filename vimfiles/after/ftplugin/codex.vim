@@ -28,3 +28,6 @@ nnoremap <buffer> <expr> <C-p> line('.') == line('$') ? '[z' : 'zk[z'
 tmap <buffer> <C-w>K <C-w>K
 tmap <buffer> <C-w>J <C-w>J
 
+" Teach Codex control-P and control-N
+tmap <buffer> <C-p> <Up>
+tmap <buffer> <C-n> <Down>
