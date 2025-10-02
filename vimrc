@@ -327,6 +327,10 @@ tnoremap <ScrollWheelDown> <C-w>N<ScrollWheelDown>
 " 3. get rid of stale lint errors
 nnoremap <silent> <Leader>l <C-l>:syntax sync fromstart<CR>:ALELint<CR>
 
+" Close a window via Stargate:
+noremap  <C-w>u <Cmd>call <SID>CloseStargateWindow()<CR>
+tnoremap <C-w>u <Cmd>call <SID>CloseStargateWindow()<CR>
+
 cnoremap <expr> <C-p> wildmenumode() ? '<C-p>' : '<Up>'
 cnoremap <expr> <C-n> wildmenumode() ? '<C-n>' : '<Down>'
 
@@ -382,6 +386,22 @@ function! FindInFiles(text, ...)
     call writefile([str], expand('~/.vimsearch'))
     call feedkeys(cmd)
   endif
+endfunction
+
+function! s:CloseStargateWindow() abort
+  let l:origin = win_getid()
+  call stargate#Galaxy()
+  let l:target = win_getid()
+  let [l:tabnr, l:winnr] = win_id2tabwin(l:target)
+
+  if l:target == l:origin || l:tabnr == 0
+    call win_gotoid(l:origin)
+    return
+  endif
+
+  call win_gotoid(l:origin)
+  call win_execute(l:target, 'close')
+  call win_gotoid(l:origin)
 endfunction
 
 " vim-fugitive plugin settings:
