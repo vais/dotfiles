@@ -8,3 +8,8 @@ call textobj#user#plugin('javascript', {
       \     'select-i': '<buffer> io',
       \   },
       \ })
+
+augroup javascript_syntax_sync
+  autocmd! * <buffer>
+  autocmd BufEnter <buffer> syntax sync fromstart
+augroup END
