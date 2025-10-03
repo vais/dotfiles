@@ -317,6 +317,19 @@ imap <silent> <F5> <Esc><F5>
 imap jj <Esc>
 tmap jj <C-w>N
 
+" Trigger normal mode on scroll in terminal
+function! s:term_scroll(dir) abort
+  let l:pos = getmousepos()
+  let l:wheel = a:dir ==# 'up' ? "\<ScrollWheelUp>" : "\<ScrollWheelDown>"
+  if l:pos.winid == win_getid()
+    return "\<C-w>N" . l:wheel
+  endif
+  return l:wheel
+endfunction
+
+tnoremap <expr> <ScrollWheelUp>   <SID>term_scroll('up')
+tnoremap <expr> <ScrollWheelDown> <SID>term_scroll('down')
+
 " Map <Leader>l to:
 " 1. clear and redraw the screen
 " 2. fix broken syntax highlighting
