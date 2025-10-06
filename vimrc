@@ -122,6 +122,18 @@ augroup ConfigureTerminal
   autocmd TerminalOpen * call ConfigureTerminal()
 augroup END
 
+" Auto-reload buffers changed by an external process:
+function! s:AutoReloadBuffer() abort
+  if &buftype ==# '' && filereadable(expand('%:p'))
+    checktime
+  endif
+endfunction
+
+augroup AutoReloadBuffer
+  autocmd!
+  autocmd BufEnter * call s:AutoReloadBuffer()
+augroup END
+
 " Copy current buffer paths to the system clipboard.
 function! s:GetCopyPath(kind) abort
   let l:file = expand('%:p')
