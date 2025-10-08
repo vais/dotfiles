@@ -28,3 +28,6 @@ nnoremap <buffer> <expr> <C-p> line('.') == line('$') ? '[z' : 'zk[z'
 tmap <buffer> <C-w>K <C-w>K
 tmap <buffer> <C-w>J <C-w>J
 
+" Temporarily neuter <C-d> in Cursor:
+" (hopefully they will fix forward delete, so we can remap in the future)
+tmap <buffer> <C-d> <nop>
