@@ -343,6 +343,17 @@ endfunction
 tnoremap <expr> <ScrollWheelUp>   <SID>term_scroll('up')
 tnoremap <expr> <ScrollWheelDown> <SID>term_scroll('down')
 
+" Trigger normal mode on left click in terminal
+function! s:term_click() abort
+  let l:pos = getmousepos()
+  if l:pos.winid == win_getid()
+    return "\<C-w>N\<LeftMouse>"
+  endif
+  return "\<LeftMouse>"
+endfunction
+
+tnoremap <expr> <LeftMouse> <SID>term_click()
+
 " Map <Leader>l to:
 " 1. clear and redraw the screen
 " 2. fix broken syntax highlighting
