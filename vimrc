@@ -79,11 +79,12 @@ set foldcolumn=0                  " Do not show a column at the side of the wind
 set foldmethod=indent             " Lines with equal indent form a fold.
 set foldtext=                     " Show only the most basic text to represent a fold.
 
-if has('mac')                     " Fix cursor shapes for Terminal on macOS:
-  let &t_SI.="\e[5 q"             " SI = INSERT mode
-  let &t_SR.="\e[4 q"             " SR = REPLACE mode
-  let &t_EI.="\e[1 q"             " EI = NORMAL mode (ELSE)
+" Fix terminal cursor shapes:
+let &t_SI.="\e[5 q"               " SI = INSERT mode
+let &t_SR.="\e[4 q"               " SR = REPLACE mode
+let &t_EI.="\e[1 q"               " EI = NORMAL mode (ELSE)
 
+if has('mac')
   " Make :terminal source .bash_profile on macOS
   set shell=/bin/bash\ --rcfile\ ~/.bash_profile
 endif
