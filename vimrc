@@ -101,6 +101,20 @@ augroup ConfigureCursorline       " Make it so that only active window has curso
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
+function! s:TerminalStatuslinePrefix(active) abort
+  if a:active
+    return "%#DiffText#%{term_getstatus('') ==# 'running' ? '-- TERMINAL --' : ''}%*"
+  endif
+  return "%{term_getstatus('') ==# 'running' ? '-- TERMINAL --' : ''}"
+endfunction
+
+function! s:SetTerminalStatusline(active) abort
+  let l:tail = get(w:, 'terminal_statusline_tail', &g:statusline)
+  let l:stl  = s:TerminalStatuslinePrefix(a:active) . l:tail
+  execute "setlocal statusline=" . escape(l:stl, ' ')
+  redrawstatus
+endfunction
+
 function! ConfigureTerminal() abort
   " Set terminal width equal to window width:
   execute "setlocal termwinsize=0x" . winwidth(0)
@@ -113,14 +127,22 @@ function! ConfigureTerminal() abort
   setlocal lazyredraw
   setlocal syntax=OFF
 
-  " Add "insert mode" indicator for terminal buffers:
-  let l:mode = "%#DiffText#%{term_getstatus('') == 'running' ? '-- TERMINAL --' : ''}%*"
-  execute "setlocal statusline=" . escape(l:mode .  &statusline, " ")
+  " Add "insert mode" indicator for terminal buffers, highlighted only when active:
+  let w:terminal_statusline_tail = &g:statusline
+  call s:SetTerminalStatusline(1)
 endfunction
 
 augroup ConfigureTerminal
   autocmd!
   autocmd TerminalOpen * call ConfigureTerminal()
+augroup END
+
+augroup TerminalStatuslineFocus
+  autocmd!
+  autocmd WinEnter * if &buftype ==# 'terminal' | call <SID>SetTerminalStatusline(1) | endif
+  autocmd WinLeave * if &buftype ==# 'terminal' | call <SID>SetTerminalStatusline(0) | endif
+  " Handle showing an existing terminal buffer in a new window
+  autocmd BufWinEnter * if &buftype ==# 'terminal' | call <SID>SetTerminalStatusline(1) | endif
 augroup END
 
 " Auto-reload buffers changed by an external process:
