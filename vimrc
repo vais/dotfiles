@@ -620,11 +620,31 @@ omap ag <Plug>(textobj-entire-a)
 xmap ig <Plug>(textobj-entire-i)
 omap ig <Plug>(textobj-entire-i)
 
-" vim-wheel plugin settings:
-let g:wheel#map#mouse = 0
-let g:wheel#scroll_on_wrap = 0
-let g:wheel#map#left = '<C-h>'
-let g:wheel#map#right = '<C-l>'
+" Replace vim-wheel plugin:
+function! s:scroll_move(direction) abort
+  let l:scroll = a:direction ==# 'down' ? "\<C-e>" : "\<C-y>"
+
+  if a:direction ==# 'down'
+    if winline() == 1
+      return l:scroll
+    endif
+  else
+    if winline() == winheight(0)
+      return l:scroll
+    endif
+  endif
+
+  if &wrap
+    return l:scroll . (a:direction ==# 'down' ? 'gj' : 'gk')
+  endif
+
+  return l:scroll . (a:direction ==# 'down' ? 'j' : 'k')
+endfunction
+
+noremap <C-h> zh
+noremap <C-l> zl
+noremap <expr> <C-j> <SID>scroll_move('down')
+noremap <expr> <C-k> <SID>scroll_move('up')
 
 " QFEnter plugin settings:
 let g:qfenter_keymap = {}
