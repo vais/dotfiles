@@ -103,7 +103,7 @@ augroup END
 
 function! s:TerminalStatuslinePrefix(active) abort
   if a:active
-    return "%#DiffText#%{term_getstatus('') ==# 'running' ? '-- TERMINAL --' : ''}%*"
+    return "%#TerminalStatuslineRunning#%{term_getstatus('') ==# 'running' ? '-- TERMINAL --' : ''}%*"
   endif
   return "%{term_getstatus('') ==# 'running' ? '-- TERMINAL --' : ''}"
 endfunction
@@ -711,6 +711,8 @@ function! OverrideColorscheme() abort
     highlight Visual guifg=#076678 guibg=#fbf1c7 gui=reverse ctermfg=23 ctermbg=230 cterm=reverse
     highlight QuickFixLine guifg=#fbf1c7 guibg=#427b58 gui=NONE ctermfg=230 ctermbg=29 cterm=NONE
   endif
+
+  highlight TerminalStatuslineRunning guifg=#1d2021 guibg=#fabd2f gui=bold ctermfg=234 ctermbg=214 cterm=bold
 
   highlight link GitCommitSummary Title
 
