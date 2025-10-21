@@ -383,8 +383,8 @@ tnoremap <expr> <LeftMouse> <SID>term_click()
 nnoremap <silent> <Leader>l <C-l>:syntax sync fromstart<CR>:ALELint<CR>
 
 " Close a window via Stargate:
-noremap  <C-w>. <Cmd>call <SID>CloseStargateWindow()<CR>
-tnoremap <C-w>. <Cmd>call <SID>CloseStargateWindow()<CR>
+noremap  <C-w>, <Cmd>call <SID>CloseStargateWindow()<CR>
+tnoremap <C-w>, <Cmd>call <SID>CloseStargateWindow()<CR>
 
 cnoremap <expr> <C-p> wildmenumode() ? '<C-p>' : '<Up>'
 cnoremap <expr> <C-n> wildmenumode() ? '<C-n>' : '<Down>'
