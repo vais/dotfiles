@@ -199,13 +199,15 @@ function! s:CopyFilePath(kind, start_line, end_line) abort
   echo 'Copied: ' . l:path
 endfunction
 
-let mapleader = "\<Space>"        " Space is my Leader
+" Space is my Leader:
+let mapleader = "\<Space>"
 
-let g:terminal_width = get(g:, 'terminal_width', 100)
-command! -nargs=* Aider  execute "vertical botright terminal ++cols=" . g:terminal_width . " aider        <args>" | set filetype=aider
-command! -nargs=* Claude execute "vertical botright terminal ++cols=" . g:terminal_width . " claude       <args>" | set filetype=claude
-command! -nargs=* Codex  execute "vertical botright terminal ++cols=" . g:terminal_width . " codex        <args>" | set filetype=codex
-command! -nargs=* Cursor execute "vertical botright terminal ++cols=" . g:terminal_width . " cursor-agent <args>" | set filetype=cursor
+let g:ai_term_width = 100
+let g:ai_term_send_delay_ms = 1000
+command! -range -nargs=* Aider  call ai_term#OpenTerminalSession('aider',        <line1>, <line2>, <range>, <q-args>)
+command! -range -nargs=* Claude call ai_term#OpenTerminalSession('claude',       <line1>, <line2>, <range>, <q-args>)
+command! -range -nargs=* Codex  call ai_term#OpenTerminalSession('codex',        <line1>, <line2>, <range>, <q-args>)
+command! -range -nargs=* Cursor call ai_term#OpenTerminalSession('cursor-agent', <line1>, <line2>, <range>, <q-args>)
 
 " Jump to definition if there's only one matching tag, otherwise list all matching tags:
 map  g]                       g<C-]>
@@ -463,6 +465,8 @@ endfunction
 nmap <silent> <Leader>gg :-tab Git<CR>
 nmap <silent> <Leader>gb :Git blame<CR>
 nmap <silent> <Leader>gv :GV -99<CR>
+nmap <silent> <C-w>gg :vertical Git<CR>
+tmap <silent> <C-w>gg <C-w>:vertical Git<CR>
 
 " vim-gitgutter plugin settings:
 set updatetime=100
@@ -483,7 +487,9 @@ let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
 nnoremap <silent> <C-@> :CtrlPBuffer<CR>
+vnoremap <silent> <C-@> :<C-U>CtrlPBuffer<CR>
 nmap <C-Space> <C-@>
+vmap <C-Space> <C-@>
 let g:ctrlp_prompt_mappings = {'PrtExit()': ['<C-@>', '<C-Space>', '<Esc>', '<C-c>', '<C-g>']}
 let g:ctrlp_map = '<Leader>p'
 

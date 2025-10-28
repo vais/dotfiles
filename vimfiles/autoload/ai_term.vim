@@ -27,18 +27,55 @@ function! ai_term#setup(config) abort
   call s:define_buffer_maps()
 endfunction
 
-function! ai_term#SendLastFocusedRelativePath() abort
-  let l:path = s:get_last_focused_relative_path()
+function! ai_term#RecordRange(buf, start, end, range_count) abort
+  if !s:is_file_buffer(a:buf)
+    return
+  endif
+  if a:range_count > 0
+    call s:store_selection(a:buf, a:start, a:end)
+  else
+    call s:clear_selection()
+  endif
+endfunction
+
+function! ai_term#OpenTerminalSession(session, line1, line2, range_count, qargs) abort
+  let l:buf = bufnr('%')
+  call ai_term#RecordRange(l:buf, a:line1, a:line2, a:range_count)
+
+  let l:width = get(g:, 'ai_term_width', 100)
+  let l:cmd = "vertical botright terminal ++cols=" . l:width . " " . a:session
+  if !empty(a:qargs)
+    let l:cmd .= ' ' . a:qargs
+  endif
+
+  execute l:cmd
+  let l:term_buf = bufnr('%')
+  execute 'set filetype=' . a:session
+
+  " Give the terminal job a moment to start before sending context.
+  let l:delay = get(g:, 'ai_term_send_delay_ms', 1000)
+  call timer_start(l:delay, {tid -> ai_term#SendLastFocusedLocation(1, l:term_buf)})
+endfunction
+
+function! ai_term#SendLastFocusedLocation(...) abort
+  let l:force_send = a:0 >= 1 ? a:1 : 0
+  let l:target_buf = a:0 >= 2 ? a:2 : bufnr('%')
+
+  let l:path = s:get_last_focused_location()
   if empty(l:path)
     return ''
   endif
 
-  if mode(1) =~# '^t'
+  if l:target_buf <= 0 || !bufexists(l:target_buf)
+    return ''
+  endif
+
+  if !l:force_send && mode(1) =~# '^t'
     return l:path
   endif
 
   if exists('*term_sendkeys')
-    call term_sendkeys(bufnr('%'), l:path)
+    call term_sendkeys(l:target_buf, l:path)
   else
     echoerr 'Sending text to the terminal is not supported in this Vim'
   endif
@@ -76,10 +113,10 @@ function! s:define_buffer_maps() abort
   tmap <buffer> <C-w>K <C-w>K
   tmap <buffer> <C-w>J <C-w>J
 
-  tnoremap <silent> <expr> <buffer> <C-w>f ai_term#SendLastFocusedRelativePath()
+  tnoremap <silent> <expr> <buffer> <C-w>f ai_term#SendLastFocusedLocation()
 endfunction
 
-function! s:get_last_focused_relative_path() abort
+function! s:get_last_focused_location() abort
   let l:candidates = [s:state, {'buf': bufnr('#'), 'lnum': 0}]
   for l:item in l:candidates
     let l:buf = get(l:item, 'buf', -1)
@@ -160,7 +197,7 @@ function! s:take_selection(buf) abort
 
   let l:start = get(s:selection, 'start', 0)
   let l:end = get(s:selection, 'end', 0)
-  let s:selection = {'buf': -1, 'start': 0, 'end': 0}
+  call s:clear_selection()
 
   if l:start <= 0 || l:end <= 0
     return ''
@@ -198,19 +235,9 @@ function! s:remember_visual_selection() abort
   if !s:is_file_buffer(l:buf)
     return
   endif
-
   let l:start = line("'<")
   let l:end = line("'>")
-  if l:start <= 0 || l:end <= 0
-    let s:selection = {'buf': -1, 'start': 0, 'end': 0}
-    return
-  endif
-
-  if l:end < l:start
-    let [l:start, l:end] = [l:end, l:start]
-  endif
-
-  let s:selection = {'buf': l:buf, 'start': l:start, 'end': l:end}
+  call s:store_selection(l:buf, l:start, l:end)
 endfunction
 
 function! s:seed_state() abort
@@ -236,4 +263,23 @@ function! s:seed_state() abort
   if get(l:latest, 'buf', -1) > 0
     call s:set_focus(l:latest.buf, l:latest.lnum)
   endif
+endfunction
+
+function! s:store_selection(buf, start, end) abort
+  if a:start <= 0 || a:end <= 0
+    call s:clear_selection()
+    return
+  endif
+
+  let l:start = a:start
+  let l:end = a:end
+  if l:end < l:start
+    let [l:start, l:end] = [l:end, l:start]
+  endif
+
+  let s:selection = {'buf': a:buf, 'start': l:start, 'end': l:end}
+endfunction
+
+function! s:clear_selection() abort
+  let s:selection = {'buf': -1, 'start': 0, 'end': 0}
 endfunction
