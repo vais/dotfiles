@@ -122,3 +122,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-javascript-sql"]
 	path = vimfiles/pack/plugins/start/vim-javascript-sql
 	url = https://github.com/vais/vim-javascript-sql.git
+[submodule "vimfiles/pack/plugins/start/vim-markdown"]
+	path = vimfiles/pack/plugins/start/vim-markdown
+	url = https://github.com/preservim/vim-markdown.git
