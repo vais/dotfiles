@@ -27,6 +27,21 @@ elseif has('mac')
 
 elseif has('unix')
 
-  let &guifont='Monospace 10'
+  set guifont=JetBrainsMono\ Nerd\ Font
+  set guioptions-=b             " Turn off bottom scrollbar.
+  set guioptions+=e             " Use gui tabs
+
+  vnoremap ^X "+x
+  vnoremap <C-Insert> "+y
+  vnoremap <S-Insert> "+p
+  nnoremap <S-Insert> "+p
+  inoremap <S-Insert> <C-r>+
+  cnoremap <S-Insert> <C-r>+
+  tnoremap <S-Insert> <C-w>"+
+
+  noremap <ScrollWheelUp> <C-y>
+  noremap <ScrollWheelDown> <C-e>
+
+  colorscheme retrobox
 
 endif
