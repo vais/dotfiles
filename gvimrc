@@ -42,6 +42,6 @@ elseif has('unix')
   noremap <ScrollWheelUp> <C-y>
   noremap <ScrollWheelDown> <C-e>
 
-  colorscheme retrobox
-
 endif
+
+colorscheme retrobox
