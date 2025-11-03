@@ -125,3 +125,6 @@
 [submodule "vimfiles/pack/plugins/start/vim-markdown"]
 	path = vimfiles/pack/plugins/start/vim-markdown
 	url = https://github.com/preservim/vim-markdown.git
+[submodule "vimfiles/pack/plugins/start/colorschemes"]
+	path = vimfiles/pack/plugins/start/colorschemes
+	url = https://github.com/vim/colorschemes.git
