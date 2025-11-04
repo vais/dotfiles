@@ -17,8 +17,8 @@ if has('win32') || has('win64') " Set GUI preferences unique to each OS:
 elseif has('mac')
 
   set guifont=JetBrainsMono-Regular:h14
-  set guioptions-=b             " Turn off bottom scrollbars on gui macvim
-  set guioptions+=e             " Use MacVim tabs again now that they're awesome
+  set guioptions-=b             " Turn off bottom scrollbar.
+  set guioptions+=e             " Use gui tabs
 
   " Unmap default menu mappings:
   macmenu &Edit.Cut   key=<nop>
@@ -43,5 +43,3 @@ elseif has('unix')
   noremap <ScrollWheelDown> <C-e>
 
 endif
-
-colorscheme retrobox
