@@ -591,21 +591,6 @@ augroup ConfigureAlePlugin
   autocmd User ALELintPost redrawstatus
 augroup END
 
-function! ReapplyALEHighlights() abort
-  highlight link ALEErrorSign error
-  highlight link ALEStyleErrorSign ALEErrorSign
-  highlight link ALEWarningSign todo
-  highlight link ALEStyleWarningSign ALEWarningSign
-  highlight link ALEInfoSign ALEWarningSign
-  highlight link ALESignColumnWithErrors error
-
-  highlight link ALEVirtualTextError Comment
-  highlight link ALEVirtualTextStyleError ALEVirtualTextError
-  highlight link ALEVirtualTextWarning Comment
-  highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
-  highlight link ALEVirtualTextInfo ALEVirtualTextWarning
-endfunction
-
 " targets.vim plugin settings:
 if !exists('g:targets_nl')
   let g:targets_nl = 'nN'
@@ -763,7 +748,18 @@ function! OverrideColorscheme() abort
   highlight! link GitGutterDeleteLineNr       DiffDelete " plugin: vim-gitgutter (line number)
   highlight! link GitGutterDeleteIntraLine    DiffDelete " plugin: vim-gitgutter (intra-line)
 
-  call ReapplyALEHighlights()
+  " Re-apply ALE highlights
+  highlight link ALEErrorSign error
+  highlight link ALEStyleErrorSign ALEErrorSign
+  highlight link ALEWarningSign todo
+  highlight link ALEStyleWarningSign ALEWarningSign
+  highlight link ALEInfoSign ALEWarningSign
+  highlight link ALESignColumnWithErrors error
+  highlight link ALEVirtualTextError Comment
+  highlight link ALEVirtualTextStyleError ALEVirtualTextError
+  highlight link ALEVirtualTextWarning Comment
+  highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
+  highlight link ALEVirtualTextInfo ALEVirtualTextWarning
 endfunction
 
 augroup ConfigureColorscheme
