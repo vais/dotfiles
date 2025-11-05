@@ -713,7 +713,7 @@ function! OverrideColorscheme() abort
 
   highlight link GitCommitSummary Title
 
-  hi! link CurSearch Search
+  hi! link IncSearch Search
 
   " Tweak git-oriented highlights so Fugitive, GV, and GitGutter still match
   " the retrobox palette while using foreground-only accents where desired.
