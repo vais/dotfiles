@@ -715,38 +715,35 @@ function! OverrideColorscheme() abort
 
   hi! link CurSearch Search
 
-  " Re-link all git-related diff highlight groups to the colors provided by
-  " retrobox (DiffAdd/DiffChange/DiffDelete/DiffText) so Fugitive, GV, and
-  " GitGutter share one consistent palette.
+  " Tweak git-oriented highlights so Fugitive, GV, and GitGutter still match
+  " the retrobox palette while using foreground-only accents where desired.
 
-  " DiffAdd: additions (runtime diff/git syntax + GitGutter)
-  highlight! link Added                       DiffAdd   " runtime: syncolor (generic)
-  highlight! link diffAdded                   DiffAdd   " runtime: syntax/diff.vim
-  highlight! link gitDiffAdded                DiffAdd   " runtime: syntax/git.vim
-  highlight! link GitGutterAdd                DiffAdd   " plugin: vim-gitgutter (sign text)
-  highlight! link GitGutterAddLine            DiffAdd   " plugin: vim-gitgutter (full line)
-  highlight! link GitGutterAddLineNr          DiffAdd   " plugin: vim-gitgutter (line number)
-  highlight! link GitGutterAddIntraLine       DiffAdd   " plugin: vim-gitgutter (intra-line)
+  " Keep retrobox backgrounds for full-line gitgutter highlights.
+  highlight! link GitGutterAddLine            DiffAdd
+  highlight! link GitGutterAddLineNr          DiffAdd
+  highlight! link GitGutterAddIntraLine       DiffAdd
+  highlight! link GitGutterChangeLine         DiffChange
+  highlight! link GitGutterChangeLineNr       DiffChange
+  highlight! link GitGutterChangeDeleteLine   DiffChange
+  highlight! link GitGutterChangeDeleteLineNr DiffChange
+  highlight! link GitGutterDeleteLine         DiffDelete
+  highlight! link GitGutterDeleteLineNr       DiffDelete
+  highlight! link GitGutterDeleteIntraLine    DiffDelete
 
-  " DiffChange: modifications (runtime diff/git syntax + GitGutter)
-  highlight! link Changed                     DiffChange " runtime: syncolor (generic)
-  highlight! link diffChanged                 DiffChange " runtime: syntax/diff.vim
-  highlight! link gitDiffChanged              DiffChange " runtime: syntax/git.vim
-  highlight! link GitGutterChange             DiffChange " plugin: vim-gitgutter (sign text)
-  highlight! link GitGutterChangeLine         DiffChange " plugin: vim-gitgutter (full line)
-  highlight! link GitGutterChangeLineNr       DiffChange " plugin: vim-gitgutter (line number)
-  highlight! link GitGutterChangeDelete       DiffChange " plugin: vim-gitgutter (sign text mixed change/delete)
-  highlight! link GitGutterChangeDeleteLine   DiffChange " plugin: vim-gitgutter (mixed change/delete line)
-  highlight! link GitGutterChangeDeleteLineNr DiffChange " plugin: vim-gitgutter (mixed change/delete number)
-
-  " DiffDelete: deletions (runtime diff/git syntax + GitGutter)
-  highlight! link Removed                     DiffDelete " runtime: syncolor (generic)
-  highlight! link diffRemoved                 DiffDelete " runtime: syntax/diff.vim
-  highlight! link gitDiffRemoved              DiffDelete " runtime: syntax/git.vim
-  highlight! link GitGutterDelete             DiffDelete " plugin: vim-gitgutter (sign text)
-  highlight! link GitGutterDeleteLine         DiffDelete " plugin: vim-gitgutter (full line)
-  highlight! link GitGutterDeleteLineNr       DiffDelete " plugin: vim-gitgutter (line number)
-  highlight! link GitGutterDeleteIntraLine    DiffDelete " plugin: vim-gitgutter (intra-line)
+  " Foreground-only accents for status views (Fugitive, GV) and sign columns.
+  highlight! Added                 guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
+  highlight! diffAdded             guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
+  highlight! gitDiffAdded          guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
+  highlight! GitGutterAdd          guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
+  highlight! Changed               guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
+  highlight! diffChanged           guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
+  highlight! gitDiffChanged        guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
+  highlight! GitGutterChange       guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
+  highlight! GitGutterChangeDelete guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
+  highlight! Removed               guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+  highlight! diffRemoved           guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+  highlight! gitDiffRemoved        guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+  highlight! GitGutterDelete       guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
 
   " Re-apply ALE highlights
   highlight link ALEErrorSign error
