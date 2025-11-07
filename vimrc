@@ -275,12 +275,30 @@ tmap <silent> <C-w>\|    <C-w>:NERDTreeClose<Bar>wincmd \|<CR>
 " Coverflow(tm)-style navigation for splits:
 nmap <silent> <C-w>\          :set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 tmap <silent> <C-w>\     <C-w>:set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+xmap <silent> <C-w>\          :<C-U>set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+
+nmap <silent> <C-w><C-\>      :set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+tmap <silent> <C-w><C-\> <C-w>:set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+xmap <silent> <C-w><C-\>      :<C-U>set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
 nmap <silent> <C-w>]          :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 tmap <silent> <C-w>]     <C-w>:set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+xmap <silent> <C-w>]          :<C-U>set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+
+nmap <silent> <C-w><C-]>      :set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+tmap <silent> <C-w><C-]> <C-w>:set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+xmap <silent> <C-w><C-]>      :<C-U>set winminwidth=20<Bar>wincmd l<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 
 nmap <silent> <C-w>[          :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 tmap <silent> <C-w>[     <C-w>:set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+xmap <silent> <C-w>[          :<C-U>set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+
+" Avoid accidental trigger on MacVim where <Esc> (<C-[>) after <C-w> is interpreted as part of this mapping:
+if !has('mac')
+  nmap <silent> <C-w><C-[>      :set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+  tmap <silent> <C-w><C-[> <C-w>:set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+  xmap <silent> <C-w><C-[>      :<C-U>set winminwidth=20<Bar>wincmd h<Bar>wincmd \|<Bar>set winminwidth=1<CR>
+endif
 
 " Resize window to fit content width:
 nmap <silent> <C-w>e          :exe "vertical resize " . min([get(term_getsize(''), 1, 99999), max([&winwidth, max(map(getline(1,'$'), 'len(v:val)')) + (&number ? max([len(line('$')) + 1, &numberwidth]) : 0)])])<CR>
@@ -298,9 +316,16 @@ nmap <silent> <Leader>cT :Qfilter\V\<test\>\C<CR>
 
 " Tab navigation mappings:
 nmap <silent> [t :tabprevious<CR>
+xmap <silent> [t :<C-U>tabprevious<CR>
+
 nmap <silent> [T :tabfirst<CR>
+xmap <silent> [T :<C-U>tabfirst<CR>
+
+xmap <silent> ]t :<C-U>tabnext<CR>
 nmap <silent> ]t :tabnext<CR>
+
 nmap <silent> ]T :tablast<CR>
+xmap <silent> ]T :<C-U>tablast<CR>
 
 " Cut/Copy/Paste using the system clipboard:
 vnoremap <C-x> "+x

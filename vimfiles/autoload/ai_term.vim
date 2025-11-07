@@ -114,6 +114,7 @@ function! s:define_buffer_maps() abort
   tmap <buffer> <C-w>J <C-w>J
 
   tnoremap <silent> <expr> <buffer> <C-w>f ai_term#SendLastFocusedLocation()
+  tnoremap <silent> <expr> <buffer> <C-w><C-f> ai_term#SendLastFocusedLocation()
 endfunction
 
 function! s:get_last_focused_location() abort
