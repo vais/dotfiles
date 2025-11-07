@@ -89,9 +89,6 @@ if has('mac')
   set shell=/bin/bash\ --rcfile\ ~/.bash_profile
 endif
 
-set tags=./tags;                  " Look for tags files starting in directory of current file and up
-set tagcase=match                 " Make tags file search case-sensitive
-
 set smoothscroll                  " Make scrolling work when wrap is set
 set autoread                      " Automatically read a file if it's changed outside of Vim
 
@@ -208,17 +205,6 @@ command! -range -nargs=* Aider  call ai_term#OpenTerminalSession('aider',       
 command! -range -nargs=* Claude call ai_term#OpenTerminalSession('claude',       <line1>, <line2>, <range>, <q-args>)
 command! -range -nargs=* Codex  call ai_term#OpenTerminalSession('codex',        <line1>, <line2>, <range>, <q-args>)
 command! -range -nargs=* Cursor call ai_term#OpenTerminalSession('cursor-agent', <line1>, <line2>, <range>, <q-args>)
-
-" Jump to definition if there's only one matching tag, otherwise list all matching tags:
-map  g]                       g<C-]>
-map  <C-]>                    g<C-]>
-nmap <C-LeftMouse> <LeftMouse>g<C-]>
-vmap <C-LeftMouse>            g<C-]>
-nmap g<LeftMouse>  <LeftMouse>g<C-]>
-vmap g<LeftMouse>             g<C-]>
-map  <C-w>]              <C-w>g<C-]>
-map  <C-w><C-]>          <C-w>g<C-]>
-map  <C-w>g]             <C-w>g<C-]>
 
 " Go to file in a vertical split:
 nmap <C-w>f :vertical wincmd f<CR>
