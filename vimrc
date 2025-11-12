@@ -458,7 +458,21 @@ endfunction
 
 function! s:CloseStargateWindow() abort
   let l:origin = win_getid()
-  call stargate#Galaxy()
+
+  " Temporarily link labels to a close-mode group (red text, same bg)
+  let l:labels_hl = hlget('StargateLabels')
+
+  try
+    execute 'highlight! link StargateLabels StargateErrorLabels'
+    call stargate#Galaxy()
+  finally
+    if !empty(l:labels_hl)
+      call hlset(l:labels_hl)
+    else
+      highlight clear StargateLabels
+    endif
+  endtry
+
   let l:target = win_getid()
   let [l:tabnr, l:winnr] = win_id2tabwin(l:target)
 
@@ -768,6 +782,12 @@ function! OverrideColorscheme() abort
   highlight link ALEVirtualTextWarning Comment
   highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
   highlight link ALEVirtualTextInfo ALEVirtualTextWarning
+
+  " Stargate labels: normal uses theme bg; close-mode gruvbox red fg only
+  highlight! StargateLabels      guifg=#caa247 guibg=bg ctermbg=bg
+  highlight! StargateErrorLabels guifg=#fb4934 guibg=bg ctermfg=167 ctermbg=bg
+  highlight! StargateMain        guibg=bg ctermbg=bg
+  highlight! StargateSecondary   guibg=bg ctermbg=bg
 endfunction
 
 augroup ConfigureColorscheme
