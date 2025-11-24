@@ -550,6 +550,25 @@ let g:loaded_zip = 1
 let g:ruby_indent_block_style = 'do'
 
 " ALE plugin settings:
+function! ALEHoverPopupFilter(winid, key) abort
+  if a:key ==# "\<Esc>" || a:key ==# "\<C-[>"
+    call popup_close(a:winid)
+    return 1
+  endif
+
+  return 0
+endfunction
+
+function! ALEFloatingPreviewPopupOpts() abort
+  return {
+        \ 'highlight': 'Normal',
+        \ 'borderhighlight': ['Normal'],
+        \ 'filter': 'ALEHoverPopupFilter',
+        \ 'close': 'click',
+        \ 'mapping': v:true,
+        \ }
+endfunction
+
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \   'javascript': ['eslint'],
@@ -578,8 +597,11 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_set_highlights = 0
 let g:ale_set_balloons = 0
 let g:ale_hover_cursor = 0
+let g:ale_hover_to_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+let g:ale_floating_preview_popup_opts = 'ALEFloatingPreviewPopupOpts'
 
-nmap <Leader>h  :ALEHover<CR>
+nmap K :ALEHover<CR>
 
 nmap gd         :ALEGoToDefinition<CR>
 nmap <C-w>d     :ALEGoToDefinition -vsplit<CR>
