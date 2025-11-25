@@ -51,9 +51,12 @@ function! ai_term#OpenTerminalSession(session, line1, line2, range_count, qargs)
   execute l:cmd
   let l:term_buf = bufnr('%')
   execute 'set filetype=' . a:session
+  call setbufvar(l:term_buf, 'ai_term_prompt', get(b:, 'ai_term_prompt', ''))
 
   " Give the terminal job a moment to start before sending context.
-  let l:delay = get(g:, 'ai_term_send_delay_ms', 1000)
+  " If we know how to detect the prompt, rely on that instead of a timer.
+  let l:has_prompt = !empty(getbufvar(l:term_buf, 'ai_term_prompt', ''))
+  let l:delay = l:has_prompt ? 0 : get(g:, 'ai_term_send_delay_ms', 1000)
   call timer_start(l:delay, {tid -> ai_term#SendLastFocusedLocation(1, l:term_buf)})
 endfunction
 
@@ -67,6 +70,10 @@ function! ai_term#SendLastFocusedLocation(...) abort
   endif
 
   if l:target_buf <= 0 || !bufexists(l:target_buf)
+    return ''
+  endif
+
+  if l:force_send && !s:wait_for_prompt(l:target_buf)
     return ''
   endif
 
@@ -115,6 +122,40 @@ function! s:define_buffer_maps() abort
 
   tnoremap <silent> <expr> <buffer> <C-w>f ai_term#SendLastFocusedLocation()
   tnoremap <silent> <expr> <buffer> <C-w><C-f> ai_term#SendLastFocusedLocation()
+endfunction
+
+function! s:wait_for_prompt(buf) abort
+  let l:timeout = get(g:, 'ai_term_prompt_wait_ms', 3000)
+  if l:timeout <= 0
+    return 1
+  endif
+
+  if !bufexists(a:buf) || getbufvar(a:buf, '&buftype') !=# 'terminal'
+    return 1
+  endif
+
+  let l:pattern = getbufvar(a:buf, 'ai_term_prompt', '')
+  if empty(l:pattern) || !exists('*term_getline')
+    return 1
+  endif
+
+  let l:winid = bufwinid(a:buf)
+  if l:winid <= 0
+    return 1
+  endif
+
+  let l:start = reltime()
+  while reltimefloat(reltime(l:start)) * 1000 < l:timeout
+    let l:last = line('$', l:winid)
+    for l:lnum in range(max([1, l:last - 4]), l:last)
+      if term_getline(a:buf, l:lnum) =~ l:pattern
+        return 1
+      endif
+    endfor
+    sleep 50m
+  endwhile
+
+  return 0
 endfunction
 
 function! s:get_last_focused_location() abort
