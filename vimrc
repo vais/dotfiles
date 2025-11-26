@@ -602,6 +602,7 @@ let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '�
 let g:ale_floating_preview_popup_opts = 'ALEFloatingPreviewPopupOpts'
 
 nmap K :ALEHover<CR>
+nmap <F1> :ALEDocumentation<CR>
 
 nmap gd         :ALEGoToDefinition<CR>
 nmap <C-w>d     :ALEGoToDefinition -vsplit<CR>
