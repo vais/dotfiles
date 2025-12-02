@@ -487,11 +487,33 @@ function! s:CloseStargateWindow() abort
 endfunction
 
 " vim-fugitive plugin settings:
-nmap <silent> <Leader>gg :-tab Git<CR>
-nmap <silent> <Leader>gb :Git blame<CR>
-nmap <silent> <Leader>gv :GV -99<CR>
-nmap <silent> <C-w>gg :vertical Git<CR>
-tmap <silent> <C-w>gg <C-w>:vertical Git<CR>
+nmap <silent> <Leader>gb      :Git blame<CR>
+nmap <silent> <Leader>gv      :GV -99<CR>
+nmap <silent> <Leader>ge      :Gedit<CR>
+
+nmap <silent> <Leader>gg      :-tab Git<CR>
+nmap <silent>    <C-w>gg      :-tab Git<CR>
+tmap <silent>    <C-w>gg <C-w>:-tab Git<CR>
+
+nmap <silent> <Leader>gh      :vertical topleft Git<CR>
+nmap <silent>    <C-w>gh      :vertical topleft Git<CR>
+tmap <silent>    <C-w>gh <C-w>:vertical topleft Git<CR>
+
+nmap <silent> <Leader>gj      :botright Git<CR>
+nmap <silent>    <C-w>gj      :botright Git<CR>
+tmap <silent>    <C-w>gj <C-w>:botright Git<CR>
+
+nmap <silent> <Leader>gk      :topleft Git<CR>
+nmap <silent>    <C-w>gk      :topleft Git<CR>
+tmap <silent>    <C-w>gk <C-w>:topleft Git<CR>
+
+nmap <silent> <Leader>gl      :vertical botright Git<CR>
+nmap <silent>    <C-w>gl      :vertical botright Git<CR>
+tmap <silent>    <C-w>gl <C-w>:vertical botright Git<CR>
+
+nmap <silent> <Leader>g.      :0Git<CR>
+nmap <silent>    <C-w>g.      :0Git<CR>
+tmap <silent>    <C-w>g. <C-w>:0Git<CR>
 
 " vim-gitgutter plugin settings:
 set updatetime=100
@@ -499,7 +521,7 @@ nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
 nmap <Leader>gs <Plug>(GitGutterStageHunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)
 nmap <silent> <Leader>gc :GitGutterQuickFix<Bar>botright copen<CR>
-nmap <silent> <Leader>gh :GitGutterLineHighlightsToggle<CR>
+nmap <silent> <Leader>gi :GitGutterLineHighlightsToggle<CR>
 nmap <silent> <Leader>gt :GitGutterToggle<CR>
 nmap <silent> <Leader>gz :GitGutterFold<CR>
 
