@@ -511,9 +511,9 @@ nmap <silent> <Leader>gl      :vertical botright Git<CR>
 nmap <silent>    <C-w>gl      :vertical botright Git<CR>
 tmap <silent>    <C-w>gl <C-w>:vertical botright Git<CR>
 
-nmap <silent> <Leader>g.      :0Git<CR>
-nmap <silent>    <C-w>g.      :0Git<CR>
-tmap <silent>    <C-w>g. <C-w>:0Git<CR>
+nmap <silent> <Leader>go      :0Git<CR>
+nmap <silent>    <C-w>go      :0Git<CR>
+tmap <silent>    <C-w>go <C-w>:0Git<CR>
 
 " vim-gitgutter plugin settings:
 set updatetime=100
