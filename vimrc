@@ -487,33 +487,54 @@ function! s:CloseStargateWindow() abort
 endfunction
 
 " vim-fugitive plugin settings:
+augroup ConfigureFugitivePlugin
+  autocmd!
+  autocmd User FugitiveIndex setlocal bufhidden=hide
+augroup END
+
 nmap <silent> <Leader>gb      :Git blame<CR>
 nmap <silent> <Leader>gv      :GV -99<CR>
 nmap <silent> <Leader>ge      :Gedit<CR>
 
-nmap <silent> <Leader>gg      :-tab Git<CR>
-nmap <silent>    <C-w>gg      :-tab Git<CR>
-tmap <silent>    <C-w>gg <C-w>:-tab Git<CR>
+nmap <silent> <Leader>gg      :-tabnew<Bar>Ge:<CR>
+nmap <silent>    <C-w>gg      :-tabnew<Bar>Ge:<CR>
+tmap <silent>    <C-w>gg <C-w>:-tabnew<Bar>Ge:<CR>
 
-nmap <silent> <Leader>gh      :vertical topleft Git<CR>
-nmap <silent>    <C-w>gh      :vertical topleft Git<CR>
-tmap <silent>    <C-w>gh <C-w>:vertical topleft Git<CR>
+nmap <silent> <Leader>gh      :wincmd v<Bar>wincmd h<Bar>Ge:<CR>
+nmap <silent>    <C-w>gh      :wincmd v<Bar>wincmd h<Bar>Ge:<CR>
+tmap <silent>    <C-w>gh <C-w>:wincmd v<Bar>wincmd h<Bar>Ge:<CR>
 
-nmap <silent> <Leader>gj      :botright Git<CR>
-nmap <silent>    <C-w>gj      :botright Git<CR>
-tmap <silent>    <C-w>gj <C-w>:botright Git<CR>
+nmap <silent> <Leader>gH      :topleft wincmd v<Bar>Ge:<CR>
+nmap <silent>    <C-w>gH      :topleft wincmd v<Bar>Ge:<CR>
+tmap <silent>    <C-w>gH <C-w>:topleft wincmd v<Bar>Ge:<CR>
 
-nmap <silent> <Leader>gk      :topleft Git<CR>
-nmap <silent>    <C-w>gk      :topleft Git<CR>
-tmap <silent>    <C-w>gk <C-w>:topleft Git<CR>
+nmap <silent> <Leader>gj      :wincmd s<Bar>Ge:<CR>
+nmap <silent>    <C-w>gj      :wincmd s<Bar>Ge:<CR>
+tmap <silent>    <C-w>gj <C-w>:wincmd s<Bar>Ge:<CR>
 
-nmap <silent> <Leader>gl      :vertical botright Git<CR>
-nmap <silent>    <C-w>gl      :vertical botright Git<CR>
-tmap <silent>    <C-w>gl <C-w>:vertical botright Git<CR>
+nmap <silent> <Leader>gJ      :botright wincmd s<Bar>Ge:<CR>
+nmap <silent>    <C-w>gJ      :botright wincmd s<Bar>Ge:<CR>
+tmap <silent>    <C-w>gJ <C-w>:botright wincmd s<Bar>Ge:<CR>
 
-nmap <silent> <Leader>g.      :0Git<CR>
-nmap <silent>    <C-w>g.      :0Git<CR>
-tmap <silent>    <C-w>g. <C-w>:0Git<CR>
+nmap <silent> <Leader>gk      :wincmd s<Bar>wincmd k<Bar>Ge:<CR>
+nmap <silent>    <C-w>gk      :wincmd s<Bar>wincmd k<Bar>Ge:<CR>
+tmap <silent>    <C-w>gk <C-w>:wincmd s<Bar>wincmd k<Bar>Ge:<CR>
+
+nmap <silent> <Leader>gK      :topleft wincmd s<Bar>Ge:<CR>
+nmap <silent>    <C-w>gK      :topleft wincmd s<Bar>Ge:<CR>
+tmap <silent>    <C-w>gK <C-w>:topleft wincmd s<Bar>Ge:<CR>
+
+nmap <silent> <Leader>gl      :wincmd v<Bar>Ge:<CR>
+nmap <silent>    <C-w>gl      :wincmd v<Bar>Ge:<CR>
+tmap <silent>    <C-w>gl <C-w>:wincmd v<Bar>Ge:<CR>
+
+nmap <silent> <Leader>gL      :botright wincmd v<Bar>Ge:<CR>
+nmap <silent>    <C-w>gL      :botright wincmd v<Bar>Ge:<CR>
+tmap <silent>    <C-w>gL <C-w>:botright wincmd v<Bar>Ge:<CR>
+
+nmap <silent> <Leader>g.      :Ge:<CR>
+nmap <silent>    <C-w>g.      :Ge:<CR>
+tmap <silent>    <C-w>g. <C-w>:Ge:<CR>
 
 " vim-gitgutter plugin settings:
 set updatetime=100
