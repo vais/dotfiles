@@ -220,6 +220,13 @@ tmap <silent> <C-w><Space>   <C-w>:horizontal wincmd =<CR>
 nmap <silent> <C-w><C-Space> :horizontal wincmd =<CR>
 tmap <silent> <C-w><C-Space> <C-w>:horizontal wincmd =<CR>
 
+" Make all windows equally tall with wincmd =:
+nnoremap <silent> <C-w>=     :vertical wincmd =<CR>
+tnoremap <silent> <C-w>=     <C-w>:vertical wincmd =<CR>
+
+nnoremap <silent> <C-w><C-=> :vertical wincmd =<CR>
+tnoremap <silent> <C-w><C-=> <C-w>:vertical wincmd =<CR>
+
 " Fix Shift+Space bug in terminal mode:
 tmap <S-Space> <Space>
 
