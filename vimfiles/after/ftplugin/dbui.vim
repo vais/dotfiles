@@ -1,3 +1,6 @@
+setlocal nowinfixwidth
+setlocal nowinfixheight
+
 nmap <buffer> x <C-p>o
 
 nunmap <buffer> <c-j>

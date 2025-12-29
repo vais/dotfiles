@@ -268,10 +268,6 @@ tmap <silent> <C-w><C-m> <C-w>:wincmd v<Bar>wincmd T<Bar>silent! tabmove -1<CR>
 
 nmap <silent> <C-w>M          :wincmd v<Bar>wincmd T<CR>
 
-" Close NERDTree before expanding windows horizontally lest it be crippled:
-nmap <silent> <C-w>\|         :NERDTreeClose<Bar>wincmd \|<CR>
-tmap <silent> <C-w>\|    <C-w>:NERDTreeClose<Bar>wincmd \|<CR>
-
 " Coverflow(tm)-style navigation for splits:
 nmap <silent> <C-w>\          :set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
 tmap <silent> <C-w>\     <C-w>:set winminwidth=20<Bar>horizontal wincmd =<Bar>wincmd \|<Bar>set winminwidth=1<CR>
