@@ -740,16 +740,6 @@ let g:qfenter_keymap.open = ['<CR>', '<2-LeftMouse>']
 let g:qfenter_keymap.vopen = ['<C-w><CR>']
 let g:qfenter_keymap.topen = ['<C-w><Tab>']
 
-let g:qfenter_excluded_action = 'error'
-
-let g:qfenter_exclude_filetypes = [
-      \   'fugitiveblame',
-      \   'fugitive',
-      \   'nerdtree',
-      \   'git',
-      \   'GV',
-      \ ]
-
 " projectionist plugin settings:
 nmap <silent> <Leader>a :A<CR>
 nmap <silent> <Leader>A :AV<CR>
