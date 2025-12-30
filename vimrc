@@ -206,6 +206,38 @@ command! -range -nargs=* Claude call ai_term#OpenTerminalSession('claude',      
 command! -range -nargs=* Codex  call ai_term#OpenTerminalSession('codex',        <line1>, <line2>, <range>, <q-args>)
 command! -range -nargs=* Cursor call ai_term#OpenTerminalSession('cursor-agent', <line1>, <line2>, <range>, <q-args>)
 
+" Delete or wipe out any hidden buffers:
+function! s:CloseHiddenBuffers(command, bang, verb) abort
+  let l:hidden_buffers_all = filter(getbufinfo(), 'empty(v:val.windows)')
+
+  if a:bang
+    let l:hidden_buffers = l:hidden_buffers_all
+  else
+    let l:hidden_buffers = filter(copy(l:hidden_buffers_all), '!v:val.changed')
+  endif
+
+  if empty(l:hidden_buffers)
+    echo 'No hidden buffers to ' . a:verb
+    return
+  endif
+
+  let l:bufnrs = map(l:hidden_buffers, 'v:val.bufnr')
+
+  execute a:command . (a:bang ? '!' : '') . ' ' . join(l:bufnrs)
+
+  let l:count = len(l:hidden_buffers)
+  let l:action = a:verb ==# 'wipeout' ? 'Wiped out' : 'Deleted'
+  let l:skipped = a:bang ? 0 : (len(l:hidden_buffers_all) - l:count)
+  let l:message = l:action . ' ' . l:count . ' hidden ' . (l:count == 1 ? 'buffer' : 'buffers')
+  if l:skipped > 0
+    let l:message .= ' (skipped ' . l:skipped . ' modified)'
+  endif
+  echo l:message
+endfunction
+
+command! -bang BwipeoutHidden call s:CloseHiddenBuffers('bwipeout', <bang>0, 'wipeout')
+command! -bang BdeleteHidden call s:CloseHiddenBuffers('bdelete', <bang>0, 'delete')
+
 " Go to file in a vertical split:
 nmap <C-w>f :vertical wincmd f<CR>
 
