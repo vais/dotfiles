@@ -557,6 +557,7 @@ let g:ctrlp_max_height = 999
 let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
+let g:ctrlp_switch_buffer = 'e'
 nnoremap <silent> <C-@> :CtrlPBuffer<CR>
 vnoremap <silent> <C-@> :<C-U>CtrlPBuffer<CR>
 nmap <C-Space> <C-@>
