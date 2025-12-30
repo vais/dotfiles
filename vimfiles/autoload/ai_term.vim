@@ -52,6 +52,7 @@ function! ai_term#OpenTerminalSession(session, line1, line2, range_count, qargs)
   let l:term_buf = bufnr('%')
   execute 'set filetype=' . a:session
   call setbufvar(l:term_buf, 'ai_term_prompt', get(b:, 'ai_term_prompt', ''))
+  call setpos("'I", [l:term_buf, line('.'), 1, 0])
 
   " Give the terminal job a moment to start before sending context.
   " If we know how to detect the prompt, rely on that instead of a timer.
