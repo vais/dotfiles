@@ -527,13 +527,22 @@ augroup ConfigureFugitivePlugin
   autocmd User FugitiveIndex setlocal bufhidden=hide
 augroup END
 
+function! s:GitStatusInNewTab()
+  -tabnew
+  let l:newbuf = bufnr('%')
+  Ge:
+  if bufnr('%') != l:newbuf
+    silent! execute 'bwipeout ' . l:newbuf
+  endif
+endfunction
+
 nmap <silent> <Leader>gb      :Git blame<CR>
 nmap <silent> <Leader>gv      :GV -99<CR>
 nmap <silent> <Leader>ge      :Gedit<CR>
 
-nmap <silent> <Leader>gg      :-tabnew<Bar>Ge:<CR>
-nmap <silent>    <C-w>gg      :-tabnew<Bar>Ge:<CR>
-tmap <silent>    <C-w>gg <C-w>:-tabnew<Bar>Ge:<CR>
+nmap <silent> <Leader>gg      :call <SID>GitStatusInNewTab()<CR>
+nmap <silent>    <C-w>gg      :call <SID>GitStatusInNewTab()<CR>
+tmap <silent>    <C-w>gg <C-w>:call <SID>GitStatusInNewTab()<CR>
 
 nmap <silent> <Leader>gh      :wincmd v<Bar>wincmd h<Bar>Ge:<CR>
 nmap <silent>    <C-w>gh      :wincmd v<Bar>wincmd h<Bar>Ge:<CR>
