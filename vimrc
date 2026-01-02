@@ -206,6 +206,28 @@ command! -range -nargs=* Claude call ai_term#OpenTerminalSession('claude',      
 command! -range -nargs=* Codex  call ai_term#OpenTerminalSession('codex',        <line1>, <line2>, <range>, <q-args>)
 command! -range -nargs=* Cursor call ai_term#OpenTerminalSession('cursor-agent', <line1>, <line2>, <range>, <q-args>)
 
+function! s:JumpToAiTerm(cmd) abort
+  if getpos("'I")[0] == 0
+    echohl ErrorMsg
+    echo 'E20: Mark not set'
+    echohl NONE
+    return
+  endif
+
+  if !empty(a:cmd)
+    execute a:cmd
+  endif
+
+  normal! 'I
+  execute "normal \<C-w>e"
+endfunction
+
+nmap <silent> <Leader>i. :call <SID>JumpToAiTerm('')<CR>
+nmap <silent> <Leader>il :call <SID>JumpToAiTerm('wincmd v')<CR>
+nmap <silent> <Leader>iL :call <SID>JumpToAiTerm('botright wincmd v')<CR>
+nmap <silent> <Leader>ih :call <SID>JumpToAiTerm('wincmd v\|wincmd h')<CR>
+nmap <silent> <Leader>iH :call <SID>JumpToAiTerm('topleft wincmd v')<CR>
+
 " Delete or wipe out any hidden buffers:
 function! s:CloseHiddenBuffers(command, bang, verb) abort
   let l:hidden_buffers_all = filter(getbufinfo(), 'empty(v:val.windows)')
