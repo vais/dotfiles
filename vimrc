@@ -222,11 +222,21 @@ function! s:JumpToAiTerm(cmd) abort
   execute "normal \<C-w>e"
 endfunction
 
+function! s:JumpToAiTermWithSelection(cmd) abort
+  call ai_term#RecordRange(bufnr('%'), line("'<"), line("'>"), 1)
+  call s:JumpToAiTerm(a:cmd)
+endfunction
+
 nmap <silent> <Leader>i. :call <SID>JumpToAiTerm('')<CR>
 nmap <silent> <Leader>il :call <SID>JumpToAiTerm('wincmd v')<CR>
 nmap <silent> <Leader>iL :call <SID>JumpToAiTerm('botright wincmd v')<CR>
 nmap <silent> <Leader>ih :call <SID>JumpToAiTerm('wincmd v\|wincmd h')<CR>
 nmap <silent> <Leader>iH :call <SID>JumpToAiTerm('topleft wincmd v')<CR>
+vnoremap <silent> <Leader>i. :<C-u>call <SID>JumpToAiTermWithSelection('')<CR>
+vnoremap <silent> <Leader>il :<C-u>call <SID>JumpToAiTermWithSelection('wincmd v')<CR>
+vnoremap <silent> <Leader>iL :<C-u>call <SID>JumpToAiTermWithSelection('botright wincmd v')<CR>
+vnoremap <silent> <Leader>ih :<C-u>call <SID>JumpToAiTermWithSelection('wincmd v\|wincmd h')<CR>
+vnoremap <silent> <Leader>iH :<C-u>call <SID>JumpToAiTermWithSelection('topleft wincmd v')<CR>
 
 " Delete or wipe out any hidden buffers:
 function! s:CloseHiddenBuffers(command, bang, verb) abort
