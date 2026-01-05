@@ -855,10 +855,12 @@ function! OverrideColorscheme() abort
     highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
     highlight Visual guifg=#83a598 guibg=#1c1c1c gui=reverse ctermfg=109 ctermbg=234 cterm=reverse
     highlight QuickFixLine guifg=#1c1c1c guibg=#8ec07c gui=NONE ctermfg=234 ctermbg=107 cterm=NONE
+    highlight CursorLine guibg=#262626 ctermbg=235
   else
     highlight Search guifg=#fbf1c7 guibg=#98971a gui=NONE ctermfg=230 ctermbg=100 cterm=NONE
     highlight Visual guifg=#076678 guibg=#fbf1c7 gui=reverse ctermfg=23 ctermbg=230 cterm=reverse
     highlight QuickFixLine guifg=#fbf1c7 guibg=#427b58 gui=NONE ctermfg=230 ctermbg=29 cterm=NONE
+    highlight CursorLine guibg=#f2e5bc ctermbg=229
   endif
 
   highlight TerminalStatuslineRunning guifg=#1d2021 guibg=#fabd2f gui=bold ctermfg=234 ctermbg=214 cterm=bold
