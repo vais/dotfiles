@@ -207,7 +207,9 @@ command! -range -nargs=* Codex  call ai_term#OpenTerminalSession('codex',       
 command! -range -nargs=* Cursor call ai_term#OpenTerminalSession('cursor-agent', <line1>, <line2>, <range>, <q-args>)
 
 function! s:JumpToAiTerm(cmd) abort
-  if getpos("'I")[0] == 0
+  let l:pos = getpos("'I")
+
+  if l:pos[0] == 0 || !bufexists(l:pos[0])
     echohl ErrorMsg
     echo 'E20: Mark not set'
     echohl NONE
