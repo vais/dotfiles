@@ -769,11 +769,13 @@ function! ALEStatus() abort
   return printf('[%d issues]', l:issues)
 endfunction
 
-set statusline+=%#error#%{ALEStatus()}%*
+set statusline+=%#WarningMsg#%{get(b:,'ale_lint_running',0)?'[lint...]':''}%*
+set statusline+=%#ErrorMsg#%{get(b:,'ale_lint_running',0)?'':ALEStatus()}%*
 
 augroup ConfigureAlePlugin
   autocmd!
-  autocmd User ALELintPost redrawstatus
+  autocmd User ALELintPre let b:ale_lint_running = 1 | redrawstatus
+  autocmd User ALELintPost let b:ale_lint_running = 0 | redrawstatus
 augroup END
 
 " targets.vim plugin settings:
