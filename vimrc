@@ -561,6 +561,18 @@ augroup ConfigureFugitivePlugin
   autocmd User FugitiveIndex setlocal bufhidden=hide
 augroup END
 
+function! s:WarnFugitiveBuffer() abort
+  if !exists('b:fugitive_warning_statusline')
+    let b:fugitive_warning_statusline = 1
+    let &l:statusline = '%#ErrorMsg#[FUGITIVE]%*' . &g:statusline
+  endif
+endfunction
+
+augroup FugitiveWarningStatusline
+  autocmd!
+  autocmd BufWinEnter fugitive://* call <SID>WarnFugitiveBuffer()
+augroup END
+
 function! s:GitStatusInNewTab()
   -tabnew
   let l:newbuf = bufnr('%')
