@@ -80,16 +80,41 @@ function! ai_term#SendLastFocusedLocation(...) abort
   endif
 
   if !l:force_send && mode(1) =~# '^t'
+    if s:send_bracketed_paste(l:target_buf, l:path)
+      return ''
+    endif
     return l:path
   endif
 
   if exists('*term_sendkeys')
+    if s:send_bracketed_paste(l:target_buf, l:path)
+      return ''
+    endif
     call term_sendkeys(l:target_buf, l:path)
   else
     echoerr 'Sending text to the terminal is not supported in this Vim'
   endif
 
   return ''
+endfunction
+
+function! s:send_bracketed_paste(buf, text) abort
+  if !exists('*term_getjob') || !exists('*job_getchannel') || !exists('*ch_sendraw')
+    return 0
+  endif
+
+  let l:job = term_getjob(a:buf)
+  if type(l:job) != v:t_job || job_status(l:job) !=# 'run'
+    return 0
+  endif
+
+  let l:chan = job_getchannel(l:job)
+  if type(l:chan) != v:t_channel || index(['open', 'buffered'], ch_status(l:chan)) < 0
+    return 0
+  endif
+
+  call ch_sendraw(l:chan, "\x1b[200~" . a:text . "\x1b[201~")
+  return 1
 endfunction
 
 function! s:ensure_focus_tracking() abort
