@@ -41,6 +41,7 @@ endfunction
 function! ai_term#OpenTerminalSession(session, line1, line2, range_count, qargs) abort
   let l:buf = bufnr('%')
   call ai_term#RecordRange(l:buf, a:line1, a:line2, a:range_count)
+  call s:record_focus()
 
   let l:width = get(g:, 'ai_term_width', 100)
   let l:cmd = "vertical botright terminal ++cols=" . l:width . " " . a:session
@@ -101,10 +102,14 @@ function! s:ensure_focus_tracking() abort
     autocmd!
     autocmd BufEnter * call s:record_focus()
     autocmd BufLeave * call s:record_focus()
+    autocmd WinEnter * call s:record_focus()
+    autocmd WinLeave * call s:record_focus()
     autocmd ModeChanged * call s:handle_mode_changed()
   augroup END
 
-  call s:seed_state()
+  if get(s:state, 'buf', -1) <= 0
+    call s:seed_state()
+  endif
 endfunction
 
 function! s:define_buffer_maps() abort
