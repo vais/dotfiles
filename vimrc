@@ -758,7 +758,19 @@ imap <expr> <C-Space> ((pumvisible())?("\<C-n>"):("\<Plug>(ale_complete)"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-j>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-k>"))
 
+function! ALEProgress() abort
+  if exists('*ale#engine#IsCheckingBuffer') && ale#engine#IsCheckingBuffer(bufnr(''))
+    return '[lint...]'
+  endif
+
+  return ''
+endfunction
+
 function! ALEStatus() abort
+  if exists('*ale#engine#IsCheckingBuffer') && ale#engine#IsCheckingBuffer(bufnr(''))
+    return ''
+  endif
+
   let l:issues = ale#statusline#Count(bufnr('')).total
 
   if l:issues == 0
@@ -772,13 +784,13 @@ function! ALEStatus() abort
   return printf('[%d issues]', l:issues)
 endfunction
 
-set statusline+=%#WarningMsg#%{get(b:,'ale_lint_running',0)?'[lint...]':''}%*
-set statusline+=%#ErrorMsg#%{get(b:,'ale_lint_running',0)?'':ALEStatus()}%*
+set statusline+=%#WarningMsg#%{ALEProgress()}%*
+set statusline+=%#ErrorMsg#%{ALEStatus()}%*
 
 augroup ConfigureAlePlugin
   autocmd!
-  autocmd User ALELintPre let b:ale_lint_running = 1 | redrawstatus
-  autocmd User ALELintPost let b:ale_lint_running = 0 | redrawstatus
+  autocmd User ALEJobStarted redrawstatus!
+  autocmd User ALELintPost redrawstatus!
 augroup END
 
 " targets.vim plugin settings:
