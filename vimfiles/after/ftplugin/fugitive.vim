@@ -14,7 +14,7 @@ nmap <buffer> <silent> <C-x> :let b:git_diff_opts_context = max([get(b:, 'git_di
 " Map <Leader>l to:
 " 1. clear and redraw the screen
 " 2. clear all inline diffs 
-nmap <buffer> <silent> <Leader>l :call fugitive#ReloadStatus()<CR><C-l>gg<
+nmap <buffer> <silent> <Leader>l :call fugitive#ReloadStatus()<Bar>redraw!<CR>gg<
 
 augroup FugitiveAutoReloadStatus
   autocmd! * <buffer>

@@ -562,6 +562,9 @@ augroup ConfigureFugitivePlugin
 augroup END
 
 function! s:WarnFugitiveBuffer() abort
+  if get(b:, 'fugitive_type', '') ==# 'index'
+    return
+  endif
   if !exists('b:fugitive_warning_statusline')
     let b:fugitive_warning_statusline = 1
     let &l:statusline = '%#ErrorMsg#[FUGITIVE]%*' . &g:statusline
