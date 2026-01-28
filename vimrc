@@ -380,8 +380,8 @@ tmap <silent> <C-w><C-e> <C-w>:exe "vertical resize " . min([get(term_getsize(''
 nmap <silent> <Leader>co :botright copen<CR>
 nmap <silent> <Leader>cq :cclose<CR>
 nmap <silent> <Leader>cc :cc<CR>
-nmap <silent> <Leader>ct :Qfilter!\V\<test\>\C<CR>
-nmap <silent> <Leader>cT :Qfilter\V\<test\>\C<CR>
+nmap <silent> <Leader>ct :Qfilter!\V\<tests\?\>\C<CR>
+nmap <silent> <Leader>cT :Qfilter\V\<tests\?\>\C<CR>
 
 " Tab navigation mappings:
 nmap <silent> [t :tabprevious<CR>
