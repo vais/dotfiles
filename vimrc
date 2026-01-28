@@ -975,4 +975,4 @@ augroup ConfigureColorscheme
 augroup END
 
 set background=dark
-colorscheme retrobox
+colorscheme catppuccin
