@@ -927,19 +927,36 @@ function! OverrideColorscheme() abort
   highlight! link GitGutterDeleteIntraLine    DiffDelete
 
   " Foreground-only accents for status views (Fugitive, GV) and sign columns.
-  highlight! Added                 guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
-  highlight! diffAdded             guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
-  highlight! gitDiffAdded          guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
-  highlight! GitGutterAdd          guifg=#b8bb26 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
-  highlight! Changed               guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
-  highlight! diffChanged           guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
-  highlight! gitDiffChanged        guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
-  highlight! GitGutterChange       guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
-  highlight! GitGutterChangeDelete guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE
-  highlight! Removed               guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
-  highlight! diffRemoved           guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
-  highlight! gitDiffRemoved        guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
-  highlight! GitGutterDelete       guifg=#fb4934 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+  function! s:HiFgFrom(group, target) abort
+    let l:fg = synIDattr(hlID(a:group), 'fg#')
+    let l:ctermfg = synIDattr(hlID(a:group), 'fg', 'cterm')
+    if l:fg != ''
+      execute 'highlight! ' . a:target . ' guifg=' . l:fg . ' guibg=NONE gui=NONE'
+    endif
+    if l:ctermfg != ''
+      execute 'highlight! ' . a:target . ' ctermfg=' . l:ctermfg . ' ctermbg=NONE cterm=NONE'
+    endif
+  endfunction
+
+  " Clear Diff* so they don't inherit stale values on colorscheme switch.
+  highlight clear DiffAdd
+  highlight clear DiffChange
+  highlight clear DiffDelete
+
+  call s:HiFgFrom('DiffAdd', 'Added')
+  call s:HiFgFrom('DiffChange', 'Changed')
+  call s:HiFgFrom('DiffDelete', 'Removed')
+
+  highlight! link diffAdded             Added
+  highlight! link gitDiffAdded          Added
+  highlight! link GitGutterAdd          Added
+  highlight! link diffChanged           Changed
+  highlight! link gitDiffChanged        Changed
+  highlight! link GitGutterChange       Changed
+  highlight! link GitGutterChangeDelete Changed
+  highlight! link diffRemoved           Removed
+  highlight! link gitDiffRemoved        Removed
+  highlight! link GitGutterDelete       Removed
 
   " Re-apply ALE highlights
   highlight link ALEErrorSign error
