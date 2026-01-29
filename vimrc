@@ -275,6 +275,12 @@ command! -bang BdeleteHidden call s:CloseHiddenBuffers('bdelete', <bang>0, 'dele
 " Go to file in a vertical split:
 nmap <C-w>f :vertical wincmd f<CR>
 
+" Make <C-w><BS> close current window like <C-w>c:
+nnoremap <silent> <C-w><BS> <C-w>c
+tnoremap <silent> <C-w><BS> <C-w>:close<CR>
+nnoremap <silent> <C-w><C-BS> <C-w>c
+tnoremap <silent> <C-w><C-BS> <C-w>:close<CR>
+
 " Make new buffer in a vertical split:
 nmap <silent> <C-w>n      :vertical new<CR>
 tmap <silent> <C-w>n <C-w>:vertical new<CR>
