@@ -12,8 +12,9 @@ nmap <buffer> <silent> <C-a> :let b:git_diff_opts_context = get(b:, 'git_diff_op
 nmap <buffer> <silent> <C-x> :let b:git_diff_opts_context = max([get(b:, 'git_diff_opts_context', 3), 4]) - 1<Bar>let $GIT_DIFF_OPTS="--unified=".b:git_diff_opts_context<Bar>e<Bar>let $GIT_DIFF_OPTS=""<CR>
 
 " Map <Leader>l to:
-" 1. clear and redraw the screen
-" 2. clear all inline diffs 
+" 1. reload git status
+" 2. clear and redraw the screen
+" 3. clear all inline diffs 
 nmap <buffer> <silent> <Leader>l :call fugitive#ReloadStatus()<Bar>redraw!<CR>gg<
 
 augroup FugitiveAutoReloadStatus

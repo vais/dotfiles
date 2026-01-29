@@ -466,9 +466,10 @@ tnoremap <expr> <LeftMouse> <SID>term_click()
 
 " Map <Leader>l to:
 " 1. clear and redraw the screen
-" 2. fix broken syntax highlighting
-" 3. get rid of stale lint errors
-nnoremap <silent> <Leader>l <C-l>:syntax sync fromstart<CR>:ALELint<CR>
+" 2. reload the file if necessary
+" 3. fix broken syntax highlighting
+" 4. get rid of stale lint errors
+nnoremap <silent> <Leader>l <C-l>:checktime<CR>:syntax sync fromstart<CR>:ALELint<CR>
 
 " Close a window via Stargate:
 noremap  <C-w>, <Cmd>call <SID>CloseStargateWindow()<CR>
