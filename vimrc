@@ -679,6 +679,7 @@ let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeNodeDelimiter="\u00b7" " (middle dot)
+let NERDTreeCustomOpenArgs = { 'file': { 'reuse': 'currenttab', 'where': 'p' }, 'dir': {} }
 nmap <silent> <Leader>fo :NERDTreeFocus<CR>
 nmap <silent> <Leader>fq :NERDTreeClose<CR>
 nmap <silent> <Leader>ff :NERDTreeFind<CR>
