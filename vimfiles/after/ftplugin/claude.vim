@@ -1,1 +1,1 @@
-call ai_term#setup({'prompt_pattern': '^>\ '})
+call ai_term#setup({'prompt_pattern': '^❯'})
