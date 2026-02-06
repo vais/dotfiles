@@ -79,6 +79,8 @@ set foldcolumn=0                  " Do not show a column at the side of the wind
 set foldmethod=indent             " Lines with equal indent form a fold.
 set foldtext=                     " Show only the most basic text to represent a fold.
 
+set termguicolors                 " Enable true color in the terminal.
+
 " Fix terminal cursor shapes:
 let &t_SI.="\e[5 q"               " SI = INSERT mode
 let &t_SR.="\e[4 q"               " SR = REPLACE mode
