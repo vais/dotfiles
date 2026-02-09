@@ -11,3 +11,5 @@ ln -s ~/dotfiles/gvimrc ~/.gvimrc
 ln -sn ~/dotfiles/vimfiles ~/.vim
 
 ln -s ~/dotfiles/sql-formatter.json ~/.sql-formatter.json
+
+ln -s ~/dotfiles/ghostty-config ~/.config/ghostty/config

@@ -1,0 +1,6 @@
+font-thicken = true
+theme = Catppuccin Mocha
+macos-titlebar-proxy-icon = hidden
+shell-integration-features = no-cursor
+cursor-style-blink = false
+mouse-hide-while-typing = true
