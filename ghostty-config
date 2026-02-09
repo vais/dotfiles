@@ -4,3 +4,4 @@ macos-titlebar-proxy-icon = hidden
 shell-integration-features = no-cursor
 cursor-style-blink = false
 mouse-hide-while-typing = true
+keybind = ctrl+m=text:\r
