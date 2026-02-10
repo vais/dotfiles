@@ -1,4 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/sync
-git -C ~/dotfiles submodule update --remote --jobs 16

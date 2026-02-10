@@ -2,3 +2,4 @@ tags
 Thumbs.db
 .DS_Store
 .netrwhist
+.nvimlog

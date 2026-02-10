@@ -2,14 +2,4 @@
 
 git -C ~/dotfiles pull
 git -C ~/dotfiles submodule update --init --jobs 16
-
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
-
-ln -s ~/dotfiles/vimrc ~/.vimrc
-ln -s ~/dotfiles/gvimrc ~/.gvimrc
-ln -sn ~/dotfiles/vimfiles ~/.vim
-
-ln -s ~/dotfiles/sql-formatter.json ~/.sql-formatter.json
-
-ln -s ~/dotfiles/ghostty-config ~/.config/ghostty/config
+stow --restow -d ~/dotfiles -t ~ git vim nvim misc ghostty
