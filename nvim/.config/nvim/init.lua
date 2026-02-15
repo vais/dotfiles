@@ -1,3 +1,25 @@
-vim.opt.termguicolors = true
+vim.loader.enable()
 
-vim.cmd.colorscheme('catppuccin-mocha')
+vim.g.mapleader = ' '
+
+require('config.options')
+require('config.theme')
+require('config.keymaps')
+require('config.autocmds')
+require('plugins.fugitive').setup()
+require('plugins.gitgutter').setup()
+require('plugins.ctrlp').setup()
+require('plugins.autopairs').setup()
+require('plugins.nerdtree').setup()
+require('plugins.projectionist').setup()
+require('plugins.dadbod_ui').setup()
+require('plugins.emmet').setup()
+require('plugins.ruby').setup()
+require('plugins.ale').setup()
+require('plugins.targets').setup()
+require('plugins.closetag').setup()
+require('plugins.markdown').setup()
+require('plugins.textobj_entire').setup()
+require('plugins.flash').setup()
+require('plugins.window_picker').setup()
+require('plugins.toggleterm').setup()

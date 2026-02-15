@@ -433,6 +433,7 @@ vnoremap <silent> gn :<C-u>call SetSearchTermVisual()<CR>
 
 " Toggle highlighting of all occurrences of the current search term:
 nnoremap <silent> gh :set hls!<CR>
+vnoremap <silent> gh :<C-U>set hls!<CR>gv
 
 " Map F5 to write the buffer:
 nmap <silent> <F5> :write<CR>
@@ -641,13 +642,13 @@ tmap <silent>    <C-w>g. <C-w>:Ge:<CR>
 
 " vim-gitgutter plugin settings:
 set updatetime=100
-nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
-nmap <Leader>gs <Plug>(GitGutterStageHunk)
-nmap <Leader>gu <Plug>(GitGutterUndoHunk)
-nmap <silent> <Leader>gc :GitGutterQuickFix<Bar>botright copen<CR>
-nmap <silent> <Leader>gi :GitGutterLineHighlightsToggle<CR>
-nmap <silent> <Leader>gt :GitGutterToggle<CR>
-nmap <silent> <Leader>gz :GitGutterFold<CR>
+nmap <Leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <Leader>hs <Plug>(GitGutterStageHunk)
+nmap <Leader>hu <Plug>(GitGutterUndoHunk)
+nmap <silent> <Leader>hc :GitGutterQuickFix<Bar>botright copen<CR>
+nmap <silent> <Leader>hl :GitGutterLineHighlightsToggle<CR>
+nmap <silent> <Leader>ht :GitGutterToggle<CR>
+nmap <silent> <Leader>hz :GitGutterFold<CR>
 
 " ctrlp.vim plugin settings:
 let g:ctrlp_user_command = ['.git', 'git ls-files -co --exclude-standard']
@@ -658,12 +659,11 @@ let g:ctrlp_bufname_mod = ':.'
 let g:ctrlp_bufpath_mod = ''
 let g:ctrlp_match_current_file = 1
 let g:ctrlp_switch_buffer = 'e'
-nnoremap <silent> <C-@> :CtrlPBuffer<CR>
-vnoremap <silent> <C-@> :<C-U>CtrlPBuffer<CR>
-nmap <C-Space> <C-@>
-vmap <C-Space> <C-@>
-let g:ctrlp_prompt_mappings = {'PrtExit()': ['<C-@>', '<C-Space>', '<Esc>', '<C-c>', '<C-g>']}
-let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_map = ''
+nnoremap <silent> <Leader>p :CtrlP<CR>
+vnoremap <silent> <Leader>p :<C-U>CtrlP<CR>
+nnoremap <silent> <Leader>o :CtrlPBuffer<CR>
+vnoremap <silent> <Leader>o :<C-U>CtrlPBuffer<CR>
 
 " auto-pairs plugin settings:
 let g:AutoPairsCenterLine = 0
@@ -674,14 +674,15 @@ let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
 
 " nerdtree plugin settings:
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen=0
 let NERDTreeMinimalMenu=1
 let NERDTreeMinimalUI = 1
 let NERDTreeHighlightCursorline = 1
 let NERDTreeShowHidden = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeNodeDelimiter="\u00b7" " (middle dot)
-let NERDTreeCustomOpenArgs = { 'file': { 'reuse': 'currenttab', 'where': 'p' }, 'dir': {} }
+let NERDTreeMapCustomOpen = '<CR>'
+let NERDTreeCustomOpenArgs = { 'file': { 'reuse': 'currenttab', 'where': 'p', 'keepopen': 0, 'stay': 0 }, 'dir': {} }
 nmap <silent> <Leader>fo :NERDTreeFocus<CR>
 nmap <silent> <Leader>fq :NERDTreeClose<CR>
 nmap <silent> <Leader>ff :NERDTreeFind<CR>
@@ -903,17 +904,6 @@ let g:vim_markdown_fenced_languages = ['js=javascript']
 
 " colorscheme settings:
 function! OverrideColorscheme() abort
-  if &background ==# 'dark'
-    highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
-  else
-    highlight Search guifg=#fbf1c7 guibg=#98971a gui=NONE ctermfg=230 ctermbg=100 cterm=NONE
-  endif
-
-  highlight TerminalStatuslineRunning guifg=#1d2021 guibg=#fabd2f gui=bold ctermfg=234 ctermbg=214 cterm=bold
-
-  highlight! link IncSearch Search
-  highlight! link CurSearch Search
-
   " Tweak git-oriented highlights so Fugitive, GV, and GitGutter still match
   " the colorscheme palette while using foreground-only accents where desired.
 
@@ -985,20 +975,39 @@ function! OverrideColorschemeRetrobox() abort
   highlight link GitCommitSummary Title
 
   if &background ==# 'dark'
+    highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE
     highlight Visual guifg=#83a598 guibg=#1c1c1c gui=reverse ctermfg=109 ctermbg=234 cterm=reverse
     highlight QuickFixLine guifg=#1c1c1c guibg=#8ec07c gui=NONE ctermfg=234 ctermbg=107 cterm=NONE
     highlight CursorLine guibg=#262626 ctermbg=235
   else
+    highlight Search guifg=#fbf1c7 guibg=#98971a gui=NONE ctermfg=230 ctermbg=100 cterm=NONE
     highlight Visual guifg=#076678 guibg=#fbf1c7 gui=reverse ctermfg=23 ctermbg=230 cterm=reverse
     highlight QuickFixLine guifg=#fbf1c7 guibg=#427b58 gui=NONE ctermfg=230 ctermbg=29 cterm=NONE
     highlight CursorLine guibg=#f2e5bc ctermbg=229
   endif
+
+  highlight! link IncSearch Search
+  highlight! link CurSearch Search
+  highlight! link TerminalStatuslineRunning Search
+endfunction
+
+function! OverrideColorschemeCatppuccin() abort
+  if &background ==# 'dark'
+    highlight Search guifg=#1e1e2e guibg=#f9e2af gui=NONE
+  else
+    highlight Search guifg=#4c4f69 guibg=#f9e2af gui=NONE
+  endif
+
+  highlight! link IncSearch Search
+  highlight! link CurSearch Search
+  highlight! link TerminalStatuslineRunning Search
 endfunction
 
 augroup ConfigureColorscheme
   autocmd!
   autocmd ColorScheme * call OverrideColorscheme()
   autocmd ColorScheme retrobox call OverrideColorschemeRetrobox()
+  autocmd ColorScheme catppuccin* call OverrideColorschemeCatppuccin()
 augroup END
 
 set background=dark

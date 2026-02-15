@@ -1,8 +1,11 @@
 font-thicken = true
-theme = Catppuccin Mocha
+theme = Gruvbox Dark Hard
+background = #1c1c1c
 macos-titlebar-proxy-icon = hidden
 shell-integration-features = no-cursor
 cursor-style-blink = false
 mouse-hide-while-typing = true
+font-feature = -calt,-liga,-dlig
 keybind = ctrl+m=text:\r
-window-inherit-working-directory = false
+window-inherit-working-directory = true
+unfocused-split-opacity = 1

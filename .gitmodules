@@ -128,6 +128,136 @@
 [submodule "vim/.vim/pack/plugins/start/colorschemes"]
 	path = vim/.vim/pack/plugins/start/colorschemes
 	url = https://github.com/vim/colorschemes.git
-[submodule "nvim/.config/nvim/pack/plugins/start/catppuccin"]
-	path = nvim/.config/nvim/pack/plugins/start/catppuccin
-	url = https://github.com/catppuccin/nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/auto-pairs"]
+	path = nvim/.config/nvim/pack/plugins/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "nvim/.config/nvim/pack/plugins/start/nerdtree"]
+	path = nvim/.config/nvim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "nvim/.config/nvim/pack/plugins/start/tabular"]
+	path = nvim/.config/nvim/pack/plugins/start/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "nvim/.config/nvim/pack/plugins/start/tcomment_vim"]
+	path = nvim/.config/nvim/pack/plugins/start/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-endwise"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-fugitive"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-surround"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-textobj-user"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-unimpaired"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-repeat"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-ruby"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-javascript"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-exchange"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-exchange
+	url = https://github.com/tommcdo/vim-exchange.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-textobj-lastpat"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-textobj-lastpat
+	url = https://github.com/kana/vim-textobj-lastpat.git
+[submodule "nvim/.config/nvim/pack/plugins/start/jdaddy.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/jdaddy.vim
+	url = https://github.com/tpope/vim-jdaddy.git
+[submodule "nvim/.config/nvim/pack/plugins/start/emmet-vim"]
+	path = nvim/.config/nvim/pack/plugins/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/ctrlp.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/ale"]
+	path = nvim/.config/nvim/pack/plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "nvim/.config/nvim/pack/plugins/start/typescript-vim"]
+	path = nvim/.config/nvim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-html-template-literals"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-html-template-literals
+	url = https://github.com/jonsmithers/vim-html-template-literals.git
+[submodule "nvim/.config/nvim/pack/plugins/start/targets.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/targets.vim
+	url = https://github.com/wellle/targets.vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-projectionist"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-projectionist
+	url = https://github.com/tpope/vim-projectionist.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-indent-object"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-jsx-pretty"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-lister"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-lister
+	url = https://github.com/tommcdo/vim-lister.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-resize-mode"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-resize-mode
+	url = https://github.com/vais/vim-resize-mode.git
+	branch = add-terminal-mode-support
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-gitgutter"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "nvim/.config/nvim/pack/plugins/start/gv.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/gv.vim
+	url = https://github.com/junegunn/gv.vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-fubitive"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-fubitive
+	url = https://github.com/tommcdo/vim-fubitive.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-rhubarb"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-fugitive-blame-ext"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-fugitive-blame-ext
+	url = https://github.com/tommcdo/vim-fugitive-blame-ext.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-textobj-line"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-textobj-line
+	url = https://github.com/kana/vim-textobj-line.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-dadbod"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-dadbod
+	url = https://github.com/tpope/vim-dadbod.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-dadbod-ui"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-dadbod-ui
+	url = https://github.com/kristijanhusak/vim-dadbod-ui.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-dadbod-completion"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-dadbod-completion
+	url = https://github.com/kristijanhusak/vim-dadbod-completion.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-closetag"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-closetag
+	url = https://github.com/alvan/vim-closetag.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-textobj-xmlattr"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-textobj-xmlattr
+	url = https://github.com/whatyouhide/vim-textobj-xmlattr.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-textobj-entire"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-textobj-entire
+	url = https://github.com/kana/vim-textobj-entire.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-javascript-sql"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-javascript-sql
+	url = https://github.com/vais/vim-javascript-sql.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-markdown"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-markdown
+	url = https://github.com/preservim/vim-markdown.git
+[submodule "nvim/.config/nvim/pack/plugins/start/colorschemes"]
+	path = nvim/.config/nvim/pack/plugins/start/colorschemes
+	url = https://github.com/vim/colorschemes.git
+[submodule "nvim/.config/nvim/pack/plugins/start/flash.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/flash.nvim
+	url = https://github.com/folke/flash.nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/nvim-window-picker"]
+	path = nvim/.config/nvim/pack/plugins/start/nvim-window-picker
+	url = https://github.com/s1n7ax/nvim-window-picker.git
+[submodule "nvim/.config/nvim/pack/plugins/start/toggleterm.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/toggleterm.nvim
+	url = https://github.com/akinsho/toggleterm.nvim.git
