@@ -18,6 +18,20 @@ On macOS/Linux, `sync` also runs `stow --restow` for all packages.
 
 On Windows, use `sync.bat` (no GNU Stow).
 
+## Bash Profile Management
+
+`bash/` now contains a Stow-managed `~/.bash_profile` that loads files from:
+
+- `~/.config/bash/profile.d/*.bash` (shared, tracked in this repo)
+
+Machine-specific overrides are loaded from:
+
+- `~/.bash_profile.local`
+
+Use `~/.config/bash/examples/local.bash.example` as a template for local-only settings.
+Keep secrets in `~/.bash_profile.local` (not in tracked repo files), for example:
+`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_REGION`.
+
 ## Plugin Management
 
 ### Vim

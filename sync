@@ -2,4 +2,4 @@
 
 git -C ~/dotfiles pull
 git -C ~/dotfiles submodule update --init --jobs 16
-stow --restow -d ~/dotfiles -t ~ git vim nvim misc ghostty
+stow --restow -d ~/dotfiles -t ~ git vim nvim misc ghostty bash
