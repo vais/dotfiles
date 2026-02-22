@@ -9,3 +9,4 @@ font-feature = -calt,-liga,-dlig
 keybind = ctrl+m=text:\r
 window-inherit-working-directory = true
 unfocused-split-opacity = 1
+macos-titlebar-style = tabs
