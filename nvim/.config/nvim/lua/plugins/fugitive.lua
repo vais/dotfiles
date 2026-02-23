@@ -16,6 +16,15 @@ local function warn_fugitive_buffer()
   vim.opt_local.modifiable = false
 end
 
+local function mark_fugitive_index_replaceable()
+  if vim.b.fugitive_type ~= 'index' then
+    return
+  end
+
+  -- Allow openers that skip special buftypes to reuse Fugitive status windows.
+  vim.opt_local.buftype = ''
+end
+
 local function git_status_in_new_tab()
   vim.cmd('-tabnew')
 
@@ -151,6 +160,8 @@ local function apply_fugitive_status_open_mapping()
 end
 
 local function configure_fugitive_buffer()
+  mark_fugitive_index_replaceable()
+
   -- Remove Fugitive's default mapping for staging/resetting and repurpose keys.
   pcall(vim.keymap.del, 'n', 'a', { buffer = 0 })
 
@@ -267,6 +278,7 @@ function M.setup()
     pattern = 'FugitiveIndex',
     callback = function()
       vim.opt_local.bufhidden = 'hide'
+      mark_fugitive_index_replaceable()
     end,
   })
 
