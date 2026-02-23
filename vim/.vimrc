@@ -902,6 +902,20 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_fenced_languages = ['js=javascript']
 
+" vim-rsi plugin settings:
+function! s:cmdline_ctrl_k() abort
+  let l:cmdline = getcmdline()
+  let l:pos = getcmdpos()
+
+  if l:pos <= strchars(l:cmdline)
+    call setreg('-', strcharpart(l:cmdline, l:pos - 1))
+  endif
+
+  return strpart(l:cmdline, 0, l:pos - 1)
+endfunction
+
+cnoremap <C-k> <C-\>e<SID>cmdline_ctrl_k()<CR>
+
 " colorscheme settings:
 function! OverrideColorscheme() abort
   " Tweak git-oriented highlights so Fugitive, GV, and GitGutter still match

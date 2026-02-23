@@ -261,3 +261,9 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/toggleterm.nvim"]
 	path = nvim/.config/nvim/pack/plugins/start/toggleterm.nvim
 	url = https://github.com/akinsho/toggleterm.nvim.git
+[submodule "vim/.vim/pack/plugins/start/vim-rsi"]
+	path = vim/.vim/pack/plugins/start/vim-rsi
+	url = https://github.com/tpope/vim-rsi.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-rsi"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-rsi
+	url = https://github.com/tpope/vim-rsi.git
