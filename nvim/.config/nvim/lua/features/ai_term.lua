@@ -1,7 +1,7 @@
 local M = {}
 
 local Terminal = require('toggleterm.terminal').Terminal
-local term_label = require('features.term_label')
+local term_label = require('features.toggleterm_label')
 
 local assistants = {
   Aider = {

@@ -1,3 +1,5 @@
+local M = {}
+
 -- Keep cursorline enabled only in the active non-terminal editing window.
 local last_edit_window_by_tab = {}
 
@@ -54,38 +56,13 @@ local function update_active_window_cursorline()
   end
 end
 
-local cursorline_group = vim.api.nvim_create_augroup('ActiveWindowCursorline', { clear = true })
+function M.setup()
+  local group = vim.api.nvim_create_augroup('ActiveWindowCursorline', { clear = true })
 
-vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter', 'TabEnter', 'TermOpen', 'TermClose', 'WinClosed' }, {
-  group = cursorline_group,
-  callback = update_active_window_cursorline,
-})
+  vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter', 'TabEnter', 'TermOpen', 'TermClose', 'WinClosed' }, {
+    group = group,
+    callback = update_active_window_cursorline,
+  })
+end
 
--- Auto-reload file buffers when content changes outside Neovim.
-local autoreload_group = vim.api.nvim_create_augroup('AutoReloadBuffer', { clear = true })
-
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained' }, {
-  group = autoreload_group,
-  callback = function(args)
-    local buf = args.buf
-    if not buf or buf == 0 then
-      buf = vim.api.nvim_get_current_buf()
-    end
-
-    local name = vim.api.nvim_buf_get_name(buf)
-    if vim.bo[buf].buftype == '' and name ~= '' and vim.fn.filereadable(name) == 1 then
-      vim.cmd('checktime ' .. buf)
-    end
-  end,
-})
-
--- Terminal rendering/performance tuning.
-local terminal_tuning_group = vim.api.nvim_create_augroup('TerminalTuning', { clear = true })
-
--- Disable smooth scrolling in all terminal windows.
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = terminal_tuning_group,
-  callback = function()
-    vim.opt_local.smoothscroll = false
-  end,
-})
+return M

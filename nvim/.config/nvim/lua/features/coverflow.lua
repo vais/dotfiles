@@ -29,4 +29,22 @@ function M.focus_left()
   run_coverflow('wincmd h | wincmd |')
 end
 
+function M.setup()
+  -- Coverflow(tm)-style navigation for splits.
+  vim.keymap.set('n', [[<C-w>\]], M.equalize_and_focus_right, { silent = true })
+  vim.keymap.set('x', [[<C-w>\]], M.equalize_and_focus_right, { silent = true })
+
+  vim.keymap.set('n', '<C-w><C-\\>', M.equalize_and_focus_right, { silent = true })
+  vim.keymap.set('x', '<C-w><C-\\>', M.equalize_and_focus_right, { silent = true })
+
+  vim.keymap.set('n', '<C-w>]', M.focus_right, { silent = true })
+  vim.keymap.set('x', '<C-w>]', M.focus_right, { silent = true })
+
+  vim.keymap.set('n', '<C-w><C-]>', M.focus_right, { silent = true })
+  vim.keymap.set('x', '<C-w><C-]>', M.focus_right, { silent = true })
+
+  vim.keymap.set('n', '<C-w>[', M.focus_left, { silent = true })
+  vim.keymap.set('x', '<C-w>[', M.focus_left, { silent = true })
+end
+
 return M

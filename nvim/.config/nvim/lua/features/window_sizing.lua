@@ -23,4 +23,10 @@ function M.fit_current_window_to_content_width()
   vim.cmd('vertical resize ' .. math.min(max_allowed, target))
 end
 
+function M.setup()
+  -- Resize window to fit content width.
+  vim.keymap.set('n', '<C-w>e', M.fit_current_window_to_content_width, { silent = true })
+  vim.keymap.set('n', '<C-w><C-e>', M.fit_current_window_to_content_width, { silent = true })
+end
+
 return M

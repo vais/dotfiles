@@ -35,6 +35,19 @@ local function apply_search_pattern(pattern)
   vim.fn.histadd('search', pattern)
 end
 
+local function exit_visual_mode()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'nx', false)
+end
+
+local function configure_grep_for_find_in_files()
+  -- Read grep patterns from ~/.vimsearch, one per line.
+  local pattern_file = vim.fn.expand('~/.vimsearch')
+  vim.opt.grepprg = 'git grep -f "' .. pattern_file .. '" -I -n'
+
+  -- Parse grep output with or without an explicit column number.
+  vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
+end
+
 function M.set_search_term_normal()
   local str = vim.fn.expand('<cword>')
 
@@ -88,6 +101,37 @@ function M.find_in_files(text, whole_word)
     true
   )
   vim.fn.feedkeys(cmdline, 'n')
+end
+
+function M.setup()
+  configure_grep_for_find_in_files()
+
+  -- Set current word or visual selection as the current search term.
+  vim.keymap.set('n', 'gn', function()
+    M.set_search_term_normal()
+  end, { silent = true })
+
+  vim.keymap.set('x', 'gn', function()
+    M.set_search_term_visual()
+    exit_visual_mode()
+  end, { silent = true })
+
+  -- Find in files.
+  vim.keymap.set('n', '<F3>', function()
+    M.find_in_files('')
+  end, { silent = true })
+
+  vim.keymap.set('n', '<S-F3>', function()
+    M.find_in_files(M.set_search_term_normal(), true)
+  end, { silent = true })
+
+  vim.keymap.set('x', '<F3>', function()
+    M.find_in_files(M.set_search_term_visual())
+  end, { silent = true })
+
+  vim.keymap.set('x', '<S-F3>', function()
+    M.find_in_files(M.set_search_term_visual(), true)
+  end, { silent = true })
 end
 
 return M

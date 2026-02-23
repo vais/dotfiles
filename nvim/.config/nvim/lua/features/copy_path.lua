@@ -1,5 +1,9 @@
 local M = {}
 
+local function exit_visual_mode()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'nx', false)
+end
+
 local function get_copy_path(kind)
   local file = vim.api.nvim_buf_get_name(0)
   if file == nil or file == '' then
@@ -60,6 +64,37 @@ end
 function M.copy_visual_file_path(kind)
   local start_line, end_line = get_visual_line_range()
   M.copy_file_path(kind, start_line, end_line)
+end
+
+function M.setup()
+  -- Copy current buffer path to the system clipboard.
+  vim.keymap.set('n', '<Leader>fa', function()
+    M.copy_file_path('absolute', 0, 0)
+  end, { silent = true })
+
+  vim.keymap.set('n', '<Leader>fr', function()
+    M.copy_file_path('relative', 0, 0)
+  end, { silent = true })
+
+  vim.keymap.set('n', '<Leader>fl', function()
+    local line = vim.fn.line('.')
+    M.copy_file_path('relative', line, line)
+  end, { silent = true })
+
+  vim.keymap.set('x', '<Leader>fa', function()
+    M.copy_visual_file_path('absolute')
+    exit_visual_mode()
+  end, { silent = true })
+
+  vim.keymap.set('x', '<Leader>fr', function()
+    M.copy_visual_file_path('relative')
+    exit_visual_mode()
+  end, { silent = true })
+
+  vim.keymap.set('x', '<Leader>fl', function()
+    M.copy_visual_file_path('relative')
+    exit_visual_mode()
+  end, { silent = true })
 end
 
 return M

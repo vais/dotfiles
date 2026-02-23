@@ -4,7 +4,7 @@ function M.setup()
   local toggleterm = require('toggleterm')
   local terminals = require('toggleterm.terminal')
   local ai_term = require('features.ai_term')
-  local term_label = require('features.term_label')
+  local term_label = require('features.toggleterm_label')
   local opts = { silent = true }
   local function get_float_terminals()
     local all = terminals.get_all(false)

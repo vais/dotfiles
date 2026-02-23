@@ -20,4 +20,16 @@ function M.scroll_move(direction)
   return scroll .. (direction == 'down' and 'j' or 'k')
 end
 
+function M.setup()
+  -- Scroll viewport down and keep cursor movement wrap-aware.
+  vim.keymap.set({ 'n', 'x', 'o' }, '<C-j>', function()
+    return M.scroll_move('down')
+  end, { expr = true })
+
+  -- Scroll viewport up and keep cursor movement wrap-aware.
+  vim.keymap.set({ 'n', 'x', 'o' }, '<C-k>', function()
+    return M.scroll_move('up')
+  end, { expr = true })
+end
+
 return M

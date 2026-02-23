@@ -128,4 +128,23 @@ function M.should_block_cmdline(cmdline)
   return true, build_refusal_message(running_buffers)
 end
 
+function M.setup()
+  -- Block quitting commands that would exit Neovim while terminal jobs are running.
+  vim.keymap.set('c', '<CR>', function()
+    if vim.fn.getcmdtype() ~= ':' then
+      return '<CR>'
+    end
+
+    local blocked, msg = M.should_block_cmdline(vim.fn.getcmdline())
+    if blocked then
+      vim.schedule(function()
+        vim.notify(msg, vim.log.levels.WARN, { title = 'Terminal Quit Guard' })
+      end)
+      return '<C-c>'
+    end
+
+    return '<CR>'
+  end, { expr = true })
+end
+
 return M

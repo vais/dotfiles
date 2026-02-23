@@ -1,5 +1,19 @@
 local M = {}
 
+local function configure_nerdtree_buffer()
+  -- Allow resizing NERDTree windows freely.
+  vim.opt_local.winfixwidth = false
+
+  -- Allow resizing NERDTree window height freely.
+  vim.opt_local.winfixheight = false
+
+  -- Unmap Ctrl-j in NERDTree buffer.
+  pcall(vim.keymap.del, 'n', '<C-j>', { buffer = 0 })
+
+  -- Unmap Ctrl-k in NERDTree buffer.
+  pcall(vim.keymap.del, 'n', '<C-k>', { buffer = 0 })
+end
+
 function M.setup()
   -- Keep NERDTree open for normal open actions (for "o" and mouse activation).
   vim.g.NERDTreeQuitOnOpen = 0
@@ -38,6 +52,14 @@ function M.setup()
 
   -- Reveal current file in NERDTree.
   vim.keymap.set('n', '<Leader>ff', '<Cmd>NERDTreeFind<CR>', { silent = true })
+
+  local group = vim.api.nvim_create_augroup('ConfigureNerdTreePlugin', { clear = true })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    pattern = 'nerdtree',
+    callback = configure_nerdtree_buffer,
+  })
 end
 
 return M

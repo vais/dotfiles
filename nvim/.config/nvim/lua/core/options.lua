@@ -34,7 +34,7 @@ vim.opt.completeopt = 'menuone,noselect,noinsert'
 vim.opt.wildmode = 'list:longest'
 
 -- ============================================================================
--- Editing
+-- Editing and Structure
 -- ============================================================================
 
 -- Use smart auto-indenting when starting a new line.
@@ -43,21 +43,11 @@ vim.opt.smartindent = true
 -- Allow virtual editing in visual block mode.
 vim.opt.virtualedit = 'block'
 
--- ============================================================================
--- Grep
--- ============================================================================
+-- Start with folds effectively open.
+vim.opt.foldlevelstart = 99
 
--- Read grep patterns from ~/.vimsearch, one per line.
-vim.opt.grepprg = 'git grep -f "' .. vim.fn.expand('~/.vimsearch') .. '"'
-
--- Do not match patterns in binary files.
-vim.opt.grepprg:append(' -I')
-
--- Prefix grep matches with line numbers.
-vim.opt.grepprg:append(' -n')
-
--- Parse grep output with or without an explicit column number.
-vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
+-- Build folds from indentation levels.
+vim.opt.foldmethod = 'indent'
 
 -- ============================================================================
 -- Indentation and tabs
@@ -115,11 +105,15 @@ vim.opt.sessionoptions:remove('blank')
 vim.opt.sessionoptions:remove('options')
 
 -- ============================================================================
--- Shell and terminal
+-- Shell and External Commands
 -- ============================================================================
 
--- Use non-login Bash for external command execution to keep ALE/Fugitive/GV fast.
+-- Use non-login Bash for external command execution to keep tooling responsive.
 vim.opt.shell = '/bin/bash'
+
+-- ============================================================================
+-- Terminal and Window Title
+-- ============================================================================
 
 -- Let Neovim control the terminal title and show the current working directory.
 vim.opt.title = true
@@ -136,16 +130,6 @@ vim.opt.modelines = 0
 vim.opt.shortmess:append('I')
 
 -- ============================================================================
--- Folding
--- ============================================================================
-
--- Start with folds effectively open.
-vim.opt.foldlevelstart = 99
-
--- Build folds from indentation levels.
-vim.opt.foldmethod = 'indent'
-
--- ============================================================================
 -- Input and mouse
 -- ============================================================================
 
@@ -158,7 +142,8 @@ vim.opt.mousescroll = 'ver:1,hor:1'
 -- Enable smooth scrolling behavior.
 vim.opt.smoothscroll = true
 
--- Trigger CursorHold/swapfile and plugin idle updates quickly, especially for GitGutter refresh.
+-- Trigger CursorHold/swapfile and plugin idle updates quickly,
+-- especially for GitGutter refresh.
 vim.opt.updatetime = 100
 
 -- ============================================================================

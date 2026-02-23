@@ -1,5 +1,30 @@
 local M = {}
 
+local function configure_dbui_buffer()
+  -- Allow resizing DBUI window width.
+  vim.opt_local.winfixwidth = false
+
+  -- Allow resizing DBUI window height.
+  vim.opt_local.winfixheight = false
+
+  -- Reuse Ctrl-p + o behavior from classic Vim DBUI mapping.
+  vim.keymap.set('n', 'x', '<C-p>o', { buffer = true, silent = true, remap = true })
+
+  -- Remove Ctrl-j mapping in DBUI buffer.
+  pcall(vim.keymap.del, 'n', '<C-j>', { buffer = 0 })
+
+  -- Remove Ctrl-k mapping in DBUI buffer.
+  pcall(vim.keymap.del, 'n', '<C-k>', { buffer = 0 })
+end
+
+local function configure_dbout_buffer()
+  -- Allow resizing DB output window width.
+  vim.opt_local.winfixwidth = false
+
+  -- Allow resizing DB output window height.
+  vim.opt_local.winfixheight = false
+end
+
 function M.setup()
   -- Hide the built-in help panel in DBUI.
   vim.g.db_ui_show_help = 0
@@ -37,6 +62,20 @@ function M.setup()
 
   -- Focus DBUI entry for current buffer.
   vim.keymap.set('n', '<Leader>df', '<Cmd>DBUIFindBuffer<CR>', { silent = true })
+
+  local group = vim.api.nvim_create_augroup('ConfigureDadbodUiPlugin', { clear = true })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    pattern = 'dbui',
+    callback = configure_dbui_buffer,
+  })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    pattern = 'dbout',
+    callback = configure_dbout_buffer,
+  })
 end
 
 return M
