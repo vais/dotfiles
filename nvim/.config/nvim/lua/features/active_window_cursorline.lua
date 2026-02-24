@@ -9,7 +9,7 @@ local function is_popup_window(win)
     return true
   end
 
-  return vim.wo[win].previewwindow
+  return false
 end
 
 local function is_edit_window(win)
