@@ -49,6 +49,19 @@ vim.opt.foldlevelstart = 99
 -- Build folds from indentation levels.
 vim.opt.foldmethod = 'indent'
 
+_G.dotfiles_foldtext = function()
+  local fold_text = vim.fn.foldtext()
+  local indent, prefix, spacing = fold_text:match('^(%s*)([%+%-][%+%-]+)(%s*)')
+  if not prefix then
+    return fold_text
+  end
+
+  local marker = string.rep('·', #prefix)
+  local rest = fold_text:sub(#indent + #prefix + #spacing + 1)
+  return indent .. marker .. ' ' .. rest
+end
+vim.opt.foldtext = 'v:lua.dotfiles_foldtext()'
+
 -- ============================================================================
 -- Indentation and tabs
 -- ============================================================================

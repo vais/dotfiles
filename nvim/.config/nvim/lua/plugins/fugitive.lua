@@ -240,8 +240,8 @@ local function configure_git_buffer()
   -- Build folds from syntax regions.
   vim.opt_local.foldmethod = 'syntax'
 
-  -- Use the default fold text formatter.
-  vim.opt_local.foldtext = 'foldtext()'
+  -- Use the shared fold text post-processing formatter.
+  vim.opt_local.foldtext = 'v:lua.dotfiles_foldtext()'
 
   -- Toggle fold under cursor.
   vim.keymap.set('n', '-', 'za', { buffer = true, silent = true, remap = true })
