@@ -6,16 +6,20 @@ local term_label = require('features.toggleterm_label')
 local assistants = {
   Aider = {
     name = 'aider',
+    prompt_pattern = '^[a-z -]*> ',
   },
   Claude = {
     name = 'claude',
+    prompt_pattern = '^❯',
   },
   Codex = {
     name = 'codex',
+    prompt_pattern = '^› ',
     disable_ctrl_d = true,
   },
   Cursor = {
     name = 'cursor-agent',
+    prompt_pattern = '^ │ ',
     disable_ctrl_d = true,
     cursor_image_workaround = true,
   },
@@ -25,6 +29,66 @@ local state = {
   captured_context = '',
   terms = {},
 }
+
+local jump_highlight_ns = vim.api.nvim_create_namespace('ai_term_jump_highlight')
+local jump_highlight_state = {
+  buf = nil,
+  line = nil,
+  timer = nil,
+}
+
+local function clear_jump_highlight()
+  if jump_highlight_state.timer then
+    jump_highlight_state.timer:stop()
+  end
+
+  if jump_highlight_state.buf
+      and jump_highlight_state.line
+      and vim.api.nvim_buf_is_valid(jump_highlight_state.buf) then
+    vim.api.nvim_buf_clear_namespace(
+      jump_highlight_state.buf,
+      jump_highlight_ns,
+      jump_highlight_state.line - 1,
+      jump_highlight_state.line
+    )
+  end
+
+  jump_highlight_state.buf = nil
+  jump_highlight_state.line = nil
+end
+
+local function highlight_jump_line(buf, line)
+  clear_jump_highlight()
+
+  if not vim.api.nvim_buf_is_valid(buf) or line < 1 then
+    return
+  end
+
+  vim.api.nvim_buf_add_highlight(buf, jump_highlight_ns, 'Search', line - 1, 0, -1)
+  jump_highlight_state.buf = buf
+  jump_highlight_state.line = line
+
+  if not jump_highlight_state.timer then
+    jump_highlight_state.timer = vim.loop.new_timer()
+  end
+
+  jump_highlight_state.timer:start(300, 0, vim.schedule_wrap(function()
+    clear_jump_highlight()
+  end))
+end
+
+local function is_prompt_line(buf, line, pattern)
+  if not vim.api.nvim_buf_is_valid(buf) or line < 1 then
+    return false
+  end
+
+  local text = vim.api.nvim_buf_get_lines(buf, line - 1, line, false)[1]
+  if type(text) ~= 'string' then
+    return false
+  end
+
+  return text:match(pattern) ~= nil
+end
 
 local function is_file_buffer(buf)
   return buf > 0
@@ -221,6 +285,52 @@ local function paste_text_or_image(term)
   send_ctrl_v_to_term(term)
 end
 
+local function jump_to_prompt(buf, direction)
+  clear_jump_highlight()
+
+  local pattern = vim.b[buf].ai_prompt_pattern
+  if type(pattern) ~= 'string' or pattern == '' then
+    return
+  end
+
+  local line_count = vim.api.nvim_buf_line_count(buf)
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local target_line = cursor[1] + direction
+  if target_line < 1 or target_line > line_count then
+    if is_prompt_line(buf, cursor[1], pattern) then
+      highlight_jump_line(buf, cursor[1])
+    end
+    return
+  end
+
+  vim.api.nvim_win_set_cursor(0, { target_line, 0 })
+
+  local flags = direction < 0 and 'Wb' or 'W'
+  local last_search = vim.fn.getreg('/')
+  local had_hlsearch = vim.o.hlsearch
+  local ok, found = pcall(vim.fn.search, pattern, flags)
+  vim.fn.setreg('/', last_search)
+  vim.o.hlsearch = had_hlsearch
+  if not ok then
+    if is_prompt_line(buf, cursor[1], pattern) then
+      highlight_jump_line(buf, cursor[1])
+    end
+    vim.api.nvim_win_set_cursor(0, cursor)
+    return
+  end
+
+  if found == 0 then
+    if is_prompt_line(buf, cursor[1], pattern) then
+      highlight_jump_line(buf, cursor[1])
+    end
+    vim.api.nvim_win_set_cursor(0, cursor)
+    return
+  end
+
+  vim.api.nvim_win_set_cursor(0, { found, 0 })
+  highlight_jump_line(buf, found)
+end
+
 function M.capture_visual_selection()
   set_pending_context(capture_context_from_current_buffer(true))
 end
@@ -236,6 +346,7 @@ local function configure_buffer(term, assistant)
   end
 
   vim.b[buf].ai_assistant = assistant.name
+  vim.b[buf].ai_prompt_pattern = assistant.prompt_pattern or ''
   vim.bo[buf].scrollback = 999
 
   local opts = { buffer = buf, silent = true }
@@ -255,6 +366,13 @@ local function configure_buffer(term, assistant)
   end, opts)
   vim.keymap.set({ 'n', 't' }, '<C-v>', function()
     paste_text_or_image(term)
+  end, opts)
+
+  vim.keymap.set('n', '<C-p>', function()
+    jump_to_prompt(buf, -1)
+  end, opts)
+  vim.keymap.set('n', '<C-n>', function()
+    jump_to_prompt(buf, 1)
   end, opts)
 
   if assistant.disable_ctrl_d then
