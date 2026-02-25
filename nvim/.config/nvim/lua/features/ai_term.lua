@@ -31,33 +31,48 @@ local state = {
 }
 
 local jump_highlight_ns = vim.api.nvim_create_namespace('ai_term_jump_highlight')
+local jump_highlight_augroup = vim.api.nvim_create_augroup('ai_term_jump_highlight', { clear = true })
 local jump_highlight_state = {
   buf = nil,
-  line = nil,
   timer = nil,
 }
+
+local function close_jump_highlight_timer()
+  local timer = jump_highlight_state.timer
+  if not timer then
+    return
+  end
+
+  timer:stop()
+
+  local is_closing = false
+  local ok, result = pcall(function()
+    return timer:is_closing()
+  end)
+  if ok then
+    is_closing = result
+  end
+
+  if not is_closing then
+    timer:close()
+  end
+
+  jump_highlight_state.timer = nil
+end
 
 local function clear_jump_highlight()
   if jump_highlight_state.timer then
     jump_highlight_state.timer:stop()
   end
 
-  if jump_highlight_state.buf
-      and jump_highlight_state.line
-      and vim.api.nvim_buf_is_valid(jump_highlight_state.buf) then
-    vim.api.nvim_buf_clear_namespace(
-      jump_highlight_state.buf,
-      jump_highlight_ns,
-      jump_highlight_state.line - 1,
-      jump_highlight_state.line
-    )
+  if jump_highlight_state.buf and vim.api.nvim_buf_is_valid(jump_highlight_state.buf) then
+    vim.api.nvim_buf_clear_namespace(jump_highlight_state.buf, jump_highlight_ns, 0, -1)
   end
 
   jump_highlight_state.buf = nil
-  jump_highlight_state.line = nil
 end
 
-local function highlight_jump_line(buf, line)
+local function flash_jump_line(buf, line)
   clear_jump_highlight()
 
   if not vim.api.nvim_buf_is_valid(buf) or line < 1 then
@@ -66,7 +81,6 @@ local function highlight_jump_line(buf, line)
 
   vim.api.nvim_buf_add_highlight(buf, jump_highlight_ns, 'Search', line - 1, 0, -1)
   jump_highlight_state.buf = buf
-  jump_highlight_state.line = line
 
   if not jump_highlight_state.timer then
     jump_highlight_state.timer = vim.loop.new_timer()
@@ -88,6 +102,29 @@ local function is_prompt_line(buf, line, pattern)
   end
 
   return text:match(pattern) ~= nil
+end
+
+local function find_prompt_line(buf, current_line, direction, pattern)
+  local line_count = vim.api.nvim_buf_line_count(buf)
+
+  local start_line, stop_line, step
+  if direction < 0 then
+    start_line = current_line - 1
+    stop_line = 1
+    step = -1
+  else
+    start_line = current_line + 1
+    stop_line = line_count
+    step = 1
+  end
+
+  for line = start_line, stop_line, step do
+    if is_prompt_line(buf, line, pattern) then
+      return line
+    end
+  end
+
+  return nil
 end
 
 local function is_file_buffer(buf)
@@ -293,42 +330,18 @@ local function jump_to_prompt(buf, direction)
     return
   end
 
-  local line_count = vim.api.nvim_buf_line_count(buf)
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local target_line = cursor[1] + direction
-  if target_line < 1 or target_line > line_count then
-    if is_prompt_line(buf, cursor[1], pattern) then
-      highlight_jump_line(buf, cursor[1])
-    end
-    return
-  end
+  local current_line = vim.api.nvim_win_get_cursor(0)[1]
+  local found = find_prompt_line(buf, current_line, direction, pattern)
 
-  vim.api.nvim_win_set_cursor(0, { target_line, 0 })
-
-  local flags = direction < 0 and 'Wb' or 'W'
-  local last_search = vim.fn.getreg('/')
-  local had_hlsearch = vim.o.hlsearch
-  local ok, found = pcall(vim.fn.search, pattern, flags)
-  vim.fn.setreg('/', last_search)
-  vim.o.hlsearch = had_hlsearch
-  if not ok then
-    if is_prompt_line(buf, cursor[1], pattern) then
-      highlight_jump_line(buf, cursor[1])
+  if not found then
+    if is_prompt_line(buf, current_line, pattern) then
+      flash_jump_line(buf, current_line)
     end
-    vim.api.nvim_win_set_cursor(0, cursor)
-    return
-  end
-
-  if found == 0 then
-    if is_prompt_line(buf, cursor[1], pattern) then
-      highlight_jump_line(buf, cursor[1])
-    end
-    vim.api.nvim_win_set_cursor(0, cursor)
     return
   end
 
   vim.api.nvim_win_set_cursor(0, { found, 0 })
-  highlight_jump_line(buf, found)
+  flash_jump_line(buf, found)
 end
 
 function M.capture_visual_selection()
@@ -449,6 +462,14 @@ function M.setup()
   for command_name, _ in pairs(assistants) do
     create_assistant_command(command_name)
   end
+
+  vim.api.nvim_create_autocmd('VimLeavePre', {
+    group = jump_highlight_augroup,
+    callback = function()
+      clear_jump_highlight()
+      close_jump_highlight_timer()
+    end,
+  })
 end
 
 return M
