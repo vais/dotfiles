@@ -15,7 +15,7 @@ local function configure_nerdtree_buffer()
 end
 
 function M.setup()
-  -- Keep NERDTree open for normal open actions (for "o" and mouse activation).
+  -- Keep NERDTree open for normal open actions.
   vim.g.NERDTreeQuitOnOpen = 0
 
   -- Use minimal menu entries.
@@ -36,13 +36,36 @@ function M.setup()
   -- Use a middle-dot delimiter between node name and metadata.
   vim.g.NERDTreeNodeDelimiter = '·'
 
-  -- "<CR>" uses these args (NERDTreeMapCustomOpen), while "o" keeps default behavior.
+  -- "<CR>" uses these custom args.
   vim.g.NERDTreeMapCustomOpen = '<CR>'
   vim.g.NERDTreeCustomOpenArgs = {
     -- Open in prior window and close the tree.
     file = { reuse = 'currenttab', where = 'p', keepopen = 0, stay = 0 },
     dir = {},
   }
+
+  -- Keep "o" from jumping to other tabs when the file is already open.
+  vim.cmd([[
+    function! NERDTreeActivateFileNodeCurrentTab(node) abort
+      call a:node.activate({'reuse': 'currenttab', 'where': 'p', 'keepopen': !nerdtree#closeTreeOnOpen()})
+    endfunction
+  ]])
+
+  local group = vim.api.nvim_create_augroup('ConfigureNerdTreePlugin', { clear = true })
+
+  vim.api.nvim_create_autocmd('User', {
+    group = group,
+    pattern = 'NERDTreeInit',
+    callback = function()
+      vim.fn.NERDTreeAddKeyMap({
+        key = 'o',
+        scope = 'FileNode',
+        callback = 'NERDTreeActivateFileNodeCurrentTab',
+        quickhelpText = 'open in prev window',
+        override = 1,
+      })
+    end,
+  })
 
   -- Focus NERDTree window.
   vim.keymap.set('n', '<Leader>fo', '<Cmd>NERDTreeFocus<CR>', { silent = true })
@@ -52,8 +75,6 @@ function M.setup()
 
   -- Reveal current file in NERDTree.
   vim.keymap.set('n', '<Leader>ff', '<Cmd>NERDTreeFind<CR>', { silent = true })
-
-  local group = vim.api.nvim_create_augroup('ConfigureNerdTreePlugin', { clear = true })
 
   vim.api.nvim_create_autocmd('FileType', {
     group = group,
