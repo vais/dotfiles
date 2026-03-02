@@ -3,6 +3,8 @@ local M = {}
 function M.setup()
   local toggleterm = require('toggleterm')
   local terminals = require('toggleterm.terminal')
+  local config = require('toggleterm.config').get()
+  local ui = require('toggleterm.ui')
   local ai_term = require('features.ai_term')
   local term_label = require('features.toggleterm_label')
   local opts = { silent = true }
@@ -86,6 +88,42 @@ function M.setup()
       border = 'rounded',
     },
   })
+
+  local function patch_toggleterm_winleave()
+    local group = vim.api.nvim_create_augroup('ToggleTermCommands', { clear = false })
+    local patterns = {
+      ['term://*#toggleterm#*'] = true,
+      ['term://*::toggleterm::*'] = true,
+    }
+
+    for _, autocmd in ipairs(vim.api.nvim_get_autocmds({ group = group, event = 'WinLeave' })) do
+      if patterns[autocmd.pattern] then
+        pcall(vim.api.nvim_del_autocmd, autocmd.id)
+      end
+    end
+
+    vim.api.nvim_create_autocmd('WinLeave', {
+      group = group,
+      pattern = vim.tbl_keys(patterns),
+      callback = function()
+        local _, term = terminals.identify()
+        if not term then
+          return
+        end
+
+        if config.persist_mode then
+          term:persist_mode()
+        end
+
+        if term:is_float() then
+          ui.save_terminal_view({ term.id }, term.id)
+          term:close()
+        end
+      end,
+    })
+  end
+
+  patch_toggleterm_winleave()
 
   ai_term.setup()
 
