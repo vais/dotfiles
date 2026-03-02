@@ -142,6 +142,9 @@ function M.setup()
   -- Toggle terminal from terminal mode.
   vim.keymap.set('t', '<C-Space>', toggleterm.toggle, opts)
 
+  -- Create a new float terminal from normal and terminal modes.
+  vim.keymap.set({ 'n', 't' }, '<C-8>', '<Cmd>TermNew<CR>', opts)
+
   -- Cycle existing float terminals from normal and terminal modes.
   vim.keymap.set({ 'n', 't' }, '<C-9>', function()
     cycle_terminal(-1)
