@@ -370,7 +370,12 @@ local function configure_buffer(term, assistant)
   vim.keymap.set({ 'n', 'x' }, '<C-w>f', '<Cmd>vertical wincmd f<CR>', opts)
   vim.keymap.set({ 'n', 'x' }, '<C-w>F', '<Cmd>vertical wincmd F<CR>', opts)
 
-  vim.keymap.set({ 'n', 't' }, '<C-.>', function()
+  vim.keymap.set('n', '<C-.>', function()
+    vim.cmd.startinsert()
+    send_text(term, state.captured_context)
+  end, opts)
+
+  vim.keymap.set('t', '<C-.>', function()
     send_text(term, state.captured_context)
   end, opts)
 
