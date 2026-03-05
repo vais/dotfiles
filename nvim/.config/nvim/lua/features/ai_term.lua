@@ -27,6 +27,7 @@ local assistants = {
 
 local state = {
   captured_context = '',
+  captured_snippet = '',
   terms = {},
 }
 
@@ -192,6 +193,40 @@ local function set_pending_context(context)
   state.captured_context = context or ''
 end
 
+local function set_pending_snippet(text)
+  state.captured_snippet = text or ''
+end
+
+local function get_visual_selection_text()
+  local mode = vim.fn.mode()
+  local in_visual = mode == 'v' or mode == 'V' or mode == '\22'
+
+  local start_pos
+  local end_pos
+  local selection_type
+
+  if in_visual then
+    start_pos = vim.fn.getpos('v')
+    end_pos = vim.fn.getpos('.')
+    selection_type = mode
+  else
+    start_pos = vim.fn.getpos("'<")
+    end_pos = vim.fn.getpos("'>")
+    selection_type = vim.fn.visualmode()
+  end
+
+  if start_pos[2] == 0 or end_pos[2] == 0 then
+    return ''
+  end
+
+  local region = vim.fn.getregion(start_pos, end_pos, { type = selection_type })
+  if type(region) ~= 'table' or #region == 0 then
+    return ''
+  end
+
+  return table.concat(region, '\n')
+end
+
 local function capture_context_from_current_buffer(is_range)
   local buf = vim.api.nvim_get_current_buf()
   if not is_file_buffer(buf) then
@@ -209,6 +244,24 @@ local function capture_context_from_current_buffer(is_range)
   end
 
   return build_context_line(buf, vim.api.nvim_win_get_cursor(0)[1])
+end
+
+local function capture_snippet_from_current_buffer(is_range)
+  local buf = vim.api.nvim_get_current_buf()
+  if not is_file_buffer(buf) then
+    return ''
+  end
+
+  if is_range then
+    return get_visual_selection_text()
+  end
+
+  local word = vim.fn.expand('<cword>')
+  if type(word) == 'string' then
+    return word
+  end
+
+  return ''
 end
 
 local function send_raw(job_id, text)
@@ -346,10 +399,12 @@ end
 
 function M.capture_visual_selection()
   set_pending_context(capture_context_from_current_buffer(true))
+  set_pending_snippet(capture_snippet_from_current_buffer(true))
 end
 
 function M.capture_current_location()
   set_pending_context(capture_context_from_current_buffer(false))
+  set_pending_snippet(capture_snippet_from_current_buffer(false))
 end
 
 local function configure_buffer(term, assistant)
@@ -377,6 +432,15 @@ local function configure_buffer(term, assistant)
 
   vim.keymap.set('t', '<C-.>', function()
     send_text(term, state.captured_context)
+  end, opts)
+
+  vim.keymap.set('n', '<C-,>', function()
+    vim.cmd.startinsert()
+    send_text(term, state.captured_snippet)
+  end, opts)
+
+  vim.keymap.set('t', '<C-,>', function()
+    send_text(term, state.captured_snippet)
   end, opts)
 
   vim.keymap.set({ 'n', 't' }, '<D-v>', function()
@@ -418,11 +482,56 @@ local function capture_context_from_command_opts(opts)
   return build_context_line(source_buf, current_line)
 end
 
+local function capture_snippet_from_command_opts(opts)
+  local source_buf = vim.api.nvim_get_current_buf()
+  if not is_file_buffer(source_buf) then
+    return ''
+  end
+
+  if opts.range > 0 then
+    local visual_type = vim.fn.visualmode()
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+    local has_visual_marks = start_pos[2] > 0 and end_pos[2] > 0
+    local is_visual_type = visual_type == 'v' or visual_type == 'V' or visual_type == '\22'
+
+    if has_visual_marks and is_visual_type then
+      local mark_start = math.min(start_pos[2], end_pos[2])
+      local mark_end = math.max(start_pos[2], end_pos[2])
+      local range_start = math.min(opts.line1, opts.line2)
+      local range_end = math.max(opts.line1, opts.line2)
+
+      if mark_start == range_start and mark_end == range_end then
+        local region = vim.fn.getregion(start_pos, end_pos, { type = visual_type })
+        if type(region) == 'table' and #region > 0 then
+          return table.concat(region, '\n')
+        end
+      end
+    end
+
+    local lines = vim.api.nvim_buf_get_lines(source_buf, opts.line1 - 1, opts.line2, false)
+    if type(lines) == 'table' and #lines > 0 then
+      return table.concat(lines, '\n')
+    end
+    return ''
+  end
+
+  local word = vim.fn.expand('<cword>')
+  if type(word) == 'string' then
+    return word
+  end
+
+  return ''
+end
+
 local function open_assistant_terminal(assistant, opts)
   local captured_context = capture_context_from_command_opts(opts)
   if captured_context ~= '' then
     set_pending_context(captured_context)
   end
+
+  local captured_snippet = capture_snippet_from_command_opts(opts)
+  set_pending_snippet(captured_snippet)
 
   local cmd = assistant.name
   if opts.args and opts.args ~= '' then
