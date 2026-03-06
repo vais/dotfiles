@@ -58,8 +58,10 @@ function M.setup()
   vim.g.ale_fix_on_save = 1
 
   -- Use language-specific fixers.
+  -- Default JS fixer is prettier; temporary eslint_plugin_prettier repos are
+  -- overridden below in plugins.ale_eslint_plugin_prettier_compat.
   vim.g.ale_fixers = {
-    javascript = { 'eslint' },
+    javascript = { 'prettier' },
     typescript = { 'prettier' },
     typescriptreact = { 'prettier' },
     html = { 'prettier' },
@@ -173,6 +175,9 @@ function M.setup()
     pattern = 'ALELintPost',
     command = 'redrawstatus!',
   })
+
+  -- Temporary JS override for eslint_plugin_prettier repos.
+  require('plugins.ale_eslint_plugin_prettier_compat').setup(group)
 end
 
 return M
