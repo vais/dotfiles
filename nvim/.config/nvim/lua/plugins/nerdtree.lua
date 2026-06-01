@@ -41,7 +41,7 @@ function M.setup()
   vim.g.NERDTreeCustomOpenArgs = {
     -- Open in prior window and close the tree.
     file = { reuse = 'currenttab', where = 'p', keepopen = 0, stay = 0 },
-    dir = {},
+    dir = vim.empty_dict(),
   }
 
   -- Keep "o" from jumping to other tabs when the file is already open.
