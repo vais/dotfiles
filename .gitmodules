@@ -267,3 +267,6 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/vim-rsi"]
 	path = nvim/.config/nvim/pack/plugins/start/vim-rsi
 	url = https://github.com/tpope/vim-rsi.git
+[submodule "nvim/.config/nvim/pack/plugins/start/markdown-preview.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim.git
