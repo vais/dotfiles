@@ -8,6 +8,32 @@ function M.setup()
   local ai_term = require('features.ai_term')
   local term_label = require('features.toggleterm_label')
   local opts = { silent = true }
+
+  local function toggle_from_normal_mode()
+    ai_term.capture_current_location()
+    toggleterm.toggle()
+  end
+
+  _G.ToggleTermStatus = function()
+    local count = #terminals.get_all(false)
+    if count == 0 then
+      return ''
+    end
+
+    return string.format('[T:%d]', count)
+  end
+
+  _G.ToggleTermStatusClick = function(_, _, button)
+    if button == 'l' then
+      toggle_from_normal_mode()
+    end
+  end
+
+  local statusline_segment = '%=%( %#ToggleTermStatus#%@v:lua.ToggleTermStatusClick@%{v:lua.ToggleTermStatus()}%T%*%)'
+  if not string.find(vim.o.statusline, statusline_segment, 1, true) then
+    vim.opt.statusline:append(statusline_segment)
+  end
+
   local function get_float_terminals()
     local all = terminals.get_all(false)
     return vim.tbl_filter(function(term)
@@ -128,10 +154,7 @@ function M.setup()
   ai_term.setup()
 
   -- Toggle terminal from normal mode.
-  vim.keymap.set('n', '<C-Space>', function()
-    ai_term.capture_current_location()
-    toggleterm.toggle()
-  end, opts)
+  vim.keymap.set('n', '<C-Space>', toggle_from_normal_mode, opts)
 
   -- Toggle terminal from visual mode and record the selected line range for manual <C-.> send.
   vim.keymap.set('x', '<C-Space>', function()

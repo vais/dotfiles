@@ -127,11 +127,13 @@ local function apply_retrobox_overrides()
     vim.cmd('highlight Changed guifg=#fabd2f guibg=NONE gui=NONE ctermfg=214 ctermbg=NONE cterm=NONE')
     vim.cmd('highlight Removed guifg=#fb5944 guibg=NONE gui=NONE ctermfg=203 ctermbg=NONE cterm=NONE')
     vim.cmd('highlight Search guifg=#1c1c1c guibg=#98971a gui=NONE ctermfg=234 ctermbg=100 cterm=NONE')
+    vim.cmd('highlight ToggleTermStatus guifg=#98971a guibg=#1c1c1c gui=reverse ctermfg=100 ctermbg=234 cterm=reverse')
   else
     vim.cmd('highlight Added   guifg=#427b58 guibg=NONE gui=NONE ctermfg=29 ctermbg=NONE cterm=NONE')
     vim.cmd('highlight Changed guifg=#076678 guibg=NONE gui=NONE ctermfg=23 ctermbg=NONE cterm=NONE')
     vim.cmd('highlight Removed guifg=#9d0006 guibg=NONE gui=NONE ctermfg=88 ctermbg=NONE cterm=NONE')
     vim.cmd('highlight Search guifg=#fbf1c7 guibg=#98971a gui=NONE ctermfg=230 ctermbg=100 cterm=NONE')
+    vim.cmd('highlight ToggleTermStatus guifg=#98971a guibg=#1c1c1c gui=reverse ctermfg=100 ctermbg=234 cterm=reverse')
   end
 
   vim.cmd('highlight link GitCommitSummary Title')
